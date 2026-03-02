@@ -29,7 +29,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   `.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md`
 - **Scopes:** 
   - examples: `business-x`, `business-y`, `team-43`, `_general`
-  - `_local` is a reserved scope for XDRs created locally to a specific project or repository. XDRs in `_local` must not be shared with or propagated to other contexts. This scope must always be placed in the lowest position in `.xdrs/index.md` so that its decisions override or extend any decisions from all higher-positioned scopes.
+  - `_local` is a reserved scope for XDRs created locally to a specific project or repository. XDRs in `_local` must not be shared with or propagated to other contexts. This scope must always be placed in the lowest position in `.xdrs/index.md` so that its decisions override or extend any decisions from all higher-positioned scopes. When a scope name is not specified, `_local` is the standard scope to use.
   - **Types:** `adrs`, `bdrs`, `edrs`
   - there can exist sufixes to the standard scope names (e.g: `business-x-mobileapp`, `business-y-servicedesk`)
 - **Subjects:** MUST be one of the following depending on the type of the XDR:
