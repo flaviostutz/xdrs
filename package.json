@@ -1,7 +1,32 @@
 {
   "name": "xdrs",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A standard way to organize Decision Records (XDRs) across scopes, subjects, and teams so that AI agents can reliably query and follow them.",
-  "keywords": ["xdr", "adr", "decision-records", "ai-agents"],
-  "license": "MIT"
+  "keywords": [
+    "xdr",
+    "adr",
+    "decision-records",
+    "ai-agents"
+  ],
+  "license": "MIT",
+  "files": [
+    ".xdrs/**",
+    "package.json",
+    "AGENTS.md",
+    "bin/npmdata.js"
+  ],
+  "dependencies": {
+    "npmdata": "^0.5.0"
+  },
+  "npmdata": [
+    {
+      "package": "xdrs",
+      "outputDir": ".",
+      "files": [
+        ".github/**",
+        ".xdrs/**"
+      ]
+    }
+  ],
+  "bin": "bin/npmdata.js"
 }
