@@ -1,5 +1,5 @@
 {
-  "name": "xdrs",
+  "name": "xdrs-core",
   "version": "0.0.1",
   "description": "A standard way to organize Decision Records (XDRs) across scopes, subjects, and teams so that AI agents can reliably query and follow them.",
   "keywords": [
@@ -20,7 +20,7 @@
   },
   "npmdata": [
     {
-      "package": "xdrs",
+      "package": "xdrs-core",
       "outputDir": ".",
       "files": [
         "AGENTS.md",

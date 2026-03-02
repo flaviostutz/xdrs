@@ -14,7 +14,7 @@ This project defines a standard for organizing XDRs that satisfies the following
 
 1. Create a new project workspace
 
-2. On the workspace root folder, run `npx xdrs`
+2. On the workspace root folder, run `npx xdrs-core`
 
    The basic xdrs tooling should be installed in your workspace along with:
      - AGENTS.md pointing to the XDRs structure

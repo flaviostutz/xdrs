@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Example",
   "dependencies": {
-    "xdrs": "file:../dist/xdrs-0.0.1.tgz"
+    "xdrs-core": "file:../dist/xdrs-core-0.0.1.tgz"
   }
 }

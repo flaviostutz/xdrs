@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      xdrs:
-        specifier: file:../dist/xdrs-0.0.1.tgz
-        version: file:../dist/xdrs-0.0.1.tgz
+      xdrs-core:
+        specifier: file:../dist/xdrs-core-0.0.1.tgz
+        version: file:../dist/xdrs-core-0.0.1.tgz
 
 packages:
 
@@ -366,8 +366,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  xdrs@file:../dist/xdrs-0.0.1.tgz:
-    resolution: {integrity: sha512-fzLtdB5+EwuusbfsTA9Cb3CtWEPoiBsQA5E5OrF8/R8VIpIdNRiWf1+YGZyJyAt1KKpmABMRmU3xII90UYKFsA==, tarball: file:../dist/xdrs-0.0.1.tgz}
+  xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
+    resolution: {integrity: sha512-yo7l7wGR+Bp/PNexY1BPbQbrGlMAt1xv1VCSjyO8+F9g9MgZGsID2ZJI9afxMFCQhfJQYAc7nPHoEwlhzHv/Qw==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
     version: 0.0.1
     hasBin: true
 
@@ -707,7 +707,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  xdrs@file:../dist/xdrs-0.0.1.tgz:
+  xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
     dependencies:
       npmdata: 0.6.1-beta.0
     transitivePeerDependencies:
