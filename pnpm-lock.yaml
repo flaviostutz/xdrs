@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       npmdata:
-        specifier: file:/Users/flaviostutz/Documents/development/flaviostutz/npmdata/lib/dist/npmdata-0.0.1.tgz
-        version: file:../npmdata/lib/dist/npmdata-0.0.1.tgz
+        specifier: ^0.8.3-beta.0
+        version: 0.8.3-beta.0
 
 packages:
 
@@ -311,9 +311,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  npmdata@file:../npmdata/lib/dist/npmdata-0.0.1.tgz:
-    resolution: {integrity: sha512-yTGvihVEMJiuM5glQLMylzLhRHyglhfDl5oi0KVx8xFyL/lAifBPzbU2VfG5lwU+zyMMjQuihDS6Id55/0hruQ==, tarball: file:../npmdata/lib/dist/npmdata-0.0.1.tgz}
-    version: 0.0.1
+  npmdata@0.8.3-beta.0:
+    resolution: {integrity: sha512-0xm8pxoCFEbwjRnexdtYq50ux+o1ldddyxZybYESSEqoh+u0n0msg2Gp2iply1FzVlktPhWyI/J5dM8tn8zK1A==}
     hasBin: true
 
   once@1.4.0:
@@ -615,7 +614,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  npmdata@file:../npmdata/lib/dist/npmdata-0.0.1.tgz:
+  npmdata@0.8.3-beta.0:
     dependencies:
       archiver: 6.0.2
       esbuild: 0.25.12

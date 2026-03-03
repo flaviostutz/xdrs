@@ -311,9 +311,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  npmdata@file:../../npmdata/lib/dist/npmdata-0.0.1.tgz:
-    resolution: {integrity: sha512-yTGvihVEMJiuM5glQLMylzLhRHyglhfDl5oi0KVx8xFyL/lAifBPzbU2VfG5lwU+zyMMjQuihDS6Id55/0hruQ==, tarball: file:../../npmdata/lib/dist/npmdata-0.0.1.tgz}
-    version: 0.0.1
+  npmdata@0.8.3-beta.0:
+    resolution: {integrity: sha512-0xm8pxoCFEbwjRnexdtYq50ux+o1ldddyxZybYESSEqoh+u0n0msg2Gp2iply1FzVlktPhWyI/J5dM8tn8zK1A==}
     hasBin: true
 
   once@1.4.0:
@@ -368,7 +367,7 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
-    resolution: {integrity: sha512-6rs7BSrKZ/H+jxknIer3PVyeqhQ5UlJKYwzYQ2ZqDhy8Pzzut0ZTDS2GYhT6YHCZPJ8f0geNv3yHbFpFbgHr7g==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
+    resolution: {integrity: sha512-Yt0U4EOtit6J9k3/KLkEQoa6kBzayUm+OUQLz/ZkH7iub8w6aYApxoyRVktOqasRrPUKMqr4eBfWRhaStnpBbw==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
     version: 0.0.1
     hasBin: true
 
@@ -620,7 +619,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  npmdata@file:../../npmdata/lib/dist/npmdata-0.0.1.tgz:
+  npmdata@0.8.3-beta.0:
     dependencies:
       archiver: 6.0.2
       esbuild: 0.25.12
@@ -710,7 +709,7 @@ snapshots:
 
   xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
     dependencies:
-      npmdata: file:../../npmdata/lib/dist/npmdata-0.0.1.tgz
+      npmdata: 0.8.3-beta.0
     transitivePeerDependencies:
       - bare-abort-controller
       - bare-buffer

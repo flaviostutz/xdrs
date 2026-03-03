@@ -20,7 +20,7 @@
     "bin/npmdata.js"
   ],
   "dependencies": {
-    "npmdata": "file:/Users/flaviostutz/Documents/development/flaviostutz/npmdata/lib/dist/npmdata-0.0.1.tgz"
+    "npmdata": "^0.8.3-beta.0"
   },
   "npmdata": [
     {
