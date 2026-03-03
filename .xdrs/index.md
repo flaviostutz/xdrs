@@ -24,3 +24,8 @@ General engineering decisions covering cross-business standards and practices.
 
 Project-local XDRs that must not be shared with other contexts. Always keep this scope last so its decisions override or extend all scopes listed above. Add specific `_local` ADR/BDR/EDR index links here when present.
 
+[View _local BDRs Index](_local/bdrs/index.md)
+
+[View _local ADRs Index](_local/adrs/index.md)
+
+[View _local EDRs Index](_local/edrs/index.md)
