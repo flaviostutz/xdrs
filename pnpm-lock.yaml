@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       npmdata:
-        specifier: ^0.9.0-beta.0
-        version: 0.9.0-beta.0
+        specifier: ^0.10.0
+        version: 0.10.0
 
 packages:
 
@@ -311,8 +311,8 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
-  npmdata@0.9.0-beta.0:
-    resolution: {integrity: sha512-2wfFk7cw8lhHEWIFVGnVTZBCJD4ROhRKmDq34tAtGpXaZ5P00381CyvVFsxC5cdgL78L0XKgbZ5xNt7FFt1z8Q==}
+  npmdata@0.10.0:
+    resolution: {integrity: sha512-c21Ntrsf4rX3PdD7I0WW/z6ZQUuuRvv5PJibZ5U5GkkaJWX3FpJF1YleMpaSTzjgbsY9C3QZlFxknga30vhbKw==}
     hasBin: true
 
   once@1.4.0:
@@ -614,7 +614,7 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
-  npmdata@0.9.0-beta.0:
+  npmdata@0.10.0:
     dependencies:
       archiver: 6.0.2
       esbuild: 0.25.12
