@@ -40,7 +40,7 @@ packages:
     hasBin: true
 
   xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
-    resolution: {integrity: sha512-Yy+qUe6U1LMuhjni9jdjwZiCQsE4o5FrpJ53x47Uhbyyyd5VbaAkg8/Ucy8kX2FhTLJcP9QzKfKqbm2YShRcOg==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
+    resolution: {integrity: sha512-TtlHxKhxN/fVh/rsrr+y+R6cvhBMAjwoPpJV8N1IbBJHOfiUBTuC4AC6agl/ST0TsVNOftSPOzPjF5wZC31t2w==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
     version: 0.0.1
     hasBin: true
 
