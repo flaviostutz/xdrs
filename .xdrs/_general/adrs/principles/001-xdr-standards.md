@@ -111,7 +111,7 @@ In the end, state explicitly the question that needs to be answered. E.g: "Which
 **Examples:**
 - `.xdrs/business-x/edrs/devops/003-required-development-workflow.md`
 - `.xdrs/business-x/adrs/governance/010-security-and-secrets-management.md`
-- `.xdrs/general/adrs/devops/001-multi-repo.md`
+- `.xdrs/_general/adrs/devops/001-multi-repo.md`
 
 **XDR ID Examples:**
 - `business-x-adr-001` (not `ADR-business-x-001` or `business-x-adr-1`)

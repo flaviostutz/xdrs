@@ -39,8 +39,9 @@ Quick test:
 ```
 
 Examples:
-- `.xdrs/general/adrs/principles/skills/001-code-review/SKILL.md`
+- `.xdrs/_general/adrs/principles/skills/001-code-review/SKILL.md`
 - `.xdrs/business-x/edrs/devops/skills/001-ci-pipeline-debug/SKILL.md`
+- `.xdrs/_local/adrs/principles/skills/001-my-nice-skill/SKILL.md`
 
 **Skill numbering**
 
