@@ -28,7 +28,8 @@
       "outputDir": ".",
       "files": [
         "AGENTS.md",
-        ".xdrs/**"
+        ".xdrs/**",
+        "!.xdrs/index.md"
       ],
       "symlinks": [
         {
@@ -37,6 +38,16 @@
         }
       ],
       "gitignore": false
+    },
+    {
+      "package": "xdrs-core",
+      "outputDir": ".",
+      "files": [
+        ".xdrs/index.md"
+      ],
+      "gitignore": false,
+      "unmanaged": true,
+      "keepExisting": true
     }
   ],
   "bin": "bin/npmdata.js"
