@@ -35,7 +35,8 @@
           "source": ".xdrs/**/skills/*",
           "target": "./.github/skills"
         }
-      ]
+      ],
+      "gitignore": false
     }
   ],
   "bin": "bin/npmdata.js"
