@@ -16,23 +16,18 @@ Clear behavior standards ensure consistency through EDR compliance, maintain cod
 
 **Mandatory behaviors for AI coding agents:**
 
-1. **Follow instruction hierarchy when making implementation decisions**
-   1. **Closest AGENTS.md** to the file being changed (search from target directory up to workspace root). Instructions in those files override the global EDRs. If multiple AGENTS.md files exist in the path, merge their instructions; the closest AGENTS.md overrides those farther away.
-   2. **Global EDR** – Follow scope-based precedence defined in [.xdrs/index.md](../../../../index.md). EDRs in scopes listed last override EDRs in scopes listed first.
+1. **Always consult XDRs before making implementation decisions**
+   - Follow coding agent behavior and decision hierarchy rules in [.xdrs/_general/edrs/principles/001-coding-agent-behavior.md](.xdrs/_general/edrs/principles/001-coding-agent-behavior.md)
+   - Search for XDRs in [.xdrs/index.md](.xdrs/index.md) during design, plan and implementation steps
+   - Follow XDRs as the source of truth for all decisions and procedures
 
 2. **Verify all work with build, tests and linting before completion**
-   - Check EDRs for workspace tooling: [.xdrs/index.md](../../../../index.md)
-   - Run quality checks in sequence relative to the module directory: `STAGE=dev make build-module`, `make lint-module`, then `make test-module`
-   - Use `make lint-fix` to fix lint issues
-   - Do not run commands outside Makefiles
+   - Always run `make build`, `make lint-fix` and `make test` at the end of the implementation
+   - Fix any issues
 
-3. **Verify implementation complies with EDRs**
-   - Review relevant EDRs before marking work complete
-   - Ensure implementation decisions follow EDR guidelines and patterns
+3. **Verify if implementation complies with XDRs**
+   - Re-analyse your work against the XDRs and ensure implementation decisions follow guidelines and patterns
 
-4. **Do not perform git operations**
-   - Do not run git commands (add, commit, push, branch creation, etc.)
-   - Inform the developer when work is ready for version control
 
 ## Considered Options
 

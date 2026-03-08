@@ -8,6 +8,7 @@
    - Follow XDRs as the source of truth for all decisions and procedures
 
 2. **Verify all work with build, tests and linting before completion**
+   - Always run `make build`, `make lint-fix` and `make test` at the end of the implementation
    - Fix any issues
 
 3. **Verify if implementation complies with XDRs**
