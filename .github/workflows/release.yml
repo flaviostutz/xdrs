@@ -1,6 +1,11 @@
 name: release
 on:
   workflow_dispatch:
+    inputs:
+      prerelease:
+        description: 'Pre-release'
+        type: boolean
+        default: true
 
 jobs:
   release:
@@ -15,9 +20,11 @@ jobs:
           # create a personal token and set a secret with name GH_PERSONAL_TOKEN
           # https://github.com/orgs/community/discussions/27028
           token: ${{ secrets.GH_PERSONAL_TOKEN }}
+      - uses: jdx/mise-action@v3
       - name: Create tag and push to repo
         run: |
           npx -y monotag@1.24.0 tag-push \
             --git-username="Flavio Stutz" \
             --git-email="flaviostutz@gmail.com" \
-            --changelog-file CHANGELOG.md
+            --changelog-file CHANGELOG.md \
+            ${{ inputs.prerelease == true && '--prerelease' || '' }}

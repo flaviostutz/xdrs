@@ -1,22 +1,17 @@
-name: publish
+name: ci
+
 on:
   push:
-    tags:
-      - '*'
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-
-
-  publish:
+  ci:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v3
       - run: make build
       - run: make lint
       - run: make test
-      - run: git reset --hard HEAD
-      - run: make publish
