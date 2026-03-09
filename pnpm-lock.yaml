@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       npmdata:
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.13.0
+        version: 0.13.0
 
 packages:
 
@@ -84,8 +84,8 @@ packages:
   mypkg@1.0.0:
     resolution: {integrity: sha512-bUYxZK4prscFYS4f1NYXcZ+TJBjsx+BSdMA+7F3gXGdBRHCDBdVZS5vIlnEWzYuL2jeVNyJZWlFfTmLZMEOh8g==}
 
-  npmdata@0.12.0:
-    resolution: {integrity: sha512-rhnM9Id4ogadDpHfMP9hyLrEDMlpBFduWUtOU8p+3/q3caKjfsv0GtmVqJkVRY2NuKCfY51P+gUqaRVh2bZN5g==}
+  npmdata@0.13.0:
+    resolution: {integrity: sha512-fZJTxX66fUEhnyFVDG9IAzVPSVPT1pYC86sb++crFpYLCEPjtxfRa1gZE1VUk28rVojezE5SPl/mPXuiemubOg==}
     hasBin: true
 
   parent-module@1.0.1:
@@ -166,7 +166,7 @@ snapshots:
 
   mypkg@1.0.0: {}
 
-  npmdata@0.12.0:
+  npmdata@0.13.0:
     dependencies:
       cosmiconfig: 9.0.1
       ignore: 7.0.5
