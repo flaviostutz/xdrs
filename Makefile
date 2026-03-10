@@ -7,10 +7,11 @@ lint:
 	@echo "No linting rules to check"
 
 test: build
-	cd example && make test
+	make -C example test
 
 clean:
 	rm -rf dist node_modules
+	make -C example clean
 
 install:
 # 	pnpm add npmdata@file:../npmdata/lib/dist/npmdata-0.0.1.tgz

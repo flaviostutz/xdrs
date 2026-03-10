@@ -1,13 +1,13 @@
 SHELL := /bin/bash
 
 clean:
-	@rm -rf output
+	@rm -rf output node_modules
 
 test: clean install
 	pnpm exec xdrs-core extract --output ./output
 	test -e output/AGENTS.md
 	test -e output/.npmdata
-	test -e output/.xdrs/_general/adrs/principles/001-xdr-standards.md
+	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
 
 	pnpm exec xdrs-core extract --output ./output
 

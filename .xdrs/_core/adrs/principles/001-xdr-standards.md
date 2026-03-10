@@ -1,4 +1,4 @@
-# _general-adr-001: XDR standards
+# _core-adr-001: XDR standards
 
 ## Context and Problem Statement
 
@@ -28,7 +28,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
 - Always the following folder structure:
   `.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md`
 - **Scopes:** 
-  - examples: `business-x`, `business-y`, `team-43`, `_general`
+  - examples: `business-x`, `business-y`, `team-43`, `_core`
   - `_local` is a reserved scope for XDRs created locally to a specific project or repository. XDRs in `_local` must not be shared with or propagated to other contexts. This scope must always be placed in the lowest position in `.xdrs/index.md` so that its decisions override or extend any decisions from all higher-positioned scopes.
   - **Types:** `adrs`, `bdrs`, `edrs`
   - there can exist sufixes to the standard scope names (e.g: `business-x-mobileapp`, `business-y-servicedesk`)
@@ -111,7 +111,7 @@ In the end, state explicitly the question that needs to be answered. E.g: "Which
 **Examples:**
 - `.xdrs/business-x/edrs/devops/003-required-development-workflow.md`
 - `.xdrs/business-x/adrs/governance/010-security-and-secrets-management.md`
-- `.xdrs/_general/adrs/devops/001-multi-repo.md`
+- `.xdrs/_core/adrs/devops/001-multi-repo.md`
 
 **XDR ID Examples:**
 - `business-x-adr-001` (not `ADR-business-x-001` or `business-x-adr-1`)

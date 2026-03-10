@@ -6,5 +6,5 @@ General engineering decisions covering cross-business standards and practices. A
 
 Foundational standards, principles, and guidelines.
 
-- [_general-edr-001](principles/001-coding-agent-behavior.md) - **AI coding agent behavior**
+- [_core-edr-001](principles/001-coding-agent-behavior.md) - **AI coding agent behavior**
 

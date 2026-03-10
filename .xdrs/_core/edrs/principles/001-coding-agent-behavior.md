@@ -1,4 +1,4 @@
-# _general-edr-001: AI coding agent behavior
+# _core-edr-001: AI coding agent behavior
 
 ## Context and Problem Statement
 
@@ -17,7 +17,7 @@ Clear behavior standards ensure consistency through EDR compliance, maintain cod
 **Mandatory behaviors for AI coding agents:**
 
 1. **Always consult XDRs before making implementation decisions**
-   - Follow coding agent behavior and decision hierarchy rules in [.xdrs/_general/edrs/principles/001-coding-agent-behavior.md](.xdrs/_general/edrs/principles/001-coding-agent-behavior.md)
+   - Follow coding agent behavior and decision hierarchy rules in [.xdrs/_core/edrs/principles/001-coding-agent-behavior.md](.xdrs/_core/edrs/principles/001-coding-agent-behavior.md)
    - Search for XDRs in [.xdrs/index.md](.xdrs/index.md) during design, plan and implementation steps
    - Follow XDRs as the source of truth for all decisions and procedures
 

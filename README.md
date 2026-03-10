@@ -28,7 +28,7 @@ This project defines a standard for organizing XDRs that satisfies the following
 
 ### Multi-scope support
 
-Different teams at different organizational levels make decisions that apply to different audiences. XDRs are organized by scope (e.g. `_general`, `business-x`, `business-y-mobileapp`) so that each team owns its own decision space. Scopes can extend or override decisions from broader scopes, with explicit precedence rules: scopes listed later in an index override those listed earlier.
+Different teams at different organizational levels make decisions that apply to different audiences. XDRs are organized by scope (e.g. `_core`, `business-x`, `business-y-mobileapp`) so that each team owns its own decision space. Scopes can extend or override decisions from broader scopes, with explicit precedence rules: scopes listed later in an index override those listed earlier.
 
 ### Subject grouping
 

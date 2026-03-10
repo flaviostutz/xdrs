@@ -84,9 +84,12 @@ packages:
   mypkg@1.0.0:
     resolution: {integrity: sha512-bUYxZK4prscFYS4f1NYXcZ+TJBjsx+BSdMA+7F3gXGdBRHCDBdVZS5vIlnEWzYuL2jeVNyJZWlFfTmLZMEOh8g==}
 
-  npmdata@0.13.2:
-    resolution: {integrity: sha512-wnqCVttBEHudm64dGOL3yb2A4DbXT77bJCmg3qKQMkHxRaierHQaaV4tiC4TYuCfxDarQD+9+Fukl/OwJUM8fw==}
+  npmdata@0.13.4:
+    resolution: {integrity: sha512-Ls2fJ6M2WGdZ9p2mpkVSoTn0vgR+6737uWLMzHv5ogVfolifkKiE5XjaR5JgRIBC8rcdc84SeNGPVhJvHegV2A==}
     hasBin: true
+
+  package-manager-detector@1.6.0:
+    resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -109,7 +112,7 @@ packages:
     hasBin: true
 
   xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
-    resolution: {integrity: sha512-GYoUKSEIg21Z7XzXtkt0o2D/ix70RsIfQXXpx5010jAd9WfCdBPH1Dhn6cT5hVZXFp7PbkWdHi+u+xKTS7VXxg==, tarball: file:../dist/xdrs-core-0.0.1.tgz}
+    resolution: {integrity: sha512-xhWivPq724b93xzfL4/AJT0ucclvjBFxAB4j5KkgouK1yaWiZuEBKvbx6E4YZPXf6b2l1w1Vg39+n/enkU98zg==}
     version: 0.0.1
     hasBin: true
 
@@ -171,15 +174,18 @@ snapshots:
 
   mypkg@1.0.0: {}
 
-  npmdata@0.13.2:
+  npmdata@0.13.4:
     dependencies:
       cosmiconfig: 9.0.1
       ignore: 7.0.5
       minimatch: 10.2.4
       mypkg: 1.0.0
+      package-manager-detector: 1.6.0
       semver: 7.7.4
     transitivePeerDependencies:
       - typescript
+
+  package-manager-detector@1.6.0: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -200,6 +206,6 @@ snapshots:
 
   xdrs-core@file:../dist/xdrs-core-0.0.1.tgz:
     dependencies:
-      npmdata: 0.13.2
+      npmdata: 0.13.4
     transitivePeerDependencies:
       - typescript

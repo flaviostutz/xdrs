@@ -105,6 +105,6 @@ produces structured findings report.
 
 ## References
 
-- [_general-adr-001 - XDR standards](../../001-xdr-standards.md)
-- [_general-adr-003 - Skill standards](../../003-skill-standards.md)
+- [_core-adr-001 - XDR standards](../../001-xdr-standards.md)
+- [_core-adr-003 - Skill standards](../../003-skill-standards.md)
 

@@ -1,4 +1,4 @@
-# _general-adr-003: Skill standards
+# _core-adr-003: Skill standards
 
 ## Context and Problem Statement
 
@@ -39,7 +39,7 @@ Quick test:
 ```
 
 Examples:
-- `.xdrs/_general/adrs/principles/skills/001-code-review/SKILL.md`
+- `.xdrs/_core/adrs/principles/skills/001-code-review/SKILL.md`
 - `.xdrs/business-x/edrs/devops/skills/001-ci-pipeline-debug/SKILL.md`
 - `.xdrs/_local/adrs/principles/skills/001-my-nice-skill/SKILL.md`
 
@@ -108,4 +108,4 @@ skills-ref validate .xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]
 - [agentskills specification](https://agentskills.io/specification)
 - [agentskills/agentskills repository](https://github.com/agentskills/agentskills)
 - [skills-ref validation library](https://github.com/agentskills/agentskills/tree/main/skills-ref)
-- [_general-adr-001 - XDR standards](001-xdr-standards.md)
+- [_core-adr-001 - XDR standards](001-xdr-standards.md)
