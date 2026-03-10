@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.15 (2026-03-10)
+
+### Maintenance
+
+* release: 0.2.14 [[6552168](https://github.com/flaviostutz/xdrs-core/commit/6552168f1523f2bcf2f0f818f391b7dc6f5628cd)]
+* remove pnpm-lock from git [[e7204ce](https://github.com/flaviostutz/xdrs-core/commit/e7204ce96fb53d566aeaaaa5de513b1700205125)]
+* rename scope from _general to _core [[b3b6e6d](https://github.com/flaviostutz/xdrs-core/commit/b3b6e6d9d6163c2c79c2b789f9926e4f4420d43d)]
+
+### Misc
+
+
+### Info
+
+* Authors: Flavio Stutz <flaviostutz@gmail.com>
+
+
 ## 0.2.14 (2026-03-10)
 
 ### Maintenance
