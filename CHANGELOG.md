@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.14 (2026-03-10)
+
+### Maintenance
+
+* release: 0.2.13 [[cf19ead](https://github.com/flaviostutz/xdrs-core/commit/cf19ead400db7c4055977602d29073ab4fc83d5c)]
+* bump npmdata [[e4f317c](https://github.com/flaviostutz/xdrs-core/commit/e4f317ce27520f98f3c0bfc8a2c3d507f66a0fc0)]
+* bump npmdata [[10e347d](https://github.com/flaviostutz/xdrs-core/commit/10e347d88cbb826e4235c02d81ba66078ca22b00)]
+
+### Misc
+
+
+### Info
+
+* Authors: Flavio Stutz <flaviostutz@gmail.com>
+
+
 ## 0.2.13 (2026-03-09)
 
 ### Maintenance
