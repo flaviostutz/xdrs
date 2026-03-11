@@ -1,5 +1,5 @@
 ---
-name: 001-xdr-lint
+name: 001-lint
 description: >
   Reviews code changes or files against applicable XDRs (Decision Records) and reports violations as structured findings. 
   Activate this skill when the user asks to review, lint, or audit code, or when you identify a need to check compliance with XDRs during implementation.

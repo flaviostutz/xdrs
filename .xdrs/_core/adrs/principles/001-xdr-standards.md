@@ -137,4 +137,4 @@ In the end, state explicitly the question that needs to be answered. E.g: "Which
 
 ## References
 
-- [001-xdr-lint skill](skills/001-xdr-lint/SKILL.md) - Skill for reviewing code changes against XDRs
+- [001-lint skill](skills/001-lint/SKILL.md) - Skill for reviewing code changes against XDRs

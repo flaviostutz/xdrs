@@ -6,6 +6,8 @@ clean:
 test: clean install
 	pnpm exec xdrs-core extract --output ./output
 	test -e output/AGENTS.md
+	test ! -e output/README.md
+	test ! -e output/LICENSE
 	test -e output/.npmdata
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
 

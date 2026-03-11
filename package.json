@@ -20,35 +20,45 @@
     "bin/npmdata.js"
   ],
   "dependencies": {
-    "npmdata": "^0.14.0"
+    "npmdata": "^0.15.1"
   },
   "npmdata": {
     "sets": [
       {
         "package": "xdrs-core",
-        "outputDir": ".",
-        "files": [
-          "AGENTS.md",
-          ".xdrs/**",
-          "!.xdrs/index.md"
-        ],
-        "symlinks": [
-          {
-            "source": ".xdrs/**/skills/*",
-            "target": "./.github/skills"
-          }
-        ],
-        "gitignore": false
+        "selector": {
+          "files": [
+            "AGENTS.md",
+            ".xdrs/**"
+          ],
+          "exclude": [
+            ".xdrs/index.md"
+          ]
+        },
+        "output": {
+          "path": ".",
+          "symlinks": [
+            {
+              "source": ".xdrs/**/skills/*",
+              "target": ".github/skills"
+            }
+          ],
+          "gitignore": false
+        }
       },
       {
         "package": "xdrs-core",
-        "outputDir": ".",
-        "files": [
-          ".xdrs/index.md"
-        ],
-        "gitignore": false,
-        "unmanaged": true,
-        "keepExisting": true
+        "selector": {
+          "files": [
+            ".xdrs/index.md"
+          ]
+        },
+        "output": {
+          "path": ".",
+          "gitignore": false,
+          "unmanaged": true,
+          "keepExisting": true
+        }
       }
     ]
   },
