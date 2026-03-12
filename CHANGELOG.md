@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.16 (2026-03-10)
+
+### Maintenance
+
+* release: 0.2.15 [[ed55d66](https://github.com/flaviostutz/xdrs-core/commit/ed55d668c44e4bda482b5e2d9f77a5aed87cea15)]
+* remove pnpm-lock from git [[e7204ce](https://github.com/flaviostutz/xdrs-core/commit/e7204ce96fb53d566aeaaaa5de513b1700205125)]
+* simplyfing AGENTS.md [[a32a129](https://github.com/flaviostutz/xdrs-core/commit/a32a129f1a5df03ca420880358df594686c3cd1a)]
+* upgrade eslint review SKILL [[a006d02](https://github.com/flaviostutz/xdrs-core/commit/a006d02ddb3a72a3eea8ff64a22d795aa150eb09)]
+
+### Misc
+
+
+### Info
+
+* Authors: Flavio Stutz <flaviostutz@gmail.com>
+
+
 ## 0.2.15 (2026-03-10)
 
 ### Maintenance
