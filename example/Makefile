@@ -9,20 +9,25 @@ test: clean install
 	test ! -e output/README.md
 	test ! -e output/LICENSE
 	test -e output/.npmdata
+	# .xdrs/index.md should not be tracked in .npmdata (it uses managed=false/keepExisting=true)
+	! grep -q ".xdrs/index.md" output/.npmdata
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
-
+	
 	pnpm exec xdrs-core extract --output ./output
 
 	# test that .xdrs/index.md changes are preserved on re-extraction (--keep-existing)
 	chmod +w output/.xdrs/index.md
 	echo "## CUSTOM SECTION" >> output/.xdrs/index.md
-	chmod +w output/AGENTS.md
-	echo "## CUSTOM SECTION" >> output/AGENTS.md
 	pnpm exec xdrs-core extract --output ./output --keep-existing
 	grep -q "CUSTOM SECTION" output/.xdrs/index.md
 
 	# npmdata check - verify managed files are in sync
 	pnpm exec xdrs-core check --output ./output
+
+    # temper AGENTS.md and verify that it fails on check
+	chmod +w output/AGENTS.md
+	echo "## CUSTOM SECTION" >> output/AGENTS.md
+	! pnpm exec xdrs-core check --output ./output
 
 install:
 	# replace the dependency with the local package
