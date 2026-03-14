@@ -20,7 +20,7 @@
     "bin/npmdata.js"
   ],
   "dependencies": {
-    "npmdata": "^0.16.0"
+    "npmdata": "^0.18.4"
   },
   "npmdata": {
     "sets": [
@@ -56,7 +56,7 @@
         "output": {
           "path": ".",
           "gitignore": false,
-          "unmanaged": true,
+          "managed": false,
           "keepExisting": true
         }
       }

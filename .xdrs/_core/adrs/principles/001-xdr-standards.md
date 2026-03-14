@@ -5,9 +5,9 @@
 We need a consistent way to capture decisions that scales across scopes and subjects, remains easy to navigate, and works well with AI agents.
 
 Decision Records can be of different kinds, depending on the nature of the decision:
-- ADR (Architectural Decision Record): captures architectural and technical decisions
-- BDR (Business Decision Record): captures business process and strategy decisions
-- EDR (Engineering Decision Record): captures engineering workflow and tooling decisions
+- BDR (Business Decision Record): Captures business process, product features, procedures and strategic decisions. Examples: business rules, product policies, customer service, business workflow, control frameworks for regulators for finance, product procedures and manuals, KYC requirements, business requirements in general
+- ADR (Architectural Decision Record): Wider architectural and technical decisions. Examples: how big topics relate to each other, system contexts, overview without realy deciding on details, integration patterns, overarching topics, corporate wide practices, corporate systems, external and internal partners etc
+- EDR (Engineering Decision Record): captures engineering details about how to implement things. Examples: specific tools and libraries selection, framework usage, best practices on coding, testing, quality, project structure, pipelines etc
 
 Collectively, these are referred to as XDRs.
 
@@ -67,9 +67,9 @@ All XDRs MUST follow this template
 ## Context and Problem Statement
 
 [Describe the context, background, or need that led to this decision.
-What is the problem we are trying to solve? Who is being impacted? (~4 lines)
+What is the problem we are trying to solve? Who is being impacted? (<3 lines)
 
-In the end, state explicitly the question that needs to be answered. E.g: "Which platform should I use when implementing an AI agent?"]
+Question: In the end, state explicitly the question that needs to be answered. E.g: "Which platform should I use when implementing an AI agent?"]
 
 ## Decision Outcome
 
