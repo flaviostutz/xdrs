@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0 (2026-03-12)
+
+### Features
+
+* xdr writer skill [[9b8d992](https://github.com/flaviostutz/xdrs-core/commit/9b8d992ec40b0caf3007c9b505d3383a3ca8f244)]
+
+### Maintenance
+
+* release: 0.2.18 [[f40fead](https://github.com/flaviostutz/xdrs-core/commit/f40fead21d0a8b8a1ac369b7dabdffd0fc2e8852)]
+* fix tests [[2ab79a8](https://github.com/flaviostutz/xdrs-core/commit/2ab79a81b2c20a926c5976ec0455e96fc12533ba)]
+
+### Misc
+
+
+### Info
+
+* Authors: Flavio Stutz <flaviostutz@gmail.com>
+
+
 ## 0.2.18 (2026-03-12)
 
 ### Maintenance
