@@ -28,6 +28,6 @@ publish:
 		npm publish --no-git-checks; \
 	fi
 
-bump-deps:
+bump:
 	pnpm upgrade npmdata@latest
 	pnpm install
