@@ -20,12 +20,11 @@
     "bin/npmdata.js"
   ],
   "dependencies": {
-    "npmdata": "^0.18.9"
+    "npmdata": "^0.18.12"
   },
   "npmdata": {
     "sets": [
       {
-        "package": "xdrs-core",
         "selector": {
           "files": [
             "AGENTS.md",
@@ -47,7 +46,6 @@
         }
       },
       {
-        "package": "xdrs-core",
         "selector": {
           "files": [
             ".xdrs/index.md"

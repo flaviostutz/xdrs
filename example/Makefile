@@ -10,7 +10,7 @@ test: clean install
 	test ! -e output/LICENSE
 	test -e output/.npmdata
 	# .xdrs/index.md should not be tracked in .npmdata (it uses managed=false/keepExisting=true)
-	! grep -q ".xdrs/index.md" output/.npmdata
+	! grep -e ".xdrs/index.md" output/.npmdata
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
 	
 	pnpm exec xdrs-core extract --output ./output
@@ -28,6 +28,7 @@ test: clean install
 	chmod +w output/AGENTS.md
 	echo "## CUSTOM SECTION" >> output/AGENTS.md
 	! pnpm exec xdrs-core check --output ./output
+	@echo "All tests passed!"
 
 install:
 	# replace the dependency with the local package
