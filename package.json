@@ -20,7 +20,7 @@
     "bin/npmdata.js"
   ],
   "dependencies": {
-    "npmdata": "^0.18.14"
+    "npmdata": "^0.19.0"
   },
   "npmdata": {
     "sets": [
