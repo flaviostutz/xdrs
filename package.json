@@ -18,12 +18,12 @@
     "package.json",
     "AGENTS.md",
     "AGENTS.local.md",
-    "bin/npmdata.js"
+    "bin/filedist.js"
   ],
   "dependencies": {
-    "npmdata": "^0.20.1"
+    "filedist": "^0.21.2"
   },
-  "npmdata": {
+  "filedist": {
     "sets": [
       {
         "selector": {
@@ -62,5 +62,5 @@
       }
     ]
   },
-  "bin": "bin/npmdata.js"
+  "bin": "bin/filedist.js"
 }

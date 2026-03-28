@@ -9,10 +9,10 @@ test: clean install
 	test -e output/AGENTS.local.md
 	test ! -e output/README.md
 	test ! -e output/LICENSE
-	test -e output/.npmdata
-	# .xdrs/index.md should not be tracked in .npmdata (it uses managed=false/keepExisting=true)
-	! grep -e ".xdrs/index.md" output/.npmdata
-	! grep -e "AGENTS.local.md" output/.npmdata
+	test -e output/.filedist
+	# .xdrs/index.md should not be tracked in .filedist (it uses managed=false/keepExisting=true)
+	! grep -e ".xdrs/index.md" output/.filedist
+	! grep -e "AGENTS.local.md" output/.filedist
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
 	
 	pnpm exec xdrs-core extract --output ./output
@@ -23,7 +23,7 @@ test: clean install
 	pnpm exec xdrs-core extract --output ./output --keep-existing
 	grep -q "CUSTOM SECTION" output/.xdrs/index.md
 
-	# npmdata check - verify managed files are in sync
+	# filedist check - verify managed files are in sync
 	pnpm exec xdrs-core check --output ./output
 
     # temper AGENTS.md and verify that it fails on check

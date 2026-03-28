@@ -91,13 +91,13 @@ Each scope manages its own set of XDRs independently. Scope owners discuss and e
 
 ### Distribution
 
-Once a set of decisions is ready to share, scope owners pack the relevant `.xdrs/[scope]/` folder into a versioned npm package using a tool such as [npmdata](https://github.com/flaviostutz/npmdata) and publish it to an npm registry, either public or a company-internal one. Versioning gives consumers explicit control over which revision of a scope's decisions they adopt, avoiding situations where a single breaking policy change is forced on all consumers at once.
+Once a set of decisions is ready to share, scope owners pack the relevant `.xdrs/[scope]/` folder into a versioned npm package using a tool such as [filedist](https://github.com/flaviostutz/filedist) and publish it to an npm registry, either public or a company-internal one. Versioning gives consumers explicit control over which revision of a scope's decisions they adopt, avoiding situations where a single breaking policy change is forced on all consumers at once.
 
 The same applies to skills: because they live alongside XDRs inside the scope folder, they are included in the same package and published together.
 
 ### Usage
 
-A project that wants to follow a scope's decisions adds the corresponding npm package as a regular dependency. Using a tool such as [npmdata](https://github.com/flaviostutz/npmdata), the package contents are unpacked into the project's `.xdrs/` folder at install or update time. Updating the dependency version pulls in the latest XDRs and skills for that scope, keeping the project aligned with the scope owners' current decisions.
+A project that wants to follow a scope's decisions adds the corresponding npm package as a regular dependency. Using a tool such as [filedist](https://github.com/flaviostutz/filedist), the package contents are unpacked into the project's `.xdrs/` folder at install or update time. Updating the dependency version pulls in the latest XDRs and skills for that scope, keeping the project aligned with the scope owners' current decisions.
 
 Multiple scope packages can be combined in the same workspace by listing them as separate dependencies. Scope precedence (defined in `.xdrs/index.md`) determines which decisions take effect when scopes overlap.
 

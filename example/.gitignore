@@ -1,6 +1,6 @@
 output
 pnpm-lock.yaml
-# npmdata:start
-.npmdata
+# filedist:start
+.filedist
 AGENTS.md
-# npmdata:end
+# filedist:end

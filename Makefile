@@ -14,7 +14,7 @@ clean:
 	make -C example clean
 
 install:
-# 	pnpm add npmdata@file:../npmdata/lib/dist/npmdata-0.0.1.tgz
+# 	pnpm add filedist@file:../filedist/lib/dist/filedist-0.0.1.tgz
 	pnpm install
 
 publish:
@@ -29,5 +29,5 @@ publish:
 	fi
 
 bump:
-	pnpm upgrade npmdata@latest
+	pnpm add filedist@latest
 	pnpm install
