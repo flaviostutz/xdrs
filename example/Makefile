@@ -6,11 +6,13 @@ clean:
 test: clean install
 	pnpm exec xdrs-core extract --output ./output
 	test -e output/AGENTS.md
+	test -e output/AGENTS.local.md
 	test ! -e output/README.md
 	test ! -e output/LICENSE
 	test -e output/.npmdata
 	# .xdrs/index.md should not be tracked in .npmdata (it uses managed=false/keepExisting=true)
 	! grep -e ".xdrs/index.md" output/.npmdata
+	! grep -e "AGENTS.local.md" output/.npmdata
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
 	
 	pnpm exec xdrs-core extract --output ./output
