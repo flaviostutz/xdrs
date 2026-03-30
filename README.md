@@ -10,6 +10,14 @@ Decision Records capture Architectural (ADR), Business (BDR), and Engineering (E
 
 This project defines a standard for organizing XDRs that satisfies the following requirements.
 
+## XDR elements
+
+Every XDR package contains three types of documents:
+
+- **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth.
+- **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
+- **Articles** — Synthetic explanatory texts that combine information from multiple XDRs and Skills around a specific topic or audience. They never replace XDRs as source of truth.
+
 ## Getting started
 
 1. Create a new project workspace
@@ -68,18 +76,24 @@ This is especially important for BDRs: because business rules govern decisions t
       index.md                      # canonical index for this scope+type
       [subject]/
         [number]-[short-title].md   # individual decision record
-        skills/                     # optional agent skill packages
+        skills/                     # optional skill packages for humans and AI agents
           [number]-[skill-name]/
             SKILL.md
+        articles/                   # optional synthetic views over XDRs and Skills
+          [number]-[short-title].md
 ```
 
-Types of Decision Records:
+Document types:
 
 - **ADR** - Architectural Decision Record: architectural and technical decisions
 - **BDR** - Business Decision Record: business process and strategy decisions
 - **EDR** - Engineering Decision Record: engineering workflow and tooling decisions
+- **Skills** - Step-by-step procedural guides that can be followed by humans, AI agents, or both. Must comply with Decision Records, but add the execution detail they lack. A skill may start as a fully manual human procedure and evolve incrementally toward partial or full AI automation without being restructured. Co-located with the XDRs they implement inside `skills/` sub-directories.
+- **Articles** - Synthetic views that explain concepts or combine information from multiple Decision Records and Skills into a coherent text for a specific topic or audience. Articles are not the source of truth; Decision Records take precedence when there is a conflict. Useful as navigational indexes that link related DRs and Skills around a specific aspect.
 
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.
+
+For a deeper overview of XDRs — objective, structure, guidelines, extension, and usage — see the [XDRs Overview article](.xdrs/_core/adrs/principles/articles/001-xdrs-overview.md).
 
 ## Flow: Decision -> Distribution -> Usage
 
@@ -108,4 +122,5 @@ Multiple scope packages can be combined in the same workspace by listing them as
     [subject]/                                                        [subject]/
       *.md                                                              *.md
       skills/                                                           skills/
+      articles/                                                         articles/
 ```
