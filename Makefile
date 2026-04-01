@@ -4,7 +4,7 @@ build: install
 	pnpm pack --pack-destination=./dist
 
 lint:
-	@echo "No linting rules to check"
+	node ./lib/lint.js .
 
 test: build
 	make -C example test

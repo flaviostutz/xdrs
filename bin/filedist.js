@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
-const { runValidateCli } = require('../lib/validate');
+const { runLintCli } = require('../lib/lint');
 
 const args = process.argv.slice(2);
 
-if (args[0] === 'validate') {
-	process.exitCode = runValidateCli(args.slice(1));
+if (args[0] === 'lint') {
+	process.exitCode = runLintCli(args.slice(1));
 } else {
 	require('filedist').binpkg(__dirname, args);
 }

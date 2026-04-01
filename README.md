@@ -37,9 +37,9 @@ Every XDR package contains three types of documents:
 The published package exposes the `xdrs-core` CLI.
 
 - Bootstrap or extract managed XDR files with the existing `filedist`-backed commands such as `npx -y xdrs-core extract` and `npx -y xdrs-core check`.
-- Validate an XDR tree with `npx -y xdrs-core validate .`.
+- Lint an XDR tree with `npx -y xdrs-core lint .`.
 
-The `validate` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
+The `lint` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
 
 - allowed scope, type, and subject folder structure
 - XDR numbering uniqueness per `scope/type`
@@ -51,9 +51,9 @@ The `validate` command reads `./.xdrs/**` from the given workspace path and chec
 Examples:
 
 ```bash
-npx -y xdrs-core validate .
-npx -y xdrs-core validate ./some-project
-pnpm exec xdrs-core validate .
+npx -y xdrs-core lint .
+npx -y xdrs-core lint ./some-project
+pnpm exec xdrs-core lint .
 ```
 
 ## Requirements
@@ -118,6 +118,7 @@ Document types:
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.
 
 For a deeper overview of XDRs — objective, structure, guidelines, extension, and usage — see the [XDRs Overview article](.xdrs/_core/adrs/principles/articles/001-xdrs-overview.md).
+For packaging guidance on publishing your own reusable scope with DRs, skills, and articles, see the [Create your own xdrs-core extension package article](.xdrs/_local/adrs/principles/articles/001-create-your-own-xdrs-extension-package.md).
 
 ## Flow: Decision -> Distribution -> Usage
 
