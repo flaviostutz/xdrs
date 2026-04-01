@@ -32,6 +32,12 @@ Every XDR package contains three types of documents:
 
    > Create an ADR about our decision on using Python for AI related projects. For high volume projects (expected >1000 t/s), an exception can be made on using Golang.
 
+## Examples
+
+- [examples/basic-usage](examples/basic-usage) shows the minimal consumer flow for installing the packaged `xdrs-core` tarball, extracting files, checking drift, and linting the resulting tree.
+- [examples/mydevkit](examples/mydevkit) shows a reusable extension package that uses `.filedistrc` as its package config source, composes `xdrs-core`, and ships its own named scope.
+- For a fuller real-world package built on the same distribution model, see [flaviostutz/agentme](https://github.com/flaviostutz/agentme).
+
 ## CLI
 
 The published package exposes the `xdrs-core` CLI.
@@ -118,7 +124,7 @@ Document types:
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.
 
 For a deeper overview of XDRs — objective, structure, guidelines, extension, and usage — see the [XDRs Overview article](.xdrs/_core/adrs/principles/articles/001-xdrs-overview.md).
-For packaging guidance on publishing your own reusable scope with DRs, skills, and articles, see the [Create your own xdrs-core extension package article](.xdrs/_local/adrs/principles/articles/001-create-your-own-xdrs-extension-package.md).
+For packaging guidance on publishing your own reusable scope with DRs, skills, and articles, see the [Create your own xdrs-core extension package article](.xdrs/_local/adrs/principles/articles/001-create-your-own-xdrs-extension-package.md), then compare [examples/basic-usage](examples/basic-usage) and [examples/mydevkit](examples/mydevkit).
 
 ## Flow: Decision -> Distribution -> Usage
 

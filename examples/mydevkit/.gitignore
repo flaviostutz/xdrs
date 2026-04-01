@@ -1,0 +1,6 @@
+dist
+node_modules
+consumer/node_modules
+consumer/output
+consumer/pnpm-lock.yaml
+.filedist

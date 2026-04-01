@@ -39,6 +39,6 @@ test: clean install
 
 install:
 	# replace the dependency with the local package
-	pnpm add xdrs-core@file:../dist/xdrs-core-0.0.1.tgz
+	pnpm add xdrs-core@file:../../dist/xdrs-core-0.0.1.tgz
 	pnpm install
 

@@ -1,0 +1,34 @@
+{
+  "sets": [
+    {
+      "package": "xdrs-core",
+      "selector": {
+        "exclude": [
+          ".xdrs/index.md"
+        ]
+      },
+      "output": {
+        "path": ".",
+        "gitignore": false
+      }
+    },
+    {
+      "selector": {
+        "files": [
+          ".xdrs/index.md",
+          ".xdrs/mydevkit/**"
+        ]
+      },
+      "output": {
+        "path": ".",
+        "gitignore": false,
+        "symlinks": [
+          {
+            "source": ".xdrs/**/skills/*",
+            "target": ".github/skills"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "mydevkit",
+  "version": "0.0.1",
+  "description": "Example xdrs-core extension package using .filedistrc",
+  "files": [
+    ".xdrs/**",
+    ".filedistrc",
+    "README.md",
+    "bin/filedist.js"
+  ],
+  "dependencies": {
+    "filedist": "^0.24.0"
+  },
+  "bin": "bin/filedist.js"
+}

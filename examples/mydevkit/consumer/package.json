@@ -1,0 +1,9 @@
+{
+  "name": "mydevkit-consumer",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "mydevkit": "file:../dist/mydevkit-0.0.1.tgz",
+    "xdrs-core": "file:../../../dist/xdrs-core-0.0.1.tgz"
+  }
+}

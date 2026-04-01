@@ -1,0 +1,8 @@
+{
+  "name": "basic-usage",
+  "version": "1.0.0",
+  "description": "Basic xdrs-core consumer example",
+  "dependencies": {
+    "xdrs-core": "file:../../dist/xdrs-core-0.0.1.tgz"
+  }
+}
