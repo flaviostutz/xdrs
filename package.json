@@ -18,7 +18,8 @@
     "package.json",
     "AGENTS.md",
     "AGENTS.local.md",
-    "bin/filedist.js"
+    "bin/filedist.js",
+    "lib/**/*.js"
   ],
   "dependencies": {
     "filedist": "^0.24.0"

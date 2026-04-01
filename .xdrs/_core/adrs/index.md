@@ -11,6 +11,7 @@ Foundational standards, principles, and guidelines.
 - [_core-adr-001](principles/001-xdr-standards.md) - **XDR standards** (includes XDR template)
 - [_core-adr-003](principles/003-skill-standards.md) - **Skill standards**
 - [_core-adr-004](principles/004-article-standards.md) - **Article standards**
+- [_core-adr-005](principles/005-semantic-versioning-for-xdr-packages.md) - **Semantic versioning for XDR packages**
 
 ## Skills
 

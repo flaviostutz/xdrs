@@ -32,6 +32,30 @@ Every XDR package contains three types of documents:
 
    > Create an ADR about our decision on using Python for AI related projects. For high volume projects (expected >1000 t/s), an exception can be made on using Golang.
 
+## CLI
+
+The published package exposes the `xdrs-core` CLI.
+
+- Bootstrap or extract managed XDR files with the existing `filedist`-backed commands such as `npx -y xdrs-core extract` and `npx -y xdrs-core check`.
+- Validate an XDR tree with `npx -y xdrs-core validate .`.
+
+The `validate` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
+
+- allowed scope, type, and subject folder structure
+- XDR numbering uniqueness per `scope/type`
+- skill numbering uniqueness per `scope/type/subject/skills`
+- article numbering uniqueness per `scope/type/subject/articles`
+- canonical index presence and link consistency
+- root index coverage for all discovered canonical indexes
+
+Examples:
+
+```bash
+npx -y xdrs-core validate .
+npx -y xdrs-core validate ./some-project
+pnpm exec xdrs-core validate .
+```
+
 ## Requirements
 
 ### Multi-scope support

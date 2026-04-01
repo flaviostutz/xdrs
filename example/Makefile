@@ -25,6 +25,11 @@ test: clean install
 
 	# filedist check - verify managed files are in sync
 	pnpm exec xdrs-core check --output ./output
+	pnpm exec xdrs-core validate ./output
+
+	mkdir -p output/.xdrs/_core/adrs/application
+	cp output/.xdrs/_core/adrs/principles/001-xdr-standards.md output/.xdrs/_core/adrs/application/001-duplicate-number.md
+	! pnpm exec xdrs-core validate ./output
 
     # temper AGENTS.md and verify that it fails on check
 	chmod +w output/AGENTS.md
