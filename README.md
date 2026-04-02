@@ -124,7 +124,7 @@ Document types:
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.
 
 For a deeper overview of XDRs — objective, structure, guidelines, extension, and usage — see the [XDRs Overview article](.xdrs/_core/adrs/principles/articles/001-xdrs-overview.md).
-For packaging guidance on publishing your own reusable scope with DRs, skills, and articles, see the [Create your own xdrs-core extension package article](.xdrs/_local/adrs/principles/articles/001-create-your-own-xdrs-extension-package.md), then compare [examples/basic-usage](examples/basic-usage) and [examples/mydevkit](examples/mydevkit).
+For packaging guidance on publishing your own reusable scope with DRs, skills, and articles, see the [Create your own xdrs-core extension package article](docs/create-your-own-xdrs-extension-package.md), then compare [examples/basic-usage](examples/basic-usage) and [examples/mydevkit](examples/mydevkit).
 
 ## Flow: Decision -> Distribution -> Usage
 

@@ -30,10 +30,7 @@
         "selector": {
           "files": [
             "AGENTS.md",
-            ".xdrs/**"
-          ],
-          "exclude": [
-            ".xdrs/index.md"
+            ".xdrs/_core/**"
           ]
         },
         "output": {

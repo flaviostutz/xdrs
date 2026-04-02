@@ -26,4 +26,3 @@ Reusable team scope added by this extension package.
 
 Project-local packaging notes extracted from the `xdrs-core` dependency.
 
-[View local ADRs Index](_local/adrs/index.md)

@@ -9,7 +9,7 @@
     "bin/filedist.js"
   ],
   "dependencies": {
-    "filedist": "^0.24.0"
+    "filedist": "^0.26.0"
   },
   "bin": "bin/filedist.js"
 }

@@ -21,4 +21,4 @@ Decisions about how XDRs work
 
 Project-local XDRs that must not be shared with other contexts. Always keep this scope last so its decisions override or extend all scopes listed above. Add specific `_local` ADR/BDR/EDR index links here when present.
 
-[View local ADRs Index](_local/adrs/index.md)
+

@@ -1,4 +1,4 @@
-# _local-article-001: Create your own xdrs-core extension package
+# Create your own xdrs-core extension package
 
 ## Overview
 
