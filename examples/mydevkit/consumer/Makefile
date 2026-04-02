@@ -7,7 +7,7 @@ install:
 	pnpm add mydevkit@file:../dist/mydevkit-0.0.1.tgz xdrs-core@file:../../../dist/xdrs-core-0.0.1.tgz
 	pnpm install
 
-test: clean install
+test: install
 	pnpm exec mydevkit extract --output ./output
 	test -e output/AGENTS.md
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
@@ -17,6 +17,6 @@ test: clean install
 	pnpm exec mydevkit check --output ./output
 	@echo "All tests passed!"
 
-lint:
+lint: install
 	pnpm exec mydevkit extract --output ./output
 	pnpm exec xdrs-core lint ./output

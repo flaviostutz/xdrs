@@ -7,7 +7,7 @@ clean:
 build: install
 	pnpm pack --pack-destination=./dist
 
-test: clean build
+test: build
 	make -C consumer test
 
 lint: build
