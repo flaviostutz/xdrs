@@ -69,7 +69,7 @@ Use the mandatory template from `001-xdr-standards`:
 [One sentence: what is the decision]
 
 ### Implementation Details
-[Rules, specifics, examples — under 100 lines]
+[Rules, applicability boundaries, concise examples, and optional do/don't guidance — under 100 lines]
 
 ## Considered Options (if meaningful options exist)
 
@@ -81,6 +81,7 @@ Use the mandatory template from `001-xdr-standards`:
 Mandatory rules to apply while drafting:
 - Use mandatory language ("must", "always", "never") only for hard requirements; use advisory language ("should", "recommended") for guidance.
 - Do not duplicate content already in referenced XDRs — link instead.
+- Make clear when the decision applies and any important exception boundaries.
 - Keep exploratory option analysis in a related Research document when it would distract from the final decision text.
 - No emojis. Lowercase filenames.
 - Target under 100 lines total; 200 lines max for complex decisions.
@@ -103,6 +104,7 @@ If any check fails, revise and re-run this phase before proceeding.
 2. Add an entry to `.xdrs/[scope]/[type]/index.md` (create the file if it does not exist).
 3. Add or verify the scope entry in `.xdrs/index.md`.
 4. If significant research was produced or already exists, link it from the XDR `## Considered Options` section.
+5. If concise rules, examples, or do/don't bullets help readers apply the decision correctly, add them inside `### Implementation Details` without turning the XDR into a long procedure.
 
 ### Constraints
 

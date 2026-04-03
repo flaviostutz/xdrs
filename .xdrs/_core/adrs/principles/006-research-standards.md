@@ -19,8 +19,13 @@ Research documents are Markdown files placed inside a subject folder alongside d
 - Research documents MUST live under `researches/` inside the relevant subject folder:
   `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
 - Research documents SHOULD stay focused on one problem statement or decision thread.
+- Research documents MUST state clearly what problem or question is being investigated and who needs the result.
+- The `## Overview` section MUST end with a line in the form `Question: [central question]?` that states the central question the research answers.
+- Research constraints MAY include hard requirements, stack limitations, regulatory limits, or other conditions that narrow the option space.
 - Research documents MUST summarize the problem constraints, important findings, and a small set of proposals with pros and cons for each option.
+- Research proposals are the considered options for the decision thread. They are not the final policy.
 - Research documents SHOULD link to the XDRs, skills, articles, discussions, and external references they informed.
+- One research document MAY inform multiple XDRs, including a mix of ADRs, BDRs, and EDRs, when the same investigation produced several downstream decisions.
 - Research documents SHOULD remain concise enough to read end-to-end. Target under 500 lines; hard limit 2000 lines.
 - Research file names MUST be lowercase. Never use emojis.
 - A research document MAY exist before the related XDR is written, or remain after the XDR changes, as long as its status and references stay clear.
@@ -53,12 +58,14 @@ All research documents MUST follow this template:
 
 ## Overview
 
-[Brief description of the problem being explored, who needs the result, and the decision thread it supports. Under 5 lines.]
+[Brief description of the problem or question being explored, who needs the result, and the decision thread(s) it supports. Under 5 lines.]
+
+Question: [Central question of the research]?
 
 ## Constraints
 
-- [Constraint 1]
-- [Constraint 2]
+- [Constraint or requirement 1]
+- [Constraint or requirement 2]
 
 ## Findings
 
@@ -90,9 +97,12 @@ All research documents MUST follow this template:
 ## References
 
 - [Related XDR or artifact](relative/path.md) - Why it matters
+- [Another related XDR if this research informed multiple decisions](relative/path.md) - Why it matters
 ```
 
 ## Considered Options
+
+- Related research: [001-research-and-decision-lifecycle](researches/001-research-and-decision-lifecycle.md)
 
 * (REJECTED) **Inline long-form analysis inside the XDR** - Put all research and decision text in one file.
   * Reason: Makes XDRs too long, mixes evidence with the adopted rule set, and hurts fast retrieval by humans and AI agents.

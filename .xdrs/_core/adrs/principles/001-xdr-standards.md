@@ -22,6 +22,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
 ### Implementation Details
 
 - XDRs MUST contain a clear decision about a certain problem or situation. Avoid being too verbose and focus on explaining clearly the context and the decision. Avoid adding contents that are not original. If you have other references that are important to understand the document, add links and references.
+- XDRs are the central artifact of the framework and the authoritative policy for their scope, type, and subject. Supporting artifacts may explain, justify, or operationalize the decision, but they do not replace it.
 - Research documents MAY be added under the same subject to capture the exploration, findings, and proposals that backed a decision. Research is useful during elaboration, discussion, approval, retirement, and updates, but the XDR remains the source of truth.
 - Make it clear if an instruction is mandatory or advisory
     - Mandatory language: "must", "always", "never", "required", "mandatory"
@@ -45,7 +46,9 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   - Types in IDs: `adr`, `bdr`, `edr`
   - Define the next number of an XDR by checking what is the highest number present in the type+scope. Don't fill numbering gaps, as they might be old deleted XDRs and we should never reuse numbers of different documents/decisions. Numbering gaps are expected.
 - Decisions MUST be concise and reference other XDRs to avoid duplication
-- When research exists for a decision, the XDR `## Considered Options` section SHOULD link to the related research documents.
+- The `### Implementation Details` section SHOULD state when the decision applies, relevant boundaries or exceptions, and what a reader should do or avoid in common cases.
+- Use concise rules, examples, or `Do` / `Don't` lists only when they help a reader apply the decision correctly. Keep them short and decision-specific.
+- When research exists for a decision, the XDR SHOULD mention the related research documents after the `## Considered Options` list.
 - Never use emojis in contents
 - Always use file names with lowercase
 - Avoid using lengthy instructions on the XDR. If there are long and detailed instructions related to the XDR, or instructions that are outside the decision, create another file with a guide. If the guide is small, keep it in the XDR itself.
@@ -86,18 +89,20 @@ Question: In the end, state explicitly the question that needs to be answered. E
 
 ### Implementation Details
 
-[Optional section with implementation specifics, rules, examples or impact. This is the answer to the question in the "Context and Problem Statement". (<100 lines)]
+[Optional section with implementation specifics, applicability boundaries, rules, concise examples, or do/don't guidance. This is the answer to the question in the "Context and Problem Statement". (<100 lines)]
 
 ## Considered Options
 
 [Optional section present only when there are meaningful options to be discussed.]
-[links to related research]
 
 * (REJECTED) **Option 1** - Brief description of option 1
   * Reason: Brief description why this was rejected with important aspects to be re-checked in the case we want to change this decision
 * (CHOSEN) **Option 2** - Brief description of option 2
   * Reason: Brief description of why this option was accepted, containing the strengths, strategical motivations and it's differential over the other options.
 * (REJECTED) **Option 3** - [same as above, if we have more than 2 options to choose from]
+
+[Related research, if any]
+- [Research document title](researches/001-example.md) - Brief description of what it informed
 
 ## Conflicts
 

@@ -18,8 +18,8 @@ Guides the creation of a well-structured research document by following `_core-a
 ### Phase 1: Understand the Research Goal
 
 1. Read `.xdrs/_core/adrs/principles/006-research-standards.md` in full to internalize the folder layout, numbering rules, and mandatory template.
-2. Identify the problem being explored, the constraints, and which decision or decision thread this research supports.
-3. Do NOT proceed without a clear problem statement and at least one concrete constraint.
+2. Identify the problem or question being explored, the main constraints or requirements, and which decision or decision threads this research supports.
+3. Do NOT proceed without a clear problem statement and at least one concrete constraint or requirement.
 
 ### Phase 2: Select Scope, Type, Subject, and Number
 
@@ -47,7 +47,9 @@ Use the mandatory template from `006-research-standards`:
 
 ## Overview
 
-[Brief description of the problem, audience, and decision thread it supports.]
+[Brief description of the problem or question, audience, and decision thread(s) it supports.]
+
+Question: [Central question of the research]?
 
 ## Constraints
 
@@ -78,6 +80,8 @@ Use the mandatory template from `006-research-standards`:
 
 Rules:
 - Focus on exploring options under stated constraints; do not turn the document into the final decision.
+- End the `## Overview` section with `Question: [central question]?` so the main research question is explicit.
+- Make it explicit when the same research may feed multiple downstream XDRs.
 - Include a few meaningful proposals and summarize pros and cons for each.
 - Keep findings concrete and useful for later discussion or revision.
 - Keep the document under 2000 lines. Prefer much shorter when possible.
@@ -92,7 +96,7 @@ Before writing files, verify:
 2. **Constraints**: Are the most important constraints stated clearly?
 3. **Option quality**: Do the proposals represent real alternatives with non-trivial pros and cons?
 4. **Decision boundary**: Does the text support a decision without pretending to be the XDR itself?
-5. **References**: Are related XDRs, research docs, skills, or articles linked?
+5. **References**: Are all related XDRs, research docs, skills, or articles linked, including multiple decisions when applicable?
 
 If any check fails, revise before continuing.
 

@@ -2,7 +2,9 @@
 
 ## Overview
 
-This research explores how a new Research artifact should fit into the XDR model without diluting the role of XDRs as the source of truth. It supports the decision captured in [_core-adr-006](../006-research-standards.md).
+This research evaluates how Research should fit into the XDR model so maintainers can evolve it as a supporting artifact without weakening XDRs as the source of truth. It provides the context behind the decision captured in [_core-adr-006](../006-research-standards.md).
+
+Question: How should a Research artifact fit into the XDR model so it supports the decision lifecycle without diluting the role of XDRs as the source of truth?
 
 ## Constraints
 

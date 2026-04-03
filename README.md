@@ -15,8 +15,8 @@ This project defines a standard for organizing XDRs that satisfies the following
 Every XDR package contains four types of documents:
 
 - **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth.
-- **Research** — Exploratory documents that capture the option space, constraints, findings, and proposal tradeoffs that back a decision during its lifecycle. Useful during elaboration, discussion, approval, retirement, or updating, but not a replacement for the Decision Record.
-- **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
+- **Research** — Exploratory documents that capture the problem being investigated, constraints or requirements, findings, and option tradeoffs that back a decision during its lifecycle. One research document may inform multiple downstream decisions, but it is not a replacement for the Decision Record.
+- **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
 
 ## Getting started
@@ -123,7 +123,7 @@ Document types:
 - **BDR** - Business Decision Record: business process and strategy decisions
 - **EDR** - Engineering Decision Record: engineering workflow and tooling decisions
 - **Research** - Exploratory support material used while evaluating or updating a decision. Research captures constraints, findings, options, and proposal tradeoffs, but it is not the source of truth.
-- **Skills** - Step-by-step procedural guides that can be followed by humans, AI agents, or both. Must comply with Decision Records, but add the execution detail they lack. A skill may start as a fully manual human procedure and evolve incrementally toward partial or full AI automation without being restructured. Co-located with the XDRs they implement inside `skills/` sub-directories.
+- **Skills** - Step-by-step procedural guides that can be followed by humans, AI agents, or both. Must comply with Decision Records, but add the execution detail they lack. Skills are not mandatory by themselves unless referenced by an XDR or another policy artifact. A skill may start as a fully manual human procedure and evolve incrementally toward partial or full AI automation without being restructured. Co-located with the XDRs they implement inside `skills/` sub-directories.
 - **Articles** - Synthetic views that explain concepts or combine information from multiple Decision Records, Research documents, and Skills into a coherent text for a specific topic or audience. Articles are not the source of truth; Decision Records take precedence when there is a conflict. Useful as navigational indexes that link related artifacts around a specific aspect.
 
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.

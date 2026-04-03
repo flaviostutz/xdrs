@@ -18,7 +18,7 @@ Guides the creation of a well-structured skill package by following `_core-adr-0
 ### Phase 1: Understand the Skill Goal
 
 1. Read `.xdrs/_core/adrs/principles/003-skill-standards.md` in full to internalize the SKILL.md format, folder layout, and numbering rules.
-2. Identify what the skill must do and the exact conditions under which an agent should activate it. Do NOT proceed without a clear goal and activation trigger.
+2. Identify what the skill must do, the concrete outcome it should produce, and the exact conditions under which an agent should activate it. Do NOT proceed without a clear goal, outcome, and activation trigger.
 
 ### Phase 2: Select Type, Scope, Subject, and Number
 
@@ -47,6 +47,7 @@ Quick test:
 
 1. List `.xdrs/[scope]/[type]/[subject]/skills/` for existing skills. If one already covers the goal, extend or reference it instead of creating a duplicate.
 2. Read all XDRs relevant to the skill's domain to collect rules and cross-references.
+3. Decide whether the skill is merely guidance or is being referenced by an XDR as a mandatory procedure. Do not encode policy in the skill unless it comes from a referenced XDR.
 
 ### Phase 4: Write the SKILL.md
 
@@ -64,12 +65,12 @@ metadata:
 
 ## Overview
 
-[1–3 sentence goal statement.]
+[1–3 sentence goal statement with the task objective, expected outcome, and relevant prerequisites or tools when they matter.]
 
 ## Instructions
 
 ### Phase 1: …
-[Step-by-step agent instructions organized into named phases. Use imperative language.]
+[Step-by-step agent instructions organized into named phases. Use imperative language and include verification or acceptance criteria at the end of the task or major phases.]
 
 ## Examples
 
@@ -87,7 +88,10 @@ metadata:
 Rules:
 - Use imperative language ("Read …", "Ask …", "Create …").
 - The `description` field must state both *what* the skill does and *when* to activate it.
+- Keep the skill task-oriented. It should have a clear starting trigger and a concrete ending result.
+- Mention tools or prerequisites when they are required to complete the task reliably.
 - Do not duplicate content from referenced XDRs — link instead.
+- Do not present the skill itself as policy; mandatory behavior must come from referenced XDRs or other policy artifacts.
 - No emojis. Lowercase filenames. Target under 500 lines.
 
 ### Phase 5: Review the Draft
@@ -98,7 +102,7 @@ Before writing files, verify:
 2. **Completeness**: Does every phase have actionable steps?
 3. **Length**: Under 500 lines? Trim verbose explanations.
 4. **Duplication**: Does this overlap an existing skill? If yes, revise.
-5. **References**: Are all related XDRs and skills linked?
+5. **References**: Are all related XDRs and skills linked, including the cases where the skill operationalizes multiple XDRs?
 
 If any check fails, revise before continuing.
 

@@ -29,6 +29,9 @@ Write instructions so that each step is unambiguous and self-contained. Avoid im
 **Relation with XDRs, Research, and Articles**
 Skills are procedures, XDRs are guardrails and decisions, Research documents capture the explored option space and findings behind a decision, and Articles are synthetic views that combine information from multiple artifacts.
 Always create links back and forth between skills <-> XDRs when the relationship is direct, and link to related Research or Articles when they provide important context.
+- Skills are task-based artifacts. They should have a clear starting trigger, an expected end result, and enough detail for a human or agent to verify that the task finished correctly.
+- A skill is not policy by itself. If following a skill is mandatory, that obligation must come from an XDR or another explicit policy that references the skill.
+- Skills and XDRs have a many-to-many relationship: one skill may operationalize multiple XDRs, and one XDR may be executed through multiple skills in different contexts.
 
 Place a skill under the XDR type that matches the nature of the activity the skill performs:
 - **EDR skills** - engineering workflows, tool usage, coding procedures, implementation how-tos (e.g. how to design a webpage, how to run a CI pipeline, how to debug a service)
@@ -95,6 +98,8 @@ Known gotchas and how to handle them.
 
 Rules:
 - The `name` field must match the parent directory name exactly (e.g., directory `001-code-review` uses `name: 001-code-review`). This preserves agentskills spec compliance while encoding the ordering number.
+- `## Overview` SHOULD state the task objective, expected outcome, and relevant prerequisites or tools when they matter.
+- `## Instructions` SHOULD include verification steps or acceptance criteria at the end of the task, or at the end of major phases when partial validation matters.
 - Keep `SKILL.md` under 500 lines. Move lengthy reference material to `references/`.
 - Reference other files with relative paths from the skill root.
 - Always use lowercase file names.
