@@ -50,7 +50,8 @@ Choose a title that clearly states the question this XDR answers, not the answer
 1. Read all existing XDRs relevant to the topic across all scopes listed in `.xdrs/index.md`.
 2. Identify decisions that already address the topic (full or partial overlap).
 3. Note decisions that might conflict with the intended outcome.
-4. Collect XDR IDs and file paths for cross-references.
+4. Read related `researches/` documents when they exist, especially if they contain constraints, findings, or option tradeoffs that should influence the decision.
+5. Collect XDR IDs and file paths for cross-references.
 
 ### Phase 5: Write the First Draft
 
@@ -80,6 +81,7 @@ Use the mandatory template from `001-xdr-standards`:
 Mandatory rules to apply while drafting:
 - Use mandatory language ("must", "always", "never") only for hard requirements; use advisory language ("should", "recommended") for guidance.
 - Do not duplicate content already in referenced XDRs — link instead.
+- Keep exploratory option analysis in a related Research document when it would distract from the final decision text.
 - No emojis. Lowercase filenames.
 - Target under 100 lines total; 200 lines max for complex decisions.
 
@@ -100,6 +102,7 @@ If any check fails, revise and re-run this phase before proceeding.
 1. Create the XDR file at `.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md`.
 2. Add an entry to `.xdrs/[scope]/[type]/index.md` (create the file if it does not exist).
 3. Add or verify the scope entry in `.xdrs/index.md`.
+4. If significant research was produced or already exists, link it from the XDR `## Considered Options` section.
 
 ### Constraints
 

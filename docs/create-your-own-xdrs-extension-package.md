@@ -3,7 +3,7 @@
 ## Overview
 
 This article explains how to turn your own XDR scope into a distributable npm package. It is for
-teams that want to publish their own DRs, skills, and articles while staying compatible with the
+teams that want to publish their own DRs, Research documents, skills, and articles while staying compatible with the
 xdrs-core structure and extraction flow.
 
 ## Content
@@ -35,8 +35,7 @@ This repository's `filedist` config in [package.json](../package.json) shows the
 pattern:
 
 - managed set: ships `AGENTS.md` and `.xdrs/**`, while excluding `.xdrs/index.md`
-- keep-existing set: ships `.xdrs/index.md` and `AGENTS.local.md` with `managed=false` and
-  `keepExisting=true`
+- keep-existing set: ships `.xdrs/index.md` with `managed=false` and `keepExisting=true`
 
 That split matters because consumers need some files to stay under package control and others to
 remain editable in their own repository. The current example verifies exactly that behavior in
@@ -44,9 +43,9 @@ remain editable in their own repository. The current example verifies exactly th
 consumer `output/` directory and asserting that local edits to `.xdrs/index.md` survive
 `extract --keep-existing` while managed files are still checked for drift.
 
-### Keep DRs, skills, and articles together
+### Keep DRs, Research documents, skills, and articles together
 
-Your reusable package should place DRs, skills, and articles under the same scope folder so they
+Your reusable package should place DRs, Research documents, skills, and articles under the same scope folder so they
 ship together:
 
 ```text
@@ -56,13 +55,16 @@ ship together:
       index.md
       principles/
         001-my-decision.md
+        researches/
+          001-my-decision-study.md
         skills/
           001-my-skill/SKILL.md
         articles/
           001-my-overview.md
 ```
 
-The co-location rule for skills comes from [_core-adr-003](../.xdrs/_core/adrs/principles/003-skill-standards.md),
+The co-location rule for Research documents comes from [_core-adr-006](../.xdrs/_core/adrs/principles/006-research-standards.md),
+the co-location rule for skills comes from [_core-adr-003](../.xdrs/_core/adrs/principles/003-skill-standards.md),
 and article placement rules come from [_core-adr-004](../.xdrs/_core/adrs/principles/004-article-standards.md).
 When you publish the scope folder, those documents travel together and stay version-aligned.
 
@@ -101,7 +103,7 @@ local verification, then `npm publish` to your public or internal registry.
 Version the package with semantic versioning according to the impact on consumers, not only on the
 changed file. [_core-adr-005](../.xdrs/_core/adrs/principles/005-semantic-versioning-for-xdr-packages.md)
 defines the practical rule: breaking guidance or changed mandatory behavior is `MAJOR`, additive
-guidance such as new DRs, skills, or articles is usually `MINOR`, and low-risk corrections are
+guidance such as new DRs, Research documents, skills, or articles is usually `MINOR`, and low-risk corrections are
 `PATCH`.
 
 ### Use agentme as the fuller packaged example
@@ -115,6 +117,7 @@ generated output, and re-run `check` when upgrading.
 ## References
 
 - [_core-adr-001](../.xdrs/_core/adrs/principles/001-xdr-standards.md) - Scope structure, precedence, and distribution model
+- [_core-adr-006](../.xdrs/_core/adrs/principles/006-research-standards.md) - Research placement and template rules
 - [_core-adr-003](../.xdrs/_core/adrs/principles/003-skill-standards.md) - Skill co-location and discovery rules
 - [_core-adr-004](../.xdrs/_core/adrs/principles/004-article-standards.md) - Article placement and template rules
 - [_core-adr-005](../.xdrs/_core/adrs/principles/005-semantic-versioning-for-xdr-packages.md) - Versioning policy for published XDR packages

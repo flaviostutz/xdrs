@@ -22,11 +22,16 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
 ### Implementation Details
 
 - XDRs MUST contain a clear decision about a certain problem or situation. Avoid being too verbose and focus on explaining clearly the context and the decision. Avoid adding contents that are not original. If you have other references that are important to understand the document, add links and references.
+- Research documents MAY be added under the same subject to capture the exploration, findings, and proposals that backed a decision. Research is useful during elaboration, discussion, approval, retirement, and updates, but the XDR remains the source of truth.
 - Make it clear if an instruction is mandatory or advisory
     - Mandatory language: "must", "always", "never", "required", "mandatory"
     - Advisory language: "should", "recommended", "advised", "preferably", "possibly", "optionally"
 - Always the following folder structure:
   `.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md`
+- Optional supporting artifacts under the same subject:
+  - `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
+  - `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
+  - `.xdrs/[scope]/[type]/[subject]/articles/[number]-[short-title].md`
 - **Scopes:** 
   - examples: `business-x`, `business-y`, `team-43`, `_core`
   - `_local` is a reserved scope for XDRs created locally to a specific project or repository. XDRs in `_local` must not be shared with or propagated to other contexts. This scope must always be placed in the lowest position in `.xdrs/index.md` so that its decisions override or extend any decisions from all higher-positioned scopes.
@@ -40,6 +45,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   - Types in IDs: `adr`, `bdr`, `edr`
   - Define the next number of an XDR by checking what is the highest number present in the type+scope. Don't fill numbering gaps, as they might be old deleted XDRs and we should never reuse numbers of different documents/decisions. Numbering gaps are expected.
 - Decisions MUST be concise and reference other XDRs to avoid duplication
+- When research exists for a decision, the XDR `## Considered Options` section SHOULD link to the related research documents.
 - Never use emojis in contents
 - Always use file names with lowercase
 - Avoid using lengthy instructions on the XDR. If there are long and detailed instructions related to the XDR, or instructions that are outside the decision, create another file with a guide. If the guide is small, keep it in the XDR itself.
@@ -85,6 +91,7 @@ Question: In the end, state explicitly the question that needs to be answered. E
 ## Considered Options
 
 [Optional section present only when there are meaningful options to be discussed.]
+[links to related research]
 
 * (REJECTED) **Option 1** - Brief description of option 1
   * Reason: Brief description why this was rejected with important aspects to be re-checked in the case we want to change this decision
@@ -140,3 +147,4 @@ Question: In the end, state explicitly the question that needs to be answered. E
 - [001-lint skill](skills/001-lint/SKILL.md) - Skill for reviewing code changes against XDRs
 - [_core-adr-003 - Skill standards](003-skill-standards.md)
 - [_core-adr-004 - Article standards](004-article-standards.md)
+- [_core-adr-006 - Research standards](006-research-standards.md)

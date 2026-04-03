@@ -26,9 +26,9 @@ Skills exist on a spectrum from fully manual (human-only) to fully automated (ag
 
 Write instructions so that each step is unambiguous and self-contained. Avoid implicit knowledge that only a human or only an AI would have.
 
-**Relation with XDRs and Articles**
-Skills are procedures, XDRs are guardrails and decisions, and Articles are synthetic views that combine information from multiple XDRs and Skills.
-Always create links back and forth between skills <-> XDRs as a reference.
+**Relation with XDRs, Research, and Articles**
+Skills are procedures, XDRs are guardrails and decisions, Research documents capture the explored option space and findings behind a decision, and Articles are synthetic views that combine information from multiple artifacts.
+Always create links back and forth between skills <-> XDRs when the relationship is direct, and link to related Research or Articles when they provide important context.
 
 Place a skill under the XDR type that matches the nature of the activity the skill performs:
 - **EDR skills** - engineering workflows, tool usage, coding procedures, implementation how-tos (e.g. how to design a webpage, how to run a CI pipeline, how to debug a service)
@@ -122,3 +122,4 @@ skills-ref validate .xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]
 - [skills-ref validation library](https://github.com/agentskills/agentskills/tree/main/skills-ref)
 - [_core-adr-001 - XDR standards](001-xdr-standards.md)
 - [_core-adr-004 - Article standards](004-article-standards.md)
+- [_core-adr-006 - Research standards](006-research-standards.md)

@@ -17,7 +17,6 @@
     ".xdrs/**",
     "package.json",
     "AGENTS.md",
-    "AGENTS.local.md",
     "bin/filedist.js",
     "lib/**/*.js"
   ],
@@ -47,8 +46,7 @@
       {
         "selector": {
           "files": [
-            ".xdrs/index.md",
-            "AGENTS.local.md"
+            ".xdrs/index.md"
           ]
         },
         "output": {

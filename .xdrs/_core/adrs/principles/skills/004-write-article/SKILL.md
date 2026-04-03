@@ -1,8 +1,9 @@
 ---
 name: 004-write-article
 description: >
-  Creates a new article document following XDR article standards: selects scope, type, subject, and number;
-  then writes a focused synthetic text that combines and links multiple XDRs and Skills around a topic.
+   Creates a new article document following XDR article standards: selects scope, type, subject, and number;
+   then writes a focused synthetic text that combines and links multiple XDRs, Research documents,
+   and Skills around a topic.
   Activate this skill when the user asks to create, add, or write a new article, guide, or overview document
   within an XDR project.
 metadata:
@@ -12,8 +13,8 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured article by following `_core-adr-004`, researching the XDRs and
-Skills to synthesize, and producing a concise document that serves as a navigable view without duplicating
+Guides the creation of a well-structured article by following `_core-adr-004`, researching the XDRs,
+Research documents, and Skills to synthesize, and producing a concise document that serves as a navigable view without duplicating
 decision content.
 
 ## Instructions
@@ -45,7 +46,7 @@ If the article spans more than one subject, place it in `principles`.
 
 ### Phase 4: Research XDRs and Skills to Synthesize
 
-1. Read all XDRs and Skills relevant to the article topic across all scopes listed in `.xdrs/index.md`.
+1. Read all XDRs, Research documents, and Skills relevant to the article topic across all scopes listed in `.xdrs/index.md`.
 2. Identify the key points a reader needs to understand the topic end-to-end.
 3. Collect XDR IDs and file paths for cross-references. Never copy decision text verbatim; link to it.
 
@@ -62,7 +63,7 @@ Use the mandatory template from `004-article-standards`:
 
 ## Content
 
-[Synthetic text combining and explaining the topic. Use links to Decision Records and Skills
+[Synthetic text combining and explaining the topic. Use links to Decision Records, Research documents, and Skills
 when referencing information from those documents. Keep under 150 lines total.]
 
 ## References
@@ -83,7 +84,7 @@ Rules to apply while drafting:
 
 1. Save the file at `.xdrs/[scope]/[type]/[subject]/articles/[number]-[short-title].md`.
 2. Add a link to the article in the canonical index for that scope+type (`.xdrs/[scope]/[type]/index.md`).
-3. Add back-references in the XDRs and Skills that the article synthesizes, under their `## References`
+3. Add back-references in the XDRs, Research documents, and Skills that the article synthesizes, under their `## References`
    section.
 
 ## Examples
@@ -95,7 +96,7 @@ Rules to apply while drafting:
 2. Topic: how skills work. Audience: developers new to the project.
 3. Scope: `_local`, type: `adrs`, subject: `principles`.
 4. Scan `.xdrs/_local/adrs/principles/articles/` — no articles exist → number is `001`.
-5. Research `_core-adr-003` and all existing skill SKILL.md files.
+5. Research `_core-adr-003`, `_core-adr-006`, and the existing skill SKILL.md files.
 6. Write `.xdrs/_local/adrs/principles/articles/001-skills-overview.md` following the template, linking
    to `_core-adr-003` and the individual skill files.
 7. Update `.xdrs/_local/adrs/index.md` with a link to the new article.
@@ -108,4 +109,10 @@ Rules to apply while drafting:
 - **Cross-subject topic** — place the article in `principles`, not in any single subject folder.
 - **No existing articles folder** — create it; it is optional in the folder layout.
 - **Conflicting information found** — note the conflict in the article and always defer to the XDR.
-- **Article would exceed 150 lines** — move detailed content to a new Skills or XDR and link back.
+- **Article would exceed 150 lines** — move detailed content to a new Research, Skill, or XDR and link back.
+
+## References
+
+- [_core-adr-004 - Article standards](../../004-article-standards.md)
+- [_core-adr-006 - Research standards](../../006-research-standards.md)
+- [_core-adr-001 - XDR standards](../../001-xdr-standards.md)

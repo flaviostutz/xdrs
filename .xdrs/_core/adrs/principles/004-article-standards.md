@@ -2,22 +2,22 @@
 
 ## Context and Problem Statement
 
-As the number of XDRs and Skills grows, navigating and understanding related decisions across subjects and types becomes difficult. Without a structured format for synthetic documentation, teams create ad-hoc documents that drift from the actual decisions over time.
+As the number of XDRs, Research documents, and Skills grows, navigating and understanding related decisions across subjects and types becomes difficult. Without a structured format for synthetic documentation, teams create ad-hoc documents that drift from the actual decisions and supporting evidence over time.
 
-How should articles be structured and organized to provide useful views over XDRs and Skills without replacing them as the source of truth?
+How should articles be structured and organized to provide useful views over XDRs, Research, and Skills without replacing them as the source of truth?
 
 ## Decision Outcome
 
 **Subject-level synthetic documents co-located with XDRs**
 
-Articles are Markdown documents placed inside a subject folder alongside decision records. Placing articles within a subject keeps them close to the decisions and skills they reference.
+Articles are Markdown documents placed inside a subject folder alongside decision records. Placing articles within a subject keeps them close to the decisions, research, and skills they reference.
 
 ### Implementation Details
 
-- Articles are views, not decisions. They summarize and synthesize content from XDRs and Skills but are NOT the source of truth. When there is a conflict between an article and a Decision Record, the Decision Record takes precedence.
-- Articles must reference the XDRs and Skills they synthesize. Never duplicate decision content; link back to the authoritative sources.
-- Articles may serve as indexes, combining related DRs and Skills on a specific topic into a single navigable document.
-- Articles must remain consistent with the XDRs and Skills they reference. When a referenced XDR or Skill changes, the article must be reviewed and updated.
+- Articles are views, not decisions. They summarize and synthesize content from XDRs, Research, and Skills but are NOT the source of truth. When there is a conflict between an article and a Decision Record, the Decision Record takes precedence.
+- Articles must reference the XDRs, Research documents, and Skills they synthesize. Never duplicate decision content; link back to the authoritative sources.
+- Articles may serve as indexes, combining related artifacts on a specific topic into a single navigable document.
+- Articles must remain consistent with the XDRs, Research documents, and Skills they reference. When a referenced artifact changes, the article must be reviewed and updated.
 - Place an article in the subject folder that best matches its topic. If an article spans more than one subject, place it in `principles`.
 - Always use lowercase file names.
 - Never use emojis in article content.
@@ -55,7 +55,7 @@ All articles MUST follow this template:
 
 ## Content
 
-[Synthetic text combining and explaining the topic. Use links to Decision Records and Skills
+[Synthetic text combining and explaining the topic. Use links to Decision Records, Research, and Skills
 when referencing an information from those documents.]
 
 ## References
@@ -76,4 +76,5 @@ when referencing an information from those documents.]
 
 - [_core-adr-001 - XDR standards](001-xdr-standards.md)
 - [_core-adr-003 - Skill standards](003-skill-standards.md)
+- [_core-adr-006 - Research standards](006-research-standards.md)
 - [004-write-article skill](skills/004-write-article/SKILL.md) - Step-by-step instructions for creating a new article
