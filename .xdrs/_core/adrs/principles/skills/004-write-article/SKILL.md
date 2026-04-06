@@ -1,11 +1,7 @@
 ---
 name: 004-write-article
 description: >
-   Creates a new article document following XDR article standards: selects scope, type, subject, and number;
-   then writes a focused synthetic text that combines and links multiple XDRs, Research documents,
-   and Skills around a topic.
-  Activate this skill when the user asks to create, add, or write a new article, guide, or overview document
-  within an XDR project.
+   Creates a new article document following XDR article standards: selects scope, type, subject, and number; then writes a focused synthetic text that combines and links multiple XDRs, Research documents, and Skills around a topic. Activate this skill when the user asks to create, add, or write a new article, guide, or overview document within an XDR project.
 metadata:
   author: flaviostutz
   version: "1.0"
@@ -76,6 +72,7 @@ Rules to apply while drafting:
 - Write for the stated audience; avoid jargon unexplained elsewhere.
 - Every factual claim must link back to the authoritative XDR or Skill.
 - Never reproduce decision text verbatim; summarize and link.
+- If the article needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/assets/` and link with a relative path.
 - Keep the article under 150 lines; move detailed content to XDRs or Skills.
 - Use lowercase file names. Never use emojis.
 - If a conflict exists between the article and a Decision Record, note it and defer to the XDR.

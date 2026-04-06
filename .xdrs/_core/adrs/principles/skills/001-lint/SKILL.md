@@ -84,6 +84,6 @@ Scope: [scope identifier]
 
 ## References
 
-- [_core-adr-001 - XDR standards](../../001-xdr-standards.md)
-- [_core-adr-003 - Skill standards](../../003-skill-standards.md)
+- [_core-adr-001 - XDR standards](../../../.xdrs/_core/adrs/principles/001-xdr-standards.md)
+- [_core-adr-003 - Skill standards](../../../.xdrs/_core/adrs/principles/003-skill-standards.md)
 

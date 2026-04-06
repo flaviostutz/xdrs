@@ -33,6 +33,11 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   - `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
   - `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
   - `.xdrs/[scope]/[type]/[subject]/articles/[number]-[short-title].md`
+- Local images and supporting files referenced by a document SHOULD live in a sibling `assets/` folder next to that document.
+  - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/assets/`
+  - Articles use `.xdrs/[scope]/[type]/[subject]/articles/assets/`
+  - Research uses `.xdrs/[scope]/[type]/[subject]/researches/assets/`
+  - Skills use `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/assets/`
 - **Scopes:** 
   - examples: `business-x`, `business-y`, `team-43`, `_core`
   - `_local` is a reserved scope for XDRs created locally to a specific project or repository. XDRs in `_local` must not be shared with or propagated to other contexts. This scope must always be placed in the lowest position in `.xdrs/index.md` so that its decisions override or extend any decisions from all higher-positioned scopes.
@@ -124,6 +129,8 @@ Question: In the end, state explicitly the question that needs to be answered. E
 - `.xdrs/business-x/edrs/devops/003-required-development-workflow.md`
 - `.xdrs/business-x/adrs/governance/010-security-and-secrets-management.md`
 - `.xdrs/_core/adrs/devops/001-multi-repo.md`
+
+![Document-local resources layout](assets/document-resource-layout.svg)
 
 **XDR ID Examples:**
 - `business-x-adr-001` (not `ADR-business-x-001` or `business-x-adr-1`)

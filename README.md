@@ -19,6 +19,8 @@ Every XDR package contains four types of documents:
 - **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
 
+Local images and other supporting files referenced by those documents should live in a sibling `assets/` folder next to the document file.
+
 ## Getting started
 
 1. Create a new project workspace
@@ -55,6 +57,7 @@ The `lint` command reads `./.xdrs/**` from the given workspace path and checks c
 - research numbering uniqueness per `scope/type/subject/researches`
 - canonical index presence and link consistency
 - root index coverage for all discovered canonical indexes
+- local image and `assets/` links resolving inside the sibling `assets/` folder for each document
 
 Examples:
 
@@ -108,13 +111,17 @@ This is especially important for BDRs: because business rules govern decisions t
       index.md                      # canonical index for this scope+type
       [subject]/
         [number]-[short-title].md   # individual decision record
+        assets/                     # optional local resources for subject-level XDR files
         researches/                 # optional decision-backing research documents
           [number]-[short-title].md
+          assets/
         skills/                     # optional skill packages for humans and AI agents
           [number]-[skill-name]/
             SKILL.md
+            assets/
         articles/                   # optional synthetic views over XDRs, Research, and Skills
           [number]-[short-title].md
+          assets/
 ```
 
 Document types:
@@ -143,7 +150,7 @@ Each scope manages its own set of XDR artifacts independently. Scope owners disc
 
 Once a set of decisions is ready to share, scope owners pack the relevant `.xdrs/[scope]/` folder into a versioned npm package using a tool such as [filedist](https://github.com/flaviostutz/filedist) and publish it to an npm registry, either public or a company-internal one. Versioning gives consumers explicit control over which revision of a scope's decisions they adopt, avoiding situations where a single breaking policy change is forced on all consumers at once.
 
-The same applies to Research documents and skills: because they live alongside XDRs inside the scope folder, they are included in the same package and published together.
+The same applies to Research documents, skills, articles, and any sibling `assets/` folders: because they live alongside XDRs inside the scope folder, they are included in the same package and published together.
 
 ### Usage
 

@@ -19,6 +19,7 @@ Articles are Markdown documents placed inside a subject folder alongside decisio
 - Articles may serve as indexes, combining related artifacts on a specific topic into a single navigable document.
 - Articles must remain consistent with the XDRs, Research documents, and Skills they reference. When a referenced artifact changes, the article must be reviewed and updated.
 - Place an article in the subject folder that best matches its topic. If an article spans more than one subject, place it in `principles`.
+- Images and other local resource files referenced by an article SHOULD live in `articles/assets/` next to the article files.
 - Always use lowercase file names.
 - Never use emojis in article content.
 - Articles should be kept under 150 lines. Move detailed content to referenced XDRs or Skills.
@@ -29,6 +30,7 @@ Articles are Markdown documents placed inside a subject folder alongside decisio
 .xdrs/[scope]/[type]/[subject]/
   articles/
     [number]-[short-title].md
+    assets/
 ```
 
 Examples:

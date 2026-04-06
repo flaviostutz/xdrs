@@ -92,6 +92,7 @@ Rules:
 - Mention tools or prerequisites when they are required to complete the task reliably.
 - Do not duplicate content from referenced XDRs — link instead.
 - Do not present the skill itself as policy; mandatory behavior must come from referenced XDRs or other policy artifacts.
+- If `SKILL.md` needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/assets/` and link with a relative path.
 - No emojis. Lowercase filenames. Target under 500 lines.
 
 ### Phase 5: Review the Draft
