@@ -31,6 +31,7 @@ Skills are procedures, XDRs are guardrails and decisions, Research documents cap
 Always create links back and forth between skills <-> XDRs when the relationship is direct, and link to related Research or Articles when they provide important context.
 - Skills are task-based artifacts. They should have a clear starting trigger, an expected end result, and enough detail for a human or agent to verify that the task finished correctly.
 - A skill is not policy by itself. If following a skill is mandatory, that obligation must come from an XDR or another explicit policy that references the skill.
+- When a skill reads, operationalizes, or enforces XDRs, it MUST evaluate the XDR metadata first. `Validity:` determines whether the decision is currently active; `Applied to:` determines whether that active decision fits the current task context. Skills must not treat inactive or out-of-scope XDRs as current requirements.
 - Skills and XDRs have a many-to-many relationship: one skill may operationalize multiple XDRs, and one XDR may be executed through multiple skills in different contexts.
 
 Place a skill under the XDR type that matches the nature of the activity the skill performs:

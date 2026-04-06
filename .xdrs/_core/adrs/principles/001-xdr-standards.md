@@ -27,6 +27,10 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
 - Supported XDR metadata fields are:
   - `Applied to:` Optional. A short description of the contexts in which the decision is applicable. Keep it under 40 words. If omitted, the decision should be interpreted as applying to all logically applicable elements according to the decision text itself. Examples: `Only frontend code`, `JavaScript projects`, `Performance-sensitive codebases`
   - `Validity:` Optional. Defines when the decision is active. Use ISO dates only: `from YYYY-MM-DD`, `until YYYY-MM-DD`, or `from YYYY-MM-DD until YYYY-MM-DD`. If `from` is omitted, the decision takes effect immediately. If `until` is omitted, the decision remains valid indefinitely. `Draft` or `Retired` mean the XDR should be ignored as an active rule or policy.
+- Before using, enforcing, or citing an XDR as a current rule, humans and AI agents MUST decide whether the decision is in force for the current case.
+  - Check `Validity:` first to determine whether the XDR is active now. `Draft`, `Retired`, not-yet-active, and expired decisions are not current policy.
+  - Check `Applied to:` next to determine whether the active decision fits the current codebase, system, workflow, or audience.
+  - If either check fails, the XDR MAY still be read as background, history, or context, but it MUST NOT be treated as a current requirement for that case.
 - Research documents MAY be added under the same subject to capture the exploration, findings, and proposals that backed a decision. Research is useful during elaboration, discussion, approval, retirement, and updates, but the XDR remains the source of truth.
 - Make it clear if an instruction is mandatory or advisory
     - Mandatory language: "must", "always", "never", "required", "mandatory"
@@ -56,7 +60,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   - Types in IDs: `adr`, `bdr`, `edr`
   - Define the next number of an XDR by checking what is the highest number present in the type+scope. Don't fill numbering gaps, as they might be old deleted XDRs and we should never reuse numbers of different documents/decisions. Numbering gaps are expected.
 - Decisions MUST be concise and reference other XDRs to avoid duplication
-- The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use `## Metadata` for short applicability or lifecycle markers and keep nuanced boundaries in the decision text.
+- The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use `## Metadata` as the first-pass filter for whether the decision should be used at all, and keep nuanced boundaries in the decision text.
 - Use concise rules, examples, or `Do` / `Don't` lists only when they help a reader apply the decision correctly. Keep them short and decision-specific.
 - When research exists for a decision, the XDR SHOULD mention the related research documents after the `## Considered Options` list.
 - Never use emojis in contents
@@ -85,7 +89,7 @@ All XDRs MUST follow this template
 
 ## Metadata
 
-[Optional section. Omit the entire section when neither `Applied to:` nor `Validity:` is defined.]
+[Optional section. Omit the entire section when neither `Applied to:` nor `Validity:` is defined. Readers decide whether to use the XDR by checking `Validity:` first and then `Applied to:`.]
 Applied to: [Optional short applicability scope, under 40 words]
 Validity: [Optional. Use `Draft`, `Retired`, `from YYYY-MM-DD`, `until YYYY-MM-DD`, or `from YYYY-MM-DD until YYYY-MM-DD`]
 

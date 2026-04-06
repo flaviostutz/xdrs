@@ -24,12 +24,14 @@ Performs a structured review of code changes or files against the XDRs in the re
 
 1. Gather all Decision Records from `.xdrs/index.md` starting from the working directory.
    - XDR scopes are controlled by nested folders; some are broad, others domain-specific.
-   - Extract metadata first (validity status and applicability) to filter relevant XDRs before deep analysis. Treat `Validity: Draft` and `Validity: Retired` as inactive policy.
+   - Extract metadata first to decide whether each XDR should be used for the current review context.
+   - Check `Validity:` first. Treat `Draft`, `Retired`, not-yet-active, and expired XDRs as background only, not active policy.
+   - Check `Applied to:` second. Keep only active XDRs whose stated scope fits the files, systems, or workflows under review.
 2. Filter relevance based on file types, domains, and architectural patterns in scope.
 
 ### Phase 3: XDR Review
 
-1. Cross-reference each file in scope against applicable XDRs.
+1. Cross-reference each file in scope against active, applicable XDRs.
    - **Drop any finding that cannot be traced to a specific rule in an Accepted XDR.** General good-practice observations, personal opinions, or inferred issues without an explicit XDR backing must not be reported.
    - Classify as ERROR (mandatory) or WARNING (advisory).
    - Include: location, description, XDR reference (file + line), suggestion.
@@ -50,7 +52,7 @@ Performs a structured review of code changes or files against the XDRs in the re
 ### Phase 5: Reporting
 
 **Report template**
---------
+```text
 ### Code Review Against XDRs
 Scope: [scope identifier]
 
@@ -68,7 +70,7 @@ Scope: [scope identifier]
 - Errors: [count]
 - Warnings: [count]
 - Outcome: [PASS|FAIL]
---------
+```
 
 ### Constraints
 - MUST NOT include any text or explanations outside the required output format.
@@ -84,6 +86,6 @@ Scope: [scope identifier]
 
 ## References
 
-- [_core-adr-001 - XDR standards](../../../.xdrs/_core/adrs/principles/001-xdr-standards.md)
-- [_core-adr-003 - Skill standards](../../../.xdrs/_core/adrs/principles/003-skill-standards.md)
+- [_core-adr-001 - XDR standards](../../001-xdr-standards.md)
+- [_core-adr-003 - Skill standards](../../003-skill-standards.md)
 

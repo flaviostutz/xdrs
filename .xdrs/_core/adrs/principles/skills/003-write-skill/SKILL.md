@@ -47,7 +47,8 @@ Quick test:
 
 1. List `.xdrs/[scope]/[type]/[subject]/skills/` for existing skills. If one already covers the goal, extend or reference it instead of creating a duplicate.
 2. Read all XDRs relevant to the skill's domain to collect rules and cross-references.
-3. Decide whether the skill is merely guidance or is being referenced by an XDR as a mandatory procedure. Do not encode policy in the skill unless it comes from a referenced XDR.
+3. Evaluate XDR metadata before operationalizing those rules. `Validity:` decides whether a decision is active; `Applied to:` decides whether it fits the intended task context. Keep inactive or out-of-scope XDRs as background only.
+4. Decide whether the skill is merely guidance or is being referenced by an XDR as a mandatory procedure. Do not encode policy in the skill unless it comes from a referenced XDR.
 
 ### Phase 4: Write the SKILL.md
 
@@ -92,6 +93,7 @@ Rules:
 - Mention tools or prerequisites when they are required to complete the task reliably.
 - Do not duplicate content from referenced XDRs — link instead.
 - Do not present the skill itself as policy; mandatory behavior must come from referenced XDRs or other policy artifacts.
+- When the skill depends on XDRs, make the activation logic and instructions consistent with the XDR metadata so the skill does not operationalize inactive or out-of-scope decisions.
 - Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
 - If `SKILL.md` genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/assets/` and link with a relative path.
 - No emojis. Lowercase filenames. Target under 500 lines.

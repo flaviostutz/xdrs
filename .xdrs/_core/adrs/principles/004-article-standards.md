@@ -17,6 +17,7 @@ Articles are Markdown documents placed inside a subject folder alongside decisio
 - Articles are views, not decisions. They summarize and synthesize content from XDRs, Research, and Skills but are NOT the source of truth. When there is a conflict between an article and a Decision Record, the Decision Record takes precedence.
 - Articles must reference the XDRs, Research documents, and Skills they synthesize. Never duplicate decision content; link back to the authoritative sources.
 - Articles may serve as indexes, combining related artifacts on a specific topic into a single navigable document.
+- When an article tells readers which decisions to follow, it SHOULD distinguish currently usable XDRs from background-only ones by checking `Validity:` first and `Applied to:` second. Articles must not present Draft, Retired, inactive-date, or out-of-scope XDRs as current rules for the discussed context.
 - Articles must remain consistent with the XDRs, Research documents, and Skills they reference. When a referenced artifact changes, the article must be reviewed and updated.
 - Place an article in the subject folder that best matches its topic. If an article spans more than one subject, place it in `principles`.
 - For simple structure, flow, layout, or relationship indications, articles SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.

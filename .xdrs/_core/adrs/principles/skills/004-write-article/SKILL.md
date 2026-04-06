@@ -43,8 +43,9 @@ If the article spans more than one subject, place it in `principles`.
 ### Phase 4: Research XDRs and Skills to Synthesize
 
 1. Read all XDRs, Research documents, and Skills relevant to the article topic across all scopes listed in `.xdrs/index.md`.
-2. Identify the key points a reader needs to understand the topic end-to-end.
-3. Collect XDR IDs and file paths for cross-references. Never copy decision text verbatim; link to it.
+2. Evaluate XDR metadata before synthesizing guidance. Use `Validity:` to determine whether a decision is active for the article's time horizon and `Applied to:` to determine whether it fits the audience or context being discussed.
+3. Identify the key points a reader needs to understand the topic end-to-end.
+4. Collect XDR IDs and file paths for cross-references. Never copy decision text verbatim; link to it.
 
 ### Phase 5: Write the Article
 
@@ -71,6 +72,7 @@ Rules to apply while drafting:
 
 - Write for the stated audience; avoid jargon unexplained elsewhere.
 - Every factual claim must link back to the authoritative XDR or Skill.
+- If the article advises readers what to do, clearly separate active/applicable XDRs from background, historical, or out-of-scope ones.
 - Never reproduce decision text verbatim; summarize and link.
 - Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
 - If the article genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/assets/` and link with a relative path.
@@ -111,6 +113,6 @@ Rules to apply while drafting:
 
 ## References
 
-- [_core-adr-004 - Article standards](../../004-article-standards.md)
-- [_core-adr-006 - Research standards](../../006-research-standards.md)
-- [_core-adr-001 - XDR standards](../../001-xdr-standards.md)
+- [_core-adr-004 - Article standards](../../../.xdrs/_core/adrs/principles/004-article-standards.md)
+- [_core-adr-006 - Research standards](../../../.xdrs/_core/adrs/principles/006-research-standards.md)
+- [_core-adr-001 - XDR standards](../../../.xdrs/_core/adrs/principles/001-xdr-standards.md)

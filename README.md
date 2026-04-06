@@ -14,7 +14,7 @@ This project defines a standard for organizing XDRs that satisfies the following
 
 Every XDR package contains four types of documents:
 
-- **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth. An XDR may optionally start with a `Metadata` section for short applicability and validity markers.
+- **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth. An XDR may optionally start with a `Metadata` section for short applicability and validity markers, and readers should use that metadata to decide whether the decision is currently in force for their case.
 - **Research** — Exploratory documents that capture the problem being investigated, constraints or requirements, findings, and option tradeoffs that back a decision during its lifecycle. One research document may inform multiple downstream decisions, but it is not a replacement for the Decision Record.
 - **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
@@ -93,6 +93,7 @@ The folder layout, file naming, and document format are designed so that AI agen
 - Each XDR is a small, focused Markdown file (target under 100 lines), covering one decision.
 - The canonical index per scope and type lists all XDRs with short descriptions, enabling agents to identify relevant records without reading every file.
 - The root index at `.xdrs/index.md` provides a single entry point for discovery.
+- XDR metadata gives agents a first-pass filter: check `Validity` to see whether a decision is active now, then `Applied to` to see whether that active decision fits the current context.
 - Decisions cross-reference each other by XDR ID rather than duplicating content, keeping individual files concise.
 - Subject folders reduce the search space when a query maps to a known domain.
 
