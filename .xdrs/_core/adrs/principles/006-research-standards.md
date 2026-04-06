@@ -69,51 +69,36 @@ All research documents MUST follow this template:
 
 ## Abstract
 
-[Goal: help executives or quick readers decide whether the paper is relevant.]
-
-[Single paragraph summarizing the goal, methods, results, and conclusion. Under 200 words. Useful for executives or quick readers deciding whether the paper is relevant.]
+[Single paragraph summarizing the goal, methods, results, and conclusion. Goal: help executives or quick readers decide whether the paper is relevant. Under 200 words.]
 
 ## Introduction
 
-[Goal: explain why this study exists.]
-
 [Describe the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives.
-Use visuals, bullets, graphs, or diagrams when helpful. Under 700 words.]
+Use visuals, bullets, graphs, or diagrams when helpful. Goal: explain why this study exists. Under 700 words.]
 
 Question: [Central question of the research]?
 
 ## Methods
 
-[Goal: make the important parts of the study reproducible.]
-
 [Explain how the study was conducted, including design, tools, data sources, and test conditions.
-Include enough detail for an experienced professional to reproduce the relevant parts. Under 1200 words.]
+Include enough detail for an experienced professional to reproduce the relevant parts. Goal: make the important parts of the study reproducible. Under 1200 words.]
 
 ## Results
 
-[Goal: present the raw findings with minimal interpretation.]
-
 [Report findings, data, trends, quantitative results, code artifacts, and option comparisons.
-Use figures, tables, or bullets when useful. If multiple options solve the same problem, add comparison tables and explicit pros and cons for each option. Focus on raw findings, not interpretation. Under 1800 words.]
+Use figures, tables, or bullets when useful. If multiple options solve the same problem, add comparison tables and explicit pros and cons for each option. Focus on raw findings, not interpretation. Goal: present the raw findings with minimal interpretation. Under 1800 words.]
 
 ## Discussion
 
-[Goal: interpret the findings for technical readers.]
-
-[Interpret the results, explain significance, trade-offs, performance considerations, limitations, and implications.
-Keep this section technically engaged and under 1000 words.]
+[Interpret the results, explain significance, trade-offs, performance considerations, limitations, and implications. Goal: interpret the findings for technical readers. Keep this section technically engaged and under 1000 words.]
 
 ## Conclusion
 
-[Goal: summarize the main findings and how they should be used next.]
-
-[Summarize the main findings and how the research can be used in next steps. Under 400 words.]
+[Summarize the main findings and how the research can be used in next steps. Goal: summarize the main findings and how they should be used next. Under 400 words.]
 
 ## References
 
-[Goal: make all cited sources and supporting artifacts traceable.]
-
-[A list of all cited literature, websites, tutorials, documentation, discussions, and related artifacts.]
+[A list of all cited literature, websites, tutorials, documentation, discussions, and related artifacts. Goal: make all cited sources and supporting artifacts traceable.]
 
 - [Related XDR or artifact](relative/path.md) - Why it matters
 - [Another related XDR if this research informed multiple decisions](relative/path.md) - Why it matters
@@ -125,10 +110,6 @@ Keep this section technically engaged and under 1000 words.]
 
 * (REJECTED) **Inline long-form analysis inside the XDR** - Put all research and decision text in one file.
   * Reason: Makes XDRs too long, mixes evidence with the adopted rule set, and hurts fast retrieval by humans and AI agents.
-* (REJECTED) **Loose note-taking without section discipline** - Keep research as an unstructured collection of findings and opinions.
-  * Reason: Makes replication, review, and future updates harder because readers cannot separate context, method, findings, and interpretation.
-* (REJECTED) **Separate top-level research area outside the subject tree** - Centralize all research in one independent folder.
-  * Reason: Breaks proximity with the decisions it supports and makes subject-scoped discovery weaker.
 * (CHOSEN) **IMRAD-based subject-level research beside XDRs** - Keep exploratory material beside the decisions, skills, and articles it informs, using an IMRAD-inspired structure adapted to company work.
   * Reason: Preserves lifecycle context, keeps the XDR concise, gives readers a predictable structure, and raises evidence quality without demanding full academic rigor.
 

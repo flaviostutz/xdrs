@@ -11,7 +11,7 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured research document by following `_core-adr-006`, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that supports a decision lifecycle without replacing the XDR.
+Guides the creation of a well-structured research document by following `_core-adr-006`, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that supports a decision lifecycle without replacing the XDR. Treat each section goal in the research template as an acceptance criterion, not as optional wording.
 
 ## Instructions
 
@@ -19,8 +19,9 @@ Guides the creation of a well-structured research document by following `_core-a
 
 1. Read `.xdrs/_core/adrs/principles/006-research-standards.md` in full to internalize the folder layout, numbering rules, and mandatory template.
 2. Identify the problem or question being explored, who needs the result, which decision or decision threads this research supports, and why the study matters now.
-3. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
-4. Do NOT proceed without a clear problem statement, a central question, and at least one credible source of evidence or a method for generating it.
+3. Internalize the goal of each required section before drafting: `Abstract` proves relevance quickly, `Introduction` explains why the study exists, `Methods` makes the important parts reproducible, `Results` records raw findings with minimal interpretation, `Discussion` interprets the findings, `Conclusion` summarizes next use, and `References` makes sources traceable.
+4. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
+5. Do NOT proceed without a clear problem statement, a central question, and at least one credible source of evidence or a method for generating it.
 
 ### Phase 2: Select Scope, Type, Subject, and Number
 
@@ -42,9 +43,10 @@ Guides the creation of a well-structured research document by following `_core-a
 ### Phase 4: Create the Skeleton and Frame the Study
 
 1. Create the final section skeleton in the research file before running the study: `Abstract`, `Introduction`, `Methods`, `Results`, `Discussion`, `Conclusion`, `References`.
-2. Draft `## Introduction` early so the problem, scope, constraints, assumptions, and central question are fixed before evidence collection expands.
-3. Draft `## Methods` before or while executing the study so tools, data sources, and conditions are captured while they are still precise.
-4. Treat `## Abstract` as a late-stage summary. Do not try to finalize it yet.
+2. Write a one-line note under each section heading capturing that section's goal before filling in the content so the draft stays disciplined.
+3. Draft `## Introduction` early so the problem, scope, constraints, assumptions, and central question are fixed before evidence collection expands.
+4. Draft `## Methods` before or while executing the study so tools, data sources, and conditions are captured while they are still precise.
+5. Treat `## Abstract` as a late-stage summary. Do not try to finalize it yet.
 
 ### Phase 5: Capture Evidence as the Study Runs
 
@@ -70,48 +72,43 @@ Use the mandatory template from `006-research-standards`:
 
 ## Abstract
 
-[Goal: help executives or quick readers decide whether the paper is relevant.]
-
-[Single paragraph summarizing the goal, methods, results, and conclusion. Under 200 words. Useful for executives or quick readers deciding whether the paper is relevant.]
+[Single paragraph summarizing the goal, methods, results, and conclusion. Goal: help executives or quick readers decide whether the paper is relevant. Under 200 words.]
 
 ## Introduction
 
-[Goal: explain why this study exists.]
-
-[Describe the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives.]
+[Describe the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives.
+Use visuals, bullets, graphs, or diagrams when helpful. Goal: explain why this study exists. Under 700 words.]
 
 Question: [Central question of the research]?
 
 ## Methods
 
-[Goal: make the important parts of the study reproducible.]
-
-[Explain the design, tools, data sources, and test conditions with enough detail for an experienced professional to reproduce the important parts.]
+[Explain how the study was conducted, including design, tools, data sources, and test conditions.
+Include enough detail for an experienced professional to reproduce the relevant parts. Goal: make the important parts of the study reproducible. Under 1200 words.]
 
 ## Results
 
-[Goal: present the raw findings with minimal interpretation.]
-
-[Report the findings, data, trends, quantitative results, produced code, and option comparisons. If multiple options solve the same problem, add a comparison table and explicit pros and cons for each option. Keep interpretation minimal.]
+[Report findings, data, trends, quantitative results, code artifacts, and option comparisons.
+Use figures, tables, or bullets when useful. If multiple options solve the same problem, add comparison tables and explicit pros and cons for each option. Focus on raw findings, not interpretation. Goal: present the raw findings with minimal interpretation. Under 1800 words.]
 
 ## Discussion
 
-[Goal: interpret the findings for technical readers.]
-
-[Interpret the results, trade-offs, significance, limitations, performance considerations, and implications.]
+[Interpret the results, explain significance, trade-offs, performance considerations, limitations, and implications. Goal: interpret the findings for technical readers. Keep this section technically engaged and under 1000 words.]
 
 ## Conclusion
 
-[Goal: summarize the main findings and how they should be used next.]
-
-[Summarize the main findings and likely next uses of the research.]
+[Summarize the main findings and how the research can be used in next steps. Goal: summarize the main findings and how they should be used next. Under 400 words.]
 
 ## References
 
-[Goal: make all cited sources and supporting artifacts traceable.]
+[A list of all cited literature, websites, tutorials, documentation, discussions, and related artifacts. Goal: make all cited sources and supporting artifacts traceable.]
+
+- [Related XDR or artifact](relative/path.md) - Why it matters
+- [Another related XDR if this research informed multiple decisions](relative/path.md) - Why it matters
 ```
 
 Rules:
+- Treat the goal sentence of each section as a hard check on what belongs in that section.
 - Focus on exploring and evidencing the problem space; do not turn the document into the final decision.
 - Make it explicit when the same research may feed multiple downstream XDRs.
 - Use good-enough evidence. Experienced professional judgment is allowed, but the conclusions still need support that other colleagues can inspect and learn from.
@@ -119,7 +116,21 @@ Rules:
 - Use visuals, bullet points, graphs, or diagrams when they improve clarity, especially in the introduction and results.
 - Keep section word limits within the standard and keep the document under 5000 words total unless the introduction explicitly states that a very detailed analysis is required.
 
-### Phase 8: Review the Draft
+### Phase 8: Check Section Goals
+
+Before the final review, verify each section against its specific goal:
+
+1. **Abstract goal**: Does it help a quick reader decide whether the research is relevant, in one paragraph and under 200 words?
+2. **Introduction goal**: Does it explain why the study exists, stay within scope, and end with `Question: ...?`?
+3. **Methods goal**: Could an experienced professional reproduce the important parts that materially affect the conclusion?
+4. **Results goal**: Are the findings concrete and minimally interpreted, with comparisons and pros/cons when multiple options exist?
+5. **Discussion goal**: Does it interpret the findings rather than repeat the results?
+6. **Conclusion goal**: Does it summarize the main findings and the likely next uses without introducing new evidence?
+7. **References goal**: Are cited sources and related artifacts traceable, including related XDRs, skills, articles, and research where relevant?
+
+If any section fails its goal, revise that section before continuing.
+
+### Phase 9: Review the Draft
 
 Before writing files, verify:
 
@@ -132,7 +143,7 @@ Before writing files, verify:
 
 If any check fails, revise before continuing.
 
-### Phase 9: Write Files
+### Phase 10: Write Files
 
 1. Create the research file at `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`.
 2. Add an entry to `.xdrs/[scope]/[type]/index.md`.
