@@ -14,7 +14,8 @@
   ],
   "license": "MIT",
   "files": [
-    ".xdrs/**",
+    ".xdrs/_core/**",
+    ".xdrs/index.md",
     "package.json",
     "AGENTS.md",
     "bin/filedist.js",

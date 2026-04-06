@@ -6,22 +6,25 @@ description: >
   Activate this skill when the user asks to create, add, or write a research document that backs a decision.
 metadata:
   author: flaviostutz
-  version: "1.2"
+  version: "1.3"
 ---
 
 ## Overview
 
-Guides the creation of a well-structured research document by following `_core-adr-006`, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that reads as a standalone technical paper. Treat each section goal in the research template as an acceptance criterion, not as optional wording.
+Guides the creation of a well-structured research document by following `_core-adr-006`, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that reads as a standalone technical paper. Treat each section goal in the research template as an acceptance criterion, not as optional wording. Do not assume missing direction, evidence, or intended follow-up; ask the user explicitly before proceeding when those points are not already concrete.
 
 ## Instructions
 
 ### Phase 1: Understand the Research Goal
 
 1. Read `.xdrs/_core/adrs/principles/006-research-standards.md` in full to internalize the folder layout, numbering rules, and mandatory template.
-2. Identify the problem or question being explored, the relevant system or domain context, the likely technical audience, and why the subject matters in practice.
-3. Internalize the goal of each required section before drafting: `Abstract` gives a quick technical reader the question, method, main result, and takeaway, `Introduction` frames the investigated problem and context, `Methods` makes the important parts reproducible, `Results` records raw findings with minimal interpretation, `Discussion` interprets the findings, `Conclusion` summarizes the practical takeaway and boundaries, and `References` makes sources traceable.
-4. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
-5. Do NOT proceed without a clear problem statement, a central question, and at least one credible source of evidence or a method for generating it.
+2. Ask the user to confirm the intended direction of the research before planning the document: what decision, question, or option space the study should support, what boundaries or exclusions apply, and what kind of outcome they expect.
+3. Ask the user what evidence already exists and what evidence-gathering methods are acceptable if the current evidence is incomplete. Do not invent facts, sources, or confidence that the user did not provide.
+4. Ask the user what the proposed next step is after the research, such as writing a new XDR, updating an existing XDR, informing a discussion, or documenting trade-offs for later. Use that answer to shape the framing without turning the research into the final decision.
+5. Identify the problem or question being explored, the relevant system or domain context, the likely technical audience, and why the subject matters in practice.
+6. Internalize the goal of each required section before drafting: `Abstract` gives a quick technical reader the question, method, main result, and takeaway, `Introduction` frames the investigated problem and context, `Methods` makes the important parts reproducible, `Results` records raw findings with minimal interpretation, `Discussion` interprets the findings, `Conclusion` summarizes the practical takeaway and boundaries, and `References` makes sources traceable.
+7. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
+8. Do NOT proceed without a clear problem statement, a central question, explicit user direction, an understood next step, and at least one credible source of evidence or a method for generating it. If any of these are ambiguous, stop and ask instead of assuming.
 
 ### Phase 2: Select Scope, Type, Subject, and Number
 
@@ -243,6 +246,7 @@ If any check fails, revise before continuing.
 - If only one viable option exists, still explain what was evaluated, what was ruled out, or what constraints removed the alternatives.
 - If the document grows too large, split independent problem threads into separate research files unless the introduction explicitly justifies a longer study.
 - If the supported decision does not exist yet, reference the decision topic or planned XDR title in the introduction and conclusion.
+- If the user's direction, evidence base, or intended next step is vague, ask follow-up questions and wait for clarification instead of choosing a path yourself.
 
 ## References
 
