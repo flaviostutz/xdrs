@@ -101,7 +101,8 @@ Mandatory rules to apply while drafting:
 - Keep the decision itself authoritative in the XDR. Supporting artifacts may elaborate, but they should not restate the full decision when a short reference is enough.
 - Make clear when the decision applies and any important exception boundaries.
 - Keep exploratory option analysis in a related Research document when it would distract from the final decision text.
-- If the XDR needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/assets/` and link with a relative path.
+- Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
+- If the XDR genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/assets/` and link with a relative path.
 - No emojis. Lowercase filenames.
 - Target under 100 lines total; 200 lines max for complex decisions.
 

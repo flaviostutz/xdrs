@@ -29,9 +29,9 @@ Research documents are Markdown files placed inside a subject folder alongside d
 - Research documents MUST describe the methods, tools, sources, and conditions with enough detail that an experienced professional could at least minimally reproduce the important parts of the study, especially the aspects that materially affected the conclusion.
 - The short title portion after the research id MUST stay under 20 words.
 - `## Abstract` MUST be a single paragraph under 200 words summarizing the goal, methods, results, and conclusion. It SHOULD let a quick technical reader understand the question, method, main result, and takeaway.
-- `## Introduction` MUST define the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives. It SHOULD use visuals, bullet points, graphs, or diagrams when that improves understanding. It MUST stay under 700 words and MUST end with `Question: [central question]?`.
+- `## Introduction` MUST define the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives. It SHOULD prefer plain Markdown, bullet points, tables, or ASCII art for simple explanations, and SHOULD use external visuals only when they are materially necessary to improve understanding. It MUST stay under 700 words and MUST end with `Question: [central question]?`.
 - `## Methods` MUST explain how the study was conducted, including design, tools, data sources, and test conditions, with a reproducibility goal. It MUST stay under 1200 words.
-- `## Results` MUST present findings, data, trends, quantitative results, produced code, and option comparisons when relevant. It SHOULD use figures, tables, or bullet lists where useful. Keep interpretation to a minimum. It MUST stay under 1800 words.
+- `## Results` MUST present findings, data, trends, quantitative results, produced code, and option comparisons when relevant. It SHOULD prefer tables, bullet lists, or ASCII art for simple comparisons, and SHOULD use external figures only when they are materially necessary. Keep interpretation to a minimum. It MUST stay under 1800 words.
 - When different options for the same problem are being analyzed, `## Results` SHOULD include comparison tables and explicit pros and cons for each option so the trade-offs are directly inspectable.
 - `## Discussion` MUST interpret the results, explain significance, trade-offs, performance considerations, limitations, and implications for technical readers. It MUST stay under 1000 words.
 - `## Conclusion` MUST summarize the main findings, practical takeaway, applicability boundaries, and important open questions. It MUST stay under 400 words.
@@ -42,7 +42,7 @@ Research documents are Markdown files placed inside a subject folder alongside d
 - Research documents SHOULD link in `## References` to the XDRs, skills, articles, discussions, and external references relevant to the subject or that later cite the work.
 - A 1:1 relationship between one research document and one decision will likely be common in practice, but it is not required.
 - One research document MAY also be referenced by multiple XDRs, including a mix of ADRs, BDRs, and EDRs, when the same investigation remains relevant across several decisions.
-- Images and other local resource files referenced by a research document SHOULD live in `researches/assets/` next to the research files.
+- Images and other local resource files referenced by a research document SHOULD be used only when they are materially necessary and SHOULD live in `researches/assets/` next to the research files.
 - Research file names MUST be lowercase. Never use emojis.
 - A research document MAY exist before the related XDR is written, or remain after the XDR changes, as long as its status and references stay clear.
 
@@ -80,7 +80,7 @@ All research documents MUST follow this template:
 ## Introduction
 
 [Describe the problem, context, constraints, known facts, experiences, gaps, assumptions, and objectives.
-Use visuals, bullets, graphs, or diagrams when helpful. Goal: explain the investigated problem, operating context, constraints, and why the subject matters. Under 700 words.]
+Prefer bullets, tables, or ASCII art for simple explanations. Use external visuals only when they are materially necessary. Goal: explain the investigated problem, operating context, constraints, and why the subject matters. Under 700 words.]
 
 Question: [Central question of the research]?
 
@@ -92,7 +92,7 @@ Include enough detail for an experienced professional to reproduce the relevant 
 ## Results
 
 [Report findings, data, trends, quantitative results, code artifacts, and option comparisons.
-Use figures, tables, or bullets when useful. If multiple options solve the same problem, add comparison tables and explicit pros and cons for each option. Focus on raw findings, not interpretation. Goal: present the raw findings with minimal interpretation. Under 1800 words.]
+Prefer tables, bullets, or ASCII art for simple comparisons. Use external figures only when they are materially necessary. If multiple options solve the same problem, add comparison tables and explicit pros and cons for each option. Focus on raw findings, not interpretation. Goal: present the raw findings with minimal interpretation. Under 1800 words.]
 
 ## Discussion
 

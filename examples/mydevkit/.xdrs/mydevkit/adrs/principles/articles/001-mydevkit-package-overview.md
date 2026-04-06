@@ -24,6 +24,14 @@ Consumers install the package, run `pnpm exec mydevkit extract`, and then use `x
 validate the resulting tree. The example [README.md](../../../../README.md) contains the exact
 commands.
 
+### Sample packaged PNG asset
+
+This article includes a tiny PNG file in `articles/assets/` to demonstrate that document-local
+binary assets are packaged and extracted together with the `mydevkit` scope when an example really
+needs them.
+
+![Sample packaged PNG asset](assets/sample-package-asset.png)
+
 ## References
 
 - [mydevkit-adr-001](../001-publish-mydevkit-as-an-extension-package.md)

@@ -119,8 +119,8 @@ Rules:
 - Keep traceability to related XDRs, skills, articles, discussions, and external sources primarily in `## References`.
 - Use good-enough evidence. Experienced professional judgment is allowed, but the conclusions still need support that other colleagues can inspect and learn from.
 - Ensure the methods and test conditions are reproducible enough for an experienced professional to rerun or evolve the critical parts later.
-- Use visuals, bullet points, graphs, or diagrams when they improve clarity, especially in the introduction and results.
-- If the research needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/researches/assets/` and link with a relative path.
+- Prefer plain Markdown, bullet points, tables, or ASCII art for simple explanations and comparisons, especially in the introduction and results.
+- If the research genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/researches/assets/` and link with a relative path.
 - Keep section word limits within the standard and keep the document under 5000 words total unless the introduction explicitly states that a very detailed analysis is required.
 
 ### Phase 8: Check Section Goals

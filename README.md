@@ -19,7 +19,7 @@ Every XDR package contains four types of documents:
 - **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
 
-Local images and other supporting files referenced by those documents should live in a sibling `assets/` folder next to the document file.
+For simple indications, prefer plain Markdown, tables, or ASCII art. Use local images and other supporting files only when they are materially necessary, and keep them in a sibling `assets/` folder next to the document file.
 
 ## Getting started
 

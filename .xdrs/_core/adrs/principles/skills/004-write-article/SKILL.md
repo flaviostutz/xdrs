@@ -72,7 +72,8 @@ Rules to apply while drafting:
 - Write for the stated audience; avoid jargon unexplained elsewhere.
 - Every factual claim must link back to the authoritative XDR or Skill.
 - Never reproduce decision text verbatim; summarize and link.
-- If the article needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/assets/` and link with a relative path.
+- Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
+- If the article genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/assets/` and link with a relative path.
 - Keep the article under 150 lines; move detailed content to XDRs or Skills.
 - Use lowercase file names. Never use emojis.
 - If a conflict exists between the article and a Decision Record, note it and defer to the XDR.

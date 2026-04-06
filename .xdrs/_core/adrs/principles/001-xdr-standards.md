@@ -37,7 +37,8 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
   - `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
   - `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
   - `.xdrs/[scope]/[type]/[subject]/articles/[number]-[short-title].md`
-- Local images and supporting files referenced by a document SHOULD live in a sibling `assets/` folder next to that document.
+- For simple structure, flow, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
+- Images and other supporting files SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they SHOULD live in a sibling `assets/` folder next to the document.
   - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/assets/`
   - Articles use `.xdrs/[scope]/[type]/[subject]/articles/assets/`
   - Research uses `.xdrs/[scope]/[type]/[subject]/researches/assets/`
@@ -144,7 +145,21 @@ Question: In the end, state explicitly the question that needs to be answered. E
   - `Validity: Draft`
   - `Validity: from 2026-03-01 until 2026-12-31`
 
-![Document-local resources layout](assets/document-resource-layout.svg)
+```text
+subject/
+|-- 001-xdr.md
+|-- assets/
+|-- articles/
+|   |-- 001-article.md
+|   `-- assets/
+|-- researches/
+|   |-- 001-study.md
+|   `-- assets/
+`-- skills/
+    `-- 001-task/
+        |-- SKILL.md
+        `-- assets/
+```
 
 **XDR ID Examples:**
 - `business-x-adr-001` (not `ADR-business-x-001` or `business-x-adr-1`)

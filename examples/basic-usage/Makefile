@@ -12,7 +12,6 @@ test: clean install
 	# .xdrs/index.md should not be tracked in .filedist (it uses managed=false/keepExisting=true)
 	! grep -e ".xdrs/index.md" output/.filedist
 	test -e output/.xdrs/_core/adrs/principles/001-xdr-standards.md
-	test -e output/.xdrs/_core/adrs/principles/assets/document-resource-layout.svg
 	
 	pnpm exec xdrs-core extract --output ./output
 

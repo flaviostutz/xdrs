@@ -100,7 +100,8 @@ Rules:
 - The `name` field must match the parent directory name exactly (e.g., directory `001-code-review` uses `name: 001-code-review`). This preserves agentskills spec compliance while encoding the ordering number.
 - `## Overview` SHOULD state the task objective, expected outcome, and relevant prerequisites or tools when they matter.
 - `## Instructions` SHOULD include verification steps or acceptance criteria at the end of the task, or at the end of major phases when partial validation matters.
-- Images and other local resource files referenced from `SKILL.md` SHOULD live in `assets/` inside the same skill package.
+- For simple structure, flow, layout, or relationship indications, `SKILL.md` SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
+- Images and other local resource files referenced from `SKILL.md` SHOULD be used only when they are materially necessary and SHOULD live in `assets/` inside the same skill package.
 - Keep `SKILL.md` under 500 lines. Move lengthy reference material to `references/`.
 - Reference other files with relative paths from the skill root.
 - Always use lowercase file names.
