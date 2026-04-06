@@ -6,7 +6,7 @@ description: >
   Activate this skill when the user asks to create, add, or write a research document that backs a decision.
 metadata:
   author: flaviostutz
-  version: "1.0"
+  version: "1.1"
 ---
 
 ## Overview
@@ -130,7 +130,79 @@ Before the final review, verify each section against its specific goal:
 
 If any section fails its goal, revise that section before continuing.
 
-### Phase 9: Review the Draft
+### Phase 9: Check Word Counts and Ratios
+
+Before the final review, run a word-count pass over the draft and verify that the main body roughly follows the standard proportion `Introduction : Methods : Results : Discussion ≈ 3 : 5 : 6 : 4`.
+
+1. Count words by top-level `##` section after stripping Markdown syntax so lists, tables, and links count as prose rather than punctuation.
+2. Compare only `Introduction`, `Methods`, `Results`, and `Discussion` for the ratio check.
+3. Use these target shares of the main body: `Introduction = 16.7%`, `Methods = 27.8%`, `Results = 33.3%`, `Discussion = 22.2%`.
+4. Treat any section as out of ratio when its share differs by more than 25% from its target share, unless the `## Introduction` explicitly justifies a very detailed or intentionally unbalanced analysis.
+5. If the ratio check fails, rebalance the draft before final review instead of accepting the imbalance silently.
+6. Use this Python script when you need a fast deterministic check:
+
+```python
+from pathlib import Path
+import re
+
+path = Path(".xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md")
+text = path.read_text(encoding="utf-8")
+
+sections = {}
+current = None
+for line in text.splitlines():
+  if line.startswith("## "):
+    current = line[3:].strip()
+    sections[current] = []
+    continue
+  if line.startswith("# "):
+    continue
+  if current is not None:
+    sections[current].append(line)
+
+
+def count_words(markdown: str) -> int:
+  cleaned = markdown
+  cleaned = re.sub(r"^\|(?:\s*[-:]+\s*\|)+\s*$", " ", cleaned, flags=re.M)
+  cleaned = re.sub(r"```[\s\S]*?```", " ", cleaned)
+  cleaned = re.sub(r"`([^`]*)`", r"\1", cleaned)
+  cleaned = re.sub(r"!\[([^\]]*)\]\([^)]*\)", r"\1", cleaned)
+  cleaned = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", cleaned)
+  cleaned = re.sub(r"^#+\s+", "", cleaned, flags=re.M)
+  cleaned = re.sub(r"[|*_>#-]", " ", cleaned)
+  cleaned = re.sub(r"[^\w'’]+", " ", cleaned, flags=re.UNICODE)
+  words = cleaned.strip().split()
+  return len(words)
+
+
+targets = {
+  "Introduction": 3,
+  "Methods": 5,
+  "Results": 6,
+  "Discussion": 4,
+}
+
+counts = {name: count_words("\n".join(lines)) for name, lines in sections.items()}
+total_words = sum(counts.values())
+body_total = sum(counts.get(name, 0) for name in targets)
+target_weight_total = sum(targets.values())
+
+print(f"TOTAL\t{total_words}")
+for name, count in counts.items():
+  print(f"{name}\t{count}")
+
+print("\nRATIO CHECK")
+for name, weight in targets.items():
+  actual_share = counts.get(name, 0) / body_total if body_total else 0
+  target_share = weight / target_weight_total
+  delta = ((actual_share - target_share) / target_share) if target_share else 0
+  status = "OK" if abs(delta) <= 0.25 else "REVISE"
+  print(
+    f"{name}: actual={actual_share:.1%} target={target_share:.1%} delta={delta:+.1%} {status}"
+  )
+```
+
+### Phase 10: Review the Draft
 
 Before writing files, verify:
 
@@ -139,11 +211,12 @@ Before writing files, verify:
 3. **Method quality**: Could an experienced professional reproduce or extend the important parts of the study from the methods section?
 4. **Evidence quality**: Are the results concrete enough to support the discussion and conclusion?
 5. **Decision boundary**: Does the text support a decision without pretending to be the XDR itself?
-6. **References**: Are all related XDRs, research docs, skills, articles, and external sources linked when relevant?
+6. **Ratio fit**: Does the document stay within section word limits and pass the Python ratio check, or does the introduction explicitly justify the deviation?
+7. **References**: Are all related XDRs, research docs, skills, articles, and external sources linked when relevant?
 
 If any check fails, revise before continuing.
 
-### Phase 10: Write Files
+### Phase 11: Write Files
 
 1. Create the research file at `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`.
 2. Add an entry to `.xdrs/[scope]/[type]/index.md`.
