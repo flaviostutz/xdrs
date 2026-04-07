@@ -11,22 +11,25 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured research document by following `_core-adr-006`, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that reads as a standalone technical paper. Treat each section goal in the research template as an acceptance criterion, not as optional wording. Do not assume missing direction, evidence, or intended follow-up; ask the user explicitly before proceeding when those points are not already concrete.
+Guides the creation of a well-structured research document by following `_core-adr-006`, consulting `xdr-standards` for every core element definition, checking related XDRs and existing research to avoid duplication, and producing an IMRAD-based study that reads as a standalone technical paper. Treat each section goal in the research template as an acceptance criterion, not as optional wording. Do not assume missing direction, evidence, or intended follow-up; ask the user explicitly before proceeding when those points are not already concrete.
 
 ## Instructions
 
 ### Phase 1: Understand the Research Goal
 
 1. Read `.xdrs/_core/adrs/principles/006-research-standards.md` in full to internalize the folder layout, numbering rules, and mandatory template.
-2. Ask the user to confirm the intended direction of the research before planning the document: what decision, question, or option space the study should support, what boundaries or exclusions apply, and what kind of outcome they expect.
-3. Ask the user what evidence already exists and what evidence-gathering methods are acceptable if the current evidence is incomplete. Do not invent facts, sources, or confidence that the user did not provide.
-4. Ask the user what the proposed next step is after the research, such as writing a new XDR, updating an existing XDR, informing a discussion, or documenting trade-offs for later. Use that answer to shape the framing without turning the research into the final decision.
-5. Identify the problem or question being explored, the relevant system or domain context, the likely technical audience, and why the subject matters in practice.
-6. Internalize the goal of each required section before drafting: `Abstract` gives a quick technical reader the question, method, main result, and takeaway, `Introduction` frames the investigated problem and context, `Methods` makes the important parts reproducible, `Results` records raw findings with minimal interpretation, `Discussion` interprets the findings, `Conclusion` summarizes the practical takeaway and boundaries, and `References` makes sources traceable.
-7. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
-8. Do NOT proceed without a clear problem statement, a central question, explicit user direction, an understood next step, and at least one credible source of evidence or a method for generating it. If any of these are ambiguous, stop and ask instead of assuming.
+2. Read `.xdrs/_core/adrs/principles/001-xdr-standards.md` in full before defining the research document's core elements. Treat it as the canonical source for how to choose and write type, scope, subject, numbering expectations, naming constraints, and folder placement.
+3. Ask the user to confirm the intended direction of the research before planning the document: what decision, question, or option space the study should support, what boundaries or exclusions apply, and what kind of outcome they expect.
+4. Ask the user what evidence already exists and what evidence-gathering methods are acceptable if the current evidence is incomplete. Do not invent facts, sources, or confidence that the user did not provide.
+5. Ask the user what the proposed next step is after the research, such as writing a new XDR, updating an existing XDR, informing a discussion, or documenting trade-offs for later. Use that answer to shape the framing without turning the research into the final decision.
+6. Identify the problem or question being explored, the relevant system or domain context, the likely technical audience, and why the subject matters in practice.
+7. Internalize the goal of each required section before drafting: `Abstract` gives a quick technical reader the question, method, main result, and takeaway, `Introduction` frames the investigated problem and context, `Methods` makes the important parts reproducible, `Results` records raw findings with minimal interpretation, `Discussion` interprets the findings, `Conclusion` summarizes the practical takeaway and boundaries, and `References` makes sources traceable.
+8. Collect the main constraints, known facts, important experiences, gaps, and assumptions that belong in the introduction.
+9. Do NOT proceed without a clear problem statement, a central question, explicit user direction, an understood next step, and at least one credible source of evidence or a method for generating it. If any of these are ambiguous, stop and ask instead of assuming.
 
 ### Phase 2: Select Scope, Type, Subject, and Number
+
+Consult `001-xdr-standards` while making each choice in this phase. The summaries below are orientation only; when any detail matters, the standard decides.
 
 **Scope** — use `_local` unless the user explicitly names another scope.
 
@@ -257,3 +260,10 @@ If any check fails, revise before continuing.
 - [_core-adr-006 - Research standards](../../006-research-standards.md)
 - [_core-adr-001 - XDR standards](../../001-xdr-standards.md)
 - [002-write-xdr skill](../002-write-xdr/SKILL.md)
+
+## Constraints
+
+- MUST consult `001-xdr-standards` as the canonical source for every core element definition, especially type, scope, subject, numbering, naming, and placement.
+- MUST follow the research template and section-goal rules from `006-research-standards`.
+- MUST keep scope `_local` unless the user explicitly states otherwise.
+- MUST keep the document as research rather than turning it into a final decision.

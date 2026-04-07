@@ -9,9 +9,7 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured article by following `_core-adr-004`, researching the XDRs,
-Research documents, and Skills to synthesize, and producing a concise document that serves as a navigable view without duplicating
-decision content.
+Guides the creation of a well-structured article by following `_core-adr-004`, consulting `xdr-standards` for every core element definition, researching the XDRs, Research documents, and Skills to synthesize, and producing a concise document that serves as a navigable view without duplicating decision content.
 
 ## Instructions
 
@@ -19,10 +17,13 @@ decision content.
 
 1. Read `.xdrs/_core/adrs/principles/004-article-standards.md` in full to internalize the template,
    placement rules, numbering rules, and the constraint that articles are views, not decisions.
-2. Identify the topic and intended audience from user input or context. Do NOT proceed without a clear
+2. Read `.xdrs/_core/adrs/principles/001-xdr-standards.md` in full before defining the article's core elements. Treat it as the canonical source for how to choose and write type, scope, subject, numbering, naming, and folder placement.
+3. Identify the topic and intended audience from user input or context. Do NOT proceed without a clear
    topic.
 
 ### Phase 2: Select Scope, Type, and Subject
+
+Consult `001-xdr-standards` while making each choice in this phase. The summaries below are orientation only; when any detail is unclear, the standard decides.
 
 **Scope** — use `_local` unless the user explicitly names another scope.
 
@@ -113,6 +114,13 @@ Rules to apply while drafting:
 - **No existing articles folder** — create it; it is optional in the folder layout.
 - **Conflicting information found** — note the conflict in the article and always defer to the XDR.
 - **Article would exceed 150 lines** — move detailed content to a new Research, Skill, or XDR and link back.
+
+## Constraints
+
+- MUST consult `001-xdr-standards` as the canonical source for every core element definition, especially type, scope, subject, numbering, naming, and placement.
+- MUST follow the article template and placement rules from `004-article-standards`.
+- MUST keep scope `_local` unless the user explicitly states otherwise.
+- MUST defer to active and applicable XDRs when article synthesis conflicts with them.
 
 ## References
 

@@ -11,16 +11,19 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured skill package by following `_core-adr-003` skill standards, checking existing skills to avoid duplication, and producing a complete SKILL.md ready to activate in VS Code.
+Guides the creation of a well-structured skill package by following `_core-adr-003` skill standards, consulting `xdr-standards` for every core element definition, checking existing skills to avoid duplication, and producing a complete SKILL.md ready to activate in VS Code.
 
 ## Instructions
 
 ### Phase 1: Understand the Skill Goal
 
 1. Read `.xdrs/_core/adrs/principles/003-skill-standards.md` in full to internalize the SKILL.md format, folder layout, and numbering rules.
-2. Identify what the skill must do, the concrete outcome it should produce, and the exact conditions under which an agent should activate it. Do NOT proceed without a clear goal, outcome, and activation trigger.
+2. Read `.xdrs/_core/adrs/principles/001-xdr-standards.md` in full before defining any core element for the skill package. Treat it as the canonical source for type, scope, subject, numbering expectations, naming constraints, and folder placement rules.
+3. Identify what the skill must do, the concrete outcome it should produce, and the exact conditions under which an agent should activate it. Do NOT proceed without a clear goal, outcome, and activation trigger.
 
 ### Phase 2: Select Type, Scope, Subject, and Number
+
+Consult `001-xdr-standards` while making each choice in this phase. The summaries below are orientation only; when there is any ambiguity or edge case, the standard decides.
 
 **Type** — choose one based on the skill's activity:
 - **EDR skill**: engineering workflows, tool usage, coding procedures, implementation how-tos
@@ -122,6 +125,7 @@ If any check fails, revise before continuing.
 ### Constraints
 
 - MUST follow the agentskills SKILL.md format from `003-skill-standards` exactly.
+- MUST consult `001-xdr-standards` as the canonical source for every core element definition, especially type, scope, subject, numbering, naming, and placement.
 - MUST NOT create a skill that duplicates an existing one — extend or reference it instead.
 - MUST keep scope `_local` unless the user explicitly states otherwise.
 - MUST include a References section linking to `003-skill-standards`.

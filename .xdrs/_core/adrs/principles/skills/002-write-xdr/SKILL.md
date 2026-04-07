@@ -10,7 +10,7 @@ metadata:
 
 ## Overview
 
-Guides the creation of a well-structured XDR by following the standards in `_core-adr-001`, researching existing records for conflicts, checking redundancy across related artifacts, and iterating until the document is concise, decision-focused, and clear about when the decision should be used.
+Guides the creation of a well-structured XDR by following the standards in `_core-adr-001`, consulting `xdr-standards` for every core element definition, researching existing records for conflicts, checking redundancy across related artifacts, and iterating until the document is concise, decision-focused, and clear about when the decision should be used.
 
 ## Instructions
 
@@ -18,9 +18,12 @@ Guides the creation of a well-structured XDR by following the standards in `_cor
 
 1. Read `.xdrs/index.md` to discover all active scopes and their canonical indexes.
 2. Read `.xdrs/_core/adrs/principles/001-xdr-standards.md` in full to internalize structure rules, mandatory language, and the XDR template.
-3. Ask the user (or infer from context) the topic of the decision. Do NOT proceed to Phase 2 without a clear topic.
+3. Treat `.xdrs/_core/adrs/principles/001-xdr-standards.md` as the canonical source for all core XDR element definitions. Before choosing or writing any core element, consult it for the exact rules for type, scope, subject, ID, numbering, title, placement, and applicable folder structure instead of relying on memory or local convention.
+4. Ask the user (or infer from context) the topic of the decision. Do NOT proceed to Phase 2 without a clear topic.
 
 ### Phase 2: Select Type, Scope, and Subject
+
+Consult `001-xdr-standards` while making each choice in this phase. The summaries below are orientation only; when any detail matters, the standard decides.
 
 **Type** — choose exactly one based on the nature of the decision:
 - **BDR**: business process, product policy, strategic rule, operational procedure
@@ -133,6 +136,7 @@ If any check fails, revise and re-run this phase before proceeding.
 ### Constraints
 
 - MUST follow the XDR template from `001-xdr-standards` exactly.
+- MUST consult `001-xdr-standards` as the canonical source for every core element definition, especially type, scope, subject, ID, numbering, naming, and placement.
 - MUST NOT add personal opinions or general best-practice content not tied to a decision.
 - MUST NOT create an XDR that duplicates a decision already captured in another XDR — extend or reference instead.
 - MUST prefer links and short references over repeating the same decision content across related documents.
