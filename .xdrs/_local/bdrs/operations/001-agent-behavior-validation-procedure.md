@@ -21,8 +21,8 @@ Keep the repository's agent behavior validation procedure as a `_local` BDR and 
 - This repository MAY use the `testPrompt` / `runPromptTest` library exported by `xdrs-core`, together with repository-local fixtures, to validate agent behavior during maintenance and release work.
 - The authoritative policy for this procedure MUST live under `.xdrs/_local/**`, not under `.xdrs/_core/**`.
 - Shared `_core` XDRs and indexes MUST describe only reusable guidance that consumers should receive when they extract or compose `xdrs-core`.
-- Repository-local behavior-test fixtures, fake `copilot` executables, and related checks SHOULD stay in repo-owned test paths such as `tests/skills/**`.
 - If a future behavior-testing rule becomes reusable across consumers, capture that reusable part in a separate shared XDR instead of promoting this repository-specific procedure unchanged.
+- Tests should be placed in the same folder as the tested resources
 
 ## Considered Options
 

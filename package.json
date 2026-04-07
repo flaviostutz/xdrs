@@ -41,6 +41,10 @@
           "files": [
             "AGENTS.md",
             ".xdrs/_core/**"
+          ],
+          "exclude": [
+            "**/*.test.js",
+            "**/*.test.int.js"
           ]
         },
         "output": {
