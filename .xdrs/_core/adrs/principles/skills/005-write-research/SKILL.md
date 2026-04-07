@@ -30,7 +30,10 @@ Guides the creation of a well-structured research document by following `_core-a
 
 **Scope** — use `_local` unless the user explicitly names another scope.
 
-**Type** — match the type of decision this research supports (`adrs`, `bdrs`, or `edrs`).
+**Type** — match the type of decision this research supports (`adrs`, `bdrs`, or `edrs`). Use the same rules as `002-write-xdr` Phase 2:
+- **BDR**: business process, product policy, strategic rule, operational procedure
+- **ADR**: system context, integration pattern, overarching architectural choice
+- **EDR**: specific tool/library, coding practice, testing strategy, project structure, pipelines
 
 **Subject** — pick the most specific subject that matches the problem domain.
 

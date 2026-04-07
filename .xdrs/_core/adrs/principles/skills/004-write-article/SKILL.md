@@ -27,7 +27,10 @@ decision content.
 **Scope** — use `_local` unless the user explicitly names another scope.
 
 **Type** — match the type of the XDRs the article primarily synthesizes (`adrs`, `bdrs`, or `edrs`).
-If the topic spans multiple types, use `adrs`.
+If the topic spans multiple types, use `adrs`. Use the same rules as `002-write-xdr` Phase 2:
+- **BDR**: business process, product policy, strategic rule, operational procedure
+- **ADR**: system context, integration pattern, overarching architectural choice
+- **EDR**: specific tool/library, coding practice, testing strategy, project structure, pipelines
 
 **Subject** — pick the subject that best matches the article's topic (see `004-article-standards`).
 If the article spans more than one subject, place it in `principles`.
