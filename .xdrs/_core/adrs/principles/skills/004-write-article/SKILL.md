@@ -60,12 +60,12 @@ Use the mandatory template from `004-article-standards`:
 
 ## Overview
 
-[Brief description of what this article covers and its intended audience. Under 3 lines.]
+[Brief description of what this article covers and its intended audience. Under 40 words.]
 
 ## Content
 
 [Synthetic text combining and explaining the topic. Use links to Decision Records, Research documents, and Skills
-when referencing information from those documents. Keep under 150 lines total.]
+when referencing information from those documents. Keep under 1950 words total.]
 
 ## References
 
@@ -80,7 +80,7 @@ Rules to apply while drafting:
 - Never reproduce decision text verbatim; summarize and link.
 - Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
 - If the article genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/assets/` and link with a relative path.
-- Keep the article under 150 lines; move detailed content to XDRs or Skills.
+- Keep the article under 1950 words; move detailed content to XDRs or Skills.
 - Use lowercase file names. Never use emojis.
 - If a conflict exists between the article and a Decision Record, note it and defer to the XDR.
 
@@ -113,7 +113,7 @@ Rules to apply while drafting:
 - **Cross-subject topic** — place the article in `principles`, not in any single subject folder.
 - **No existing articles folder** — create it; it is optional in the folder layout.
 - **Conflicting information found** — note the conflict in the article and always defer to the XDR.
-- **Article would exceed 150 lines** — move detailed content to a new Research, Skill, or XDR and link back.
+- **Article would exceed 1950 words** — move detailed content to a new Research, Skill, or XDR and link back.
 
 ## Constraints
 

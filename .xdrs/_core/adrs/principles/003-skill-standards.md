@@ -47,11 +47,16 @@ Quick test:
 **Folder layout**
 
 ```
-.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/
-    SKILL.md              # required
-    scripts/              # optional: executable scripts the agent may run
-    references/           # optional: detailed reference material
-    assets/               # optional: images, templates, data files, and other local resources
+.xdrs/
+  [scope]/
+    [type]/
+      [subject]/
+        skills/
+          [number]-[skill-name]/
+            SKILL.md              # required
+            scripts/              # optional: executable scripts the agent may run
+            references/           # optional: detailed reference material
+            assets/               # optional: images, templates, data files, and other local resources
 ```
 
 Examples:
@@ -103,7 +108,7 @@ Rules:
 - `## Instructions` SHOULD include verification steps or acceptance criteria at the end of the task, or at the end of major phases when partial validation matters.
 - For simple structure, flow, layout, or relationship indications, `SKILL.md` SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
 - Images and other local resource files referenced from `SKILL.md` SHOULD be used only when they are materially necessary and SHOULD live in `assets/` inside the same skill package.
-- Keep `SKILL.md` under 500 lines. Move lengthy reference material to `references/`.
+- Keep `SKILL.md` under 6500 words. Move lengthy reference material to `references/`.
 - Reference other files with relative paths from the skill root.
 - Always use lowercase file names.
 - Never use emojis in skill content.

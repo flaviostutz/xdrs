@@ -84,18 +84,21 @@ This gives XDRs a timeline feel:
 
 ### How the structure supports the model
 
-Every decision record lives at a fixed path:
+Every decision record and its supporting artifacts live at a fixed path:
 
 ```
-.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md
-```
-
-Supporting artifacts live beside it in the same subject:
-
-```
-researches/[number]-[short-title].md
-skills/[number]-[skill-name]/SKILL.md
-articles/[number]-[short-title].md
+.xdrs/
+  [scope]/
+    [type]/
+      [subject]/
+        [number]-[short-title].md
+        researches/
+          [number]-[short-title].md
+        skills/
+          [number]-[skill-name]/
+            SKILL.md
+        articles/
+          [number]-[short-title].md
 ```
 
 - **Scopes** represent ownership domains such as `_core`, `business-x`, or `team-43`.
@@ -133,7 +136,7 @@ Follow [_core-adr-001](../001-xdrs-core.md) and [_core-adr-002](../002-xdr-stand
 - Use **mandatory language** (`must`, `never`, `required`) for non-negotiable rules and
   **advisory language** (`should`, `recommended`) for guidance.
 - Before citing an XDR as a requirement, check `Status` first, treating omission as `Active`, then `Valid`, then `Applied to`, and finally the decision text to confirm the decision is active and in scope for the current case.
-- Keep XDRs under 100 lines. Move procedural detail to a co-located Skill.
+- Keep XDRs under 1300 words. Move procedural detail to a co-located Skill.
 - Keep exploratory option analysis in a co-located Research document instead of bloating the XDR.
 - Always update the scope+type index and the root index after adding or changing an XDR.
 - Use `_local` scope when a decision is project-specific and must not be shared.
@@ -175,4 +178,6 @@ Follow [_core-adr-001](../001-xdrs-core.md) and [_core-adr-002](../002-xdr-stand
 - [001-lint skill](../skills/001-lint/SKILL.md) - Linting code against XDRs
 - [002-write-xdr skill](../skills/002-write-xdr/SKILL.md) - Writing a new XDR
 - [003-write-skill skill](../skills/003-write-skill/SKILL.md) - Writing a new skill
+- [004-write-article skill](../skills/004-write-article/SKILL.md) - Writing a new article
 - [005-write-research skill](../skills/005-write-research/SKILL.md) - Writing a new research document
+- [_core-adr-005](../005-semantic-versioning-for-xdr-packages.md) - Semantic versioning rules for XDR packages

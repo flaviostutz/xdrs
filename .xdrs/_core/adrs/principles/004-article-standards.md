@@ -15,8 +15,10 @@ Articles are Markdown documents placed inside a subject folder alongside decisio
 ### Implementation Details
 
 - Articles are views, not decisions. They summarize and synthesize content from XDRs, Research, and Skills but are NOT the source of truth. When there is a conflict between an article and a Decision Record, the Decision Record takes precedence.
+- Articles are not limited to synthesizing XDRs. They may also document application features, APIs, general project information, reference tables, diagrams, FAQs and other elements useful to their intended audience.
 - Articles must reference the XDRs, Research documents, and Skills they synthesize. Never duplicate decision content; link back to the authoritative sources.
 - Articles may serve as indexes, combining related artifacts on a specific topic into a single navigable document.
+- In more complex cases, an article may be an index of links to other articles, grouping related documentation into a single entry point that guides readers across a set of related topics.
 - When an article tells readers which decisions to follow, it SHOULD distinguish currently usable XDRs from background-only ones by checking `Status:` first, treating omission as `Active`, `Valid:` second, `Applied to:` third, and the decision text itself last. Articles must not present Draft, Deprecated, inactive-date, out-of-window, or out-of-scope XDRs as current rules for the discussed context.
 - Articles must remain consistent with the XDRs, Research documents, and Skills they reference. When a referenced artifact changes, the article must be reviewed and updated.
 - Place an article in the subject folder that best matches its topic. If an article spans more than one subject, place it in `principles`.
@@ -24,15 +26,18 @@ Articles are Markdown documents placed inside a subject folder alongside decisio
 - Images and other local resource files referenced by an article SHOULD be used only when they are materially necessary and SHOULD live in `articles/assets/` next to the article files.
 - Always use lowercase file names.
 - Never use emojis in article content.
-- Articles should be kept under 150 lines. Move detailed content to referenced XDRs or Skills.
+- Articles should be kept under 1950 words. Move detailed content to referenced XDRs or Skills.
 
 **Folder layout**
 
 ```
-.xdrs/[scope]/[type]/[subject]/
-  articles/
-    [number]-[short-title].md
-    assets/
+.xdrs/
+  [scope]/
+    [type]/
+      [subject]/
+        articles/
+          [number]-[short-title].md
+          assets/
 ```
 
 Examples:
@@ -55,7 +60,7 @@ All articles MUST follow this template:
 
 ## Overview
 
-[Brief description of what this article covers and its intended audience. (<3 lines)]
+[Brief description of what this article covers and its intended audience. (<40 words)]
 
 ## Content
 
@@ -69,8 +74,6 @@ when referencing an information from those documents.]
 
 ## Considered Options
 
-* (REJECTED) **Inline summaries inside XDR index files** - Keeps everything in one place but clutters the navigation indexes.
-  * Reason: Index files should remain lean navigation aids; mixing synthesis into them hurts readability and makes updates harder.
 * (REJECTED) **Separate documentation repository** - Removes drift risk but decouples docs from decisions.
   * Reason: Increases maintenance burden and makes it easy for articles to go stale relative to the XDRs they reference.
 * (CHOSEN) **Subject-level articles folder co-located with XDRs** - Keeps articles alongside the decision records and skills they reference, with `principles` as the fallback for cross-subject articles.

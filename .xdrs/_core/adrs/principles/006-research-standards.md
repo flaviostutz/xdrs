@@ -49,10 +49,13 @@ Research documents are Markdown files placed inside a subject folder alongside d
 **Folder layout**
 
 ```
-.xdrs/[scope]/[type]/[subject]/
-  researches/
-    [number]-[short-title].md
-    assets/
+.xdrs/
+  [scope]/
+    [type]/
+      [subject]/
+        researches/
+          [number]-[short-title].md
+          assets/
 ```
 
 Examples:

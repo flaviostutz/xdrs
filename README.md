@@ -1,6 +1,6 @@
 # xdr-standards
 
-A standard way to organize Decision Records (XDRs) across scopes, subjects, and teams so that AI agents can reliably query and follow them.
+XDRs (eXtended Decision Records) is a standard for organizing Architectural (ADR), Business (BDR), and Engineering (EDR) decision records so that AI agents and humans can reliably find and follow them. Each XDR package bundles four document types: Decision Records (the source of truth), Research (exploratory backing), Skills (step-by-step procedural guides), and Articles (synthetic overviews).
 
 > **Note:** This repository contains a minimum set of standards and very basic set of ADRs that describe the proposed decisions structure. It is intended to be used as a foundation that other projects can reference, extend, or install as a dependency in order to bootstrap and create their own XDRs.
 
@@ -14,12 +14,10 @@ This project defines a standard for organizing XDRs that satisfies the following
 
 Every XDR package contains four types of documents:
 
-- **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth. An XDR may optionally start with a `Metadata` section for short status, validity-window, and applicability markers, and readers should use that metadata to decide whether the decision is currently in force for their case. If `Status:` is omitted, treat the decision as `Active` by default.
+- **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth.
 - **Research** — Exploratory documents that capture the problem being investigated, constraints or requirements, findings, and option tradeoffs that back a decision during its lifecycle. One research document may inform multiple downstream decisions, but it is not a replacement for the Decision Record.
-- **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time. Co-located with the XDRs they implement.
+- **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
-
-For simple indications, prefer plain Markdown, tables, or ASCII art. Use local images and other supporting files only when they are materially necessary, and keep them in a sibling `assets/` folder next to the document file.
 
 ## Getting started
 
@@ -41,74 +39,8 @@ For simple indications, prefer plain Markdown, tables, or ASCII art. Use local i
 - [examples/mydevkit](examples/mydevkit) shows a reusable extension package that uses `.filedistrc` as its package config source, composes `xdrs-core`, and ships its own named scope.
 - For a fuller real-world package built on the same distribution model, see [flaviostutz/agentme](https://github.com/flaviostutz/agentme).
 
-## CLI
 
-The published package exposes the `xdrs-core` CLI.
-
-- Bootstrap or extract managed XDR files with the existing `filedist`-backed commands such as `npx -y xdrs-core extract` and `npx -y xdrs-core check`.
-- Lint an XDR tree with `npx -y xdrs-core lint .`.
-
-The `lint` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
-
-- allowed scope, type, and subject folder structure
-- XDR numbering uniqueness per `scope/type`
-- skill numbering uniqueness per `scope/type/subject/skills`
-- article numbering uniqueness per `scope/type/subject/articles`
-- research numbering uniqueness per `scope/type/subject/researches`
-- canonical index presence and link consistency
-- root index coverage for all discovered canonical indexes
-- XDR metadata section placement and `Status` / `Valid` / `Applied to` field format
-- local image and `assets/` links resolving inside the sibling `assets/` folder for each document
-
-Examples:
-
-```bash
-npx -y xdrs-core lint .
-npx -y xdrs-core lint ./some-project
-pnpm exec xdrs-core lint .
-```
-
-## Library Testing
-
-The package also exposes a reusable behavior-test library for Jest or any other JavaScript test runner.
-
-Main exports:
-
-- `testPrompt(config, inputPrompt, judgePrompt)` runs the task prompt, evaluates the result in a fresh judge session, and returns an empty string on success or a markdown bullet list on failure.
-- `runPromptTest(config, inputPrompt, judgePrompt)` returns the structured result object when you need access to captured output and the agent-reported changed file list.
-- `copilotCmd(workspaceRoot)` returns a ready-to-use `promptCmd` template for the Copilot CLI in headless mode (`--autopilot`, full tool/url permissions, and `--no-ask-user`). The library uses that same command template for both the task and judge phases. If `workspaceRoot` is omitted it defaults to the current git repository root.
-- `config.workspaceRoot`, when set, is the authoritative workspace under test. If omitted, the library uses the current git repository root.
-
-Execution model:
-
-- phase 1 runs the task prompt and captures final output text plus the files the agent says it changed
-- phase 2 runs an independent judge prompt in a fresh invocation of `promptCmd` against the original task prompt, task output, the agent-reported changed file list, and the current workspace state
-- the judge trusts that reported file list as the authoritative change report and reads file contents from the workspace directly when needed
-- when `workspaceMode: 'copy'` is used, the temporary workspace honors nested `.gitignore` rules and skips git metadata files during the copy
-
-`promptCmd` accepts either a string array or a JSON array string and must include a `{PROMPT}` placeholder.
-
-Example with Jest:
-
-```js
-const { copilotCmd, testPrompt } = require('xdrs-core');
-
-test('creates hello.md', () => {
-  const err = testPrompt(
-    {
-      workspaceRoot: process.cwd(),
-      promptCmd: copilotCmd(process.cwd()),
-      workspaceMode: 'copy'
-    },
-    "Create a nice markdown file at hello.md saying 'hello!'",
-    'The resulting file should be created at hello.md and have hello as part of its contents, without too much extra info (should be <100 chars)'
-  );
-
-  expect(err).toBe('');
-});
-```
-
-## Requirements
+## Features
 
 ### Multi-scope support
 
@@ -130,7 +62,7 @@ XDR packages are versioned and distributed via the npm registry. This allows tea
 
 The folder layout, file naming, and document format are designed so that AI agents can efficiently work with hundreds of decisions:
 
-- Each XDR is a small, focused Markdown file (target under 100 lines), covering one decision.
+- Each XDR is a small, focused Markdown file (target under 1300 words), covering one decision.
 - The canonical index per scope and type lists all XDRs with short descriptions, enabling agents to identify relevant records without reading every file.
 - The root index at `.xdrs/index.md` provides a single entry point for discovery.
 - XDR metadata gives agents a first-pass filter: check `Status` first, treating an omitted `Status` as `Active`; then check `Valid`, then `Applied to`, and finally the decision text itself to confirm the decision should be used in the current context.
@@ -210,3 +142,71 @@ Multiple scope packages can be combined in the same workspace by listing them as
       skills/                                                           skills/
       articles/                                                         articles/
 ```
+
+## CLI
+
+The published package exposes the `xdrs-core` CLI.
+
+- Bootstrap or extract managed XDR files with the existing `filedist`-backed commands such as `npx -y xdrs-core extract` and `npx -y xdrs-core check`.
+- Lint an XDR tree with `npx -y xdrs-core lint .`.
+
+The `lint` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
+
+- allowed scope, type, and subject folder structure
+- XDR numbering uniqueness per `scope/type`
+- skill numbering uniqueness per `scope/type/subject/skills`
+- article numbering uniqueness per `scope/type/subject/articles`
+- research numbering uniqueness per `scope/type/subject/researches`
+- canonical index presence and link consistency
+- root index coverage for all discovered canonical indexes
+- XDR metadata section placement and `Status` / `Valid` / `Applied to` field format
+- local image and `assets/` links resolving inside the sibling `assets/` folder for each document
+
+Examples:
+
+```bash
+npx -y xdrs-core lint .
+npx -y xdrs-core lint ./some-project
+pnpm exec xdrs-core lint .
+```
+
+## Library Testing
+
+The package also exposes a reusable behavior-test library for Jest or any other JavaScript test runner.
+
+Main exports:
+
+- `testPrompt(config, inputPrompt, judgePrompt)` runs the task prompt, evaluates the result in a fresh judge session, and returns an empty string on success or a markdown bullet list on failure.
+- `runPromptTest(config, inputPrompt, judgePrompt)` returns the structured result object when you need access to captured output and the agent-reported changed file list.
+- `copilotCmd(workspaceRoot)` returns a ready-to-use `promptCmd` template for the Copilot CLI in headless mode (`--autopilot`, full tool/url permissions, and `--no-ask-user`). The library uses that same command template for both the task and judge phases. If `workspaceRoot` is omitted it defaults to the current git repository root.
+- `config.workspaceRoot`, when set, is the authoritative workspace under test. If omitted, the library uses the current git repository root.
+
+Execution model:
+
+- phase 1 runs the task prompt and captures final output text plus the files the agent says it changed
+- phase 2 runs an independent judge prompt in a fresh invocation of `promptCmd` against the original task prompt, task output, the agent-reported changed file list, and the current workspace state
+- the judge trusts that reported file list as the authoritative change report and reads file contents from the workspace directly when needed
+- when `workspaceMode: 'copy'` is used, the temporary workspace honors nested `.gitignore` rules and skips git metadata files during the copy
+
+`promptCmd` accepts either a string array or a JSON array string and must include a `{PROMPT}` placeholder.
+
+Example with Jest:
+
+```js
+const { copilotCmd, testPrompt } = require('xdrs-core');
+
+test('creates hello.md', () => {
+  const err = testPrompt(
+    {
+      workspaceRoot: process.cwd(),
+      promptCmd: copilotCmd(process.cwd()),
+      workspaceMode: 'copy'
+    },
+    "Create a nice markdown file at hello.md saying 'hello!'",
+    'The resulting file should be created at hello.md and have hello as part of its contents, without too much extra info (should be <100 chars)'
+  );
+
+  expect(err).toBe('');
+});
+```
+

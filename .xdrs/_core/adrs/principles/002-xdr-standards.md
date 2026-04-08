@@ -31,7 +31,7 @@ XDR documents are the authoritative policy for their scope, type, and subject. T
   - Define the next number of an XDR by checking what is the highest number present in the type+scope. Don't fill numbering gaps, as they might be old deleted XDRs and we should never reuse numbers of different documents/decisions. Numbering gaps are expected.
 - Decisions MUST be concise and reference other XDRs to avoid duplication.
 - The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use `## Metadata` as the first-pass filter for whether the decision should be used at all, then keep nuanced boundaries in the decision text.
-- Use concise rules, examples, or `Do` / `Don't` lists only when they help a reader apply the decision correctly. Keep them short and decision-specific.
+- Use concise rules, examples, `Allowed` / `Disallowed` lists or checklists with required items to help the reader apply the decision correctly. Keep them short and decision-specific.
 - Conflict handling applies to XDR documents:
   - For cross-scope overrides, document the decision conflict in the XDR `## Conflicts` section of the XDR that overrides another scope.
   - **Within-scope conflicts:** XDRs within the same type+scope must not conflict. If two XDRs appear to conflict, one should be updated, deprecated, or the conflict resolved through a new XDR.
@@ -39,9 +39,9 @@ XDR documents are the authoritative policy for their scope, type, and subject. T
 - Never use emojis in contents.
 - Always use file names with lowercase.
 - Avoid using lengthy instructions on the XDR. If there are long and detailed instructions related to the XDR, or instructions that are outside the decision, create another file with a guide. If the guide is small, keep it in the XDR itself.
-- XDRs should be less than 100 lines long as a rule of thumb.
+- XDRs should be under 1300 words long as a rule of thumb.
   - This is important to make them focused on a clear decision
-  - Exceptions can reach 200 lines (templates, more elaborate decision implementations etc)
+  - Exceptions can reach under 2600 words (templates, more elaborate decision implementations etc)
 - ALWAYS use `_local` scope if the user doesn't explicitly indicate a specific scope while creating an xdr or skill.
 
 **XDR template**
@@ -61,7 +61,7 @@ Applied to: [Optional short applicability scope, under 40 words]
 ## Context and Problem Statement
 
 [Describe the context, background, or need that led to this decision.
-What is the problem we are trying to solve? Who is being impacted? (<3 lines)
+What is the problem we are trying to solve? Who is being impacted? (<40 words)
 
 Question: In the end, state explicitly the question that needs to be answered. E.g: "Which platform should I use when implementing an AI agent?"]
 
@@ -74,7 +74,7 @@ Question: In the end, state explicitly the question that needs to be answered. E
 
 ### Implementation Details
 
-[Optional section with implementation specifics, applicability boundaries, rules, concise examples, or do/don't guidance. This is the answer to the question in the "Context and Problem Statement". (<100 lines)]
+[Optional section with implementation specifics, applicability boundaries, rules, concise examples, or do/don't guidance. This is the answer to the question in the "Context and Problem Statement". (<1300 words)]
 
 [Related research, if any]
 - [Research document title](researches/001-example.md) - Brief description of what it informed

@@ -109,8 +109,8 @@ Collectively, these are referred to as XDRs.
 
 **Folder structure examples:**
 - `.xdrs/business-x/edrs/devops/003-required-development-workflow.md`
-- `.xdrs/business-x/adrs/governance/010-security-and-secrets-management.md`
-- `.xdrs/_core/adrs/devops/001-multi-repo.md`
+- `.xdrs/business-x/adrs/controls/010-security-and-secrets-management.md`
+- `.xdrs/_core/edrs/devops/001-multi-repo.md`
 
 ```text
 subject/

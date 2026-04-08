@@ -81,15 +81,15 @@ Valid: [Optional. Use from YYYY-MM-DD, until YYYY-MM-DD, or from YYYY-MM-DD unti
 Applied to: [Optional short applicability scope, under 40 words]
 
 ## Context and Problem Statement
-[4 lines max: background, who is impacted, and the explicit question being answered]
+[background, who is impacted, and the explicit question being answered - under 40 words]
 
 ## Decision Outcome
 
 **[Chosen Option Title]**
-[One sentence: what is the decision]
+[One sentence: what is the decision - under 30 words]
 
 ### Implementation Details
-[Rules, applicability boundaries, concise examples, and optional do/don't guidance — under 100 lines]
+[Rules, applicability boundaries, concise examples, and optional do/don't guidance — under 1300 words]
 
 ## Considered Options (if meaningful options exist)
 
@@ -111,13 +111,13 @@ Mandatory rules to apply while drafting:
 - Prefer plain Markdown, tables, or ASCII art for simple structure, flow, layout, or relationship indications.
 - If the XDR genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/assets/` and link with a relative path.
 - No emojis. Lowercase filenames.
-- Target under 100 lines total; 200 lines max for complex decisions.
+- Target under 1300 words total; under 2600 words for complex decisions.
 
 ### Phase 7: Review the Draft
 
 Check every item before finalizing:
 
-1. **Length**: Is it under 100 lines? Trim verbose explanations. Move detailed skills to a separate file and link.
+1. **Length**: Is it under 1300 words? Trim verbose explanations. Move detailed skills to a separate file and link.
 2. **Metadata**: If metadata exists, is it directly before Context, limited to `Status:` / `Valid:` / `Applied to:`, omitted entirely when all three are absent, and specific enough for a reader to decide whether the XDR is active, currently valid, and applicable?
 3. **Originality**: Does every sentence add value that cannot be found in a generic web search? Remove obvious advice. Keep only the project-specific decision.
 4. **Clarity**: Is the chosen option unambiguous? Is the "why" clear in one reading?
