@@ -25,6 +25,7 @@ The standards below are split into framework-wide standards and XDR document sta
 
 #### General framework standards
 
+- The main document type in the collection of XDRS is the XDR document, which contains a decision. Other documents are normally related to this decision and shouldn't go against its contents.
 - Make it clear if an instruction is mandatory or advisory.
   - Mandatory language: "must", "always", "never", "required", "mandatory"
   - Advisory language: "should", "recommended", "advised", "preferably", "possibly", "optionally"
@@ -96,21 +97,22 @@ The standards below are split into framework-wide standards and XDR document sta
       - Examples: CI/CD stages, branch strategy, release promotion gates.
     - `governance`: Engineering governance, risk controls, and compliance mechanics.
       - Examples: dependency governance, approval policies, mandatory quality checks.
-- If there is a README.md file in the root of the xdrs folder, always keep it up to date. Never use emojis.
+- Never use emojis
 - **Indexes**
   - Keep a canonical index with all XDRs of a certain type+scope in `.xdrs/[scope]/[type]/index.md`
   - Canonical index requirements:
-    - Organize XDRs by subject for easier navigation
+    - Organize XDR documents by subject for easier navigation
     - Add a short description of what this scope is about (responsibilities, general worries, teams involved, link to discussion process, etc)
     - Add a list of other scope indexes that this scope might be related to (only add scopes that might be overridden). E.g: "business-x-mobileapp" scope could refer to "business-x" and "sensitive-data" scopes in its index list. XDRs in scopes listed last override XDRs in scopes listed first when addressing the same topic.
-    - Each XDR element entry in the index MUST include a short description of its content in imperative format and with fewer than 10 words. Example: "understand customer communication tone"
+    - Each XDR element entry in the index MUST include a short description of its content, prefferably with an imperative statement or the question it answers, when possible (<15 words). Example: "Use this while planning a new feature", "What communication tone we use with our customers?", "PNPM vs Yarn comparison"
   - Outside the scopes, keep an index pointing to all canonical indexes in `.xdrs/index.md`. Add the text "XDRs in scopes listed last override the ones listed first"
   - Always verify if indexes are up to date after making changes
 
-#### XDR document standards (decision record source of truth)
+#### XDR document standards
 
-- XDRs MUST contain a clear decision about a certain problem or situation. Avoid being too verbose and focus on explaining clearly the context and the decision. Avoid adding contents that are not original. If you have other references that are important to understand the document, add links and references.
-- XDRs are the central artifact of the framework and the authoritative policy for their scope, type, and subject. Supporting artifacts may explain, justify, or operationalize the decision, but they do not replace it.
+- Decision record and source of truth
+- XDRs MUST contain a clear decision about a certain problem or situation. Avoid being too verbose and focus on explaining clearly the context and the decision. Avoid adding contents that are not original. If you have other references that are important to understand the document, add links and references. Always cite sources.
+- XDRs are the central artifact of the framework and the authoritative policy for their scope, type, and subject. Supporting artifacts may explain, justify, or operationalize the decision (like articles, researches and skills), but they do not replace it.
 - XDRs MAY include a `## Metadata` section, but only when at least one supported metadata field is present. When used, `## Metadata` MUST appear immediately before `## Context and Problem Statement`.
 - Supported XDR metadata fields are:
   - `Status:` Optional. Defines the lifecycle state of the decision. Allowed values are `Draft`, `Active`, and `Deprecated`. If omitted, the decision is treated as `Active`. Only `Active` decisions may be treated as current policy.
