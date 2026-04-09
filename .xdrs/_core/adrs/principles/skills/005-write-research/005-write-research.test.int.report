@@ -1,0 +1,10 @@
+{
+  "Reply ONLY with \"READY\" after checking i-a61b0904": {
+    "result": "success",
+    "contextFiles": [
+      ".xdrs/_core/adrs/principles/skills/001-lint/SKILL.md",
+      "AGENTS.md"
+    ],
+    "contextHash": "3dcbcc0a03f4d3b2a797c28165f6f68a"
+  }
+}

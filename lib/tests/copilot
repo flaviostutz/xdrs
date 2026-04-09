@@ -24,12 +24,12 @@ if (prompt.includes('Reply with READY and nothing else.')) {
 
 const workspace = readLastOptionValue(args, '--add-dir') || process.cwd();
 
-if (prompt.includes('XDRS-CORE TEST PHASE: TASK')) {
+if (prompt.startsWith('RUN PHASE')) {
 	handleTaskPrompt(prompt, workspace);
 	process.exit(0);
 }
 
-if (prompt.includes('XDRS-CORE TEST PHASE: ASSERTION_EVALUATION')) {
+if (prompt.startsWith('ASSERTION_EVALUATION PHASE')) {
 	handleJudgePrompt(prompt, workspace);
 	process.exit(0);
 }
@@ -38,7 +38,10 @@ process.stderr.write('unexpected prompt\n');
 	process.exit(1);
 
 function handleTaskPrompt(fullPrompt, workspacePath) {
-	const originalPrompt = extractSection(fullPrompt, 'BEGIN TASK PROMPT', 'END TASK PROMPT');
+	const instructionsEnd = fullPrompt.indexOf('</INSTRUCTIONS>');
+	const originalPrompt = instructionsEnd !== -1
+		? fullPrompt.slice(instructionsEnd + '</INSTRUCTIONS>'.length).trim()
+		: '';
 
 	if (originalPrompt.includes('package distribution options for our XDR scopes')) {
 		const relativePath = path.join('.xdrs', '_local', 'adrs', 'principles', 'researches', '001-package-distribution-options.md');
@@ -99,6 +102,12 @@ function handleTaskPrompt(fullPrompt, workspacePath) {
 		return;
 	}
 
+	if (originalPrompt.includes('workspace-filter-check')) {
+		const files = fs.readdirSync(workspacePath);
+		writeTaskResult(`Files in workspace: ${files.join(', ')}`, [], files.filter((f) => !f.startsWith('.')));
+		return;
+	}
+
 	if (originalPrompt.includes('summary.txt')) {
 		fs.writeFileSync(path.join(workspacePath, 'summary.txt'), 'behavior ok\n', 'utf8');
 		writeTaskResult('Created summary.txt with behavior ok.', ['summary.txt'], ['seed.txt']);
@@ -109,10 +118,15 @@ function handleTaskPrompt(fullPrompt, workspacePath) {
 }
 
 function handleJudgePrompt(fullPrompt, workspacePath) {
-	const originalPrompt = extractSection(fullPrompt, 'BEGIN ORIGINAL TASK PROMPT', 'END ORIGINAL TASK PROMPT');
-	const assertionPrompt = extractSection(fullPrompt, 'BEGIN JUDGE PROMPT', 'END JUDGE PROMPT');
-	const taskOutput = extractSection(fullPrompt, 'BEGIN TASK OUTPUT', 'END TASK OUTPUT');
-	const reportedChanges = JSON.parse(extractSection(fullPrompt, 'BEGIN AGENT REPORTED CHANGES JSON', 'END AGENT REPORTED CHANGES JSON'));
+	const originalPrompt = extractSection(fullPrompt, '<ORIGINAL TASK PROMPT>', '</ORIGINAL TASK PROMPT>');
+	const taskOutput = extractSection(fullPrompt, '<ORIGINAL TASK OUTPUT>', '</ORIGINAL TASK OUTPUT>');
+	const reportedChangesRaw = extractSection(fullPrompt, '<ORIGINAL TASK REPORTED CHANGES JSON>', '</ORIGINAL TASK REPORTED CHANGES JSON>');
+	const reportedChanges = JSON.parse(reportedChangesRaw || '[]');
+	const contextFilesEndMarker = '</ORIGINAL TASK REPORTED CONTEXT FILES JSON>';
+	const contextFilesEndIndex = fullPrompt.lastIndexOf(contextFilesEndMarker);
+	const assertionPrompt = contextFilesEndIndex !== -1
+		? fullPrompt.slice(contextFilesEndIndex + contextFilesEndMarker.length).trim()
+		: '';
 	const findings = [];
 	const requiredResearchHeadings = [
 		'## Abstract',
@@ -189,6 +203,15 @@ function handleJudgePrompt(fullPrompt, workspacePath) {
 		}
 	}
 
+	if (assertionPrompt.includes('workspace-filter-check')) {
+		if (fs.existsSync(path.join(workspacePath, 'notes.md'))) {
+			findings.push(fileFinding('notes.md', null, 'notes.md should not exist in the filtered workspace.', 'workspace-filter-check'));
+		}
+		if (!fs.existsSync(path.join(workspacePath, 'seed.txt'))) {
+			findings.push(fileFinding('seed.txt', null, 'seed.txt should exist in the filtered workspace.', 'workspace-filter-check'));
+		}
+	}
+
 	if (assertionPrompt.includes('ignored/seed.txt, .git/config, and nested/.git/config are not available in the copied workspace')) {
 		const ignoredFilePath = path.join(workspacePath, 'ignored', 'seed.txt');
 		if (fs.existsSync(ignoredFilePath)) {
@@ -216,8 +239,8 @@ function handleJudgePrompt(fullPrompt, workspacePath) {
 	process.stdout.write(`${JSON.stringify({ pass: findings.length === 0, findings })}\n`);
 }
 
-function writeTaskResult(summary, changedFiles, readFiles = []) {
-	process.stdout.write(`${JSON.stringify({ summary, changedFiles, readFiles })}\n`);
+function writeTaskResult(text, changedFiles, contextFiles = []) {
+	process.stdout.write(`${JSON.stringify({ text, changedFiles, contextFiles })}\n`);
 }
 
 function fileFinding(filePath, line, message, assertionRef) {
