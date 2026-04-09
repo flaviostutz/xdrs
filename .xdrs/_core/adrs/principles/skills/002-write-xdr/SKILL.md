@@ -135,6 +135,15 @@ If any check fails, revise and re-run this phase before proceeding.
 4. If significant research was produced or already exists, link it from the XDR `## Considered Options` section.
 5. If concise rules, examples, or do/don't bullets help readers apply the decision correctly, add them inside `### Implementation Details` without turning the XDR into a long procedure.
 
+### Phase 9: Verify Package structure with Lint
+
+1. Run the CLI lint utility from the repository root:
+   ```
+   npx -y xdrs-core lint .
+   ```
+2. Fix all reported errors before considering the task complete.
+3. Review warnings; fix straightforward ones and note intentional deviations explicitly.
+
 ### Constraints
 
 - MUST follow the XDR template from `002-xdr-standards` exactly.
