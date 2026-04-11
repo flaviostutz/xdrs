@@ -6,9 +6,9 @@ XDR framework elements (types, scopes, subjects, folder structure) are defined i
 
 ## Decision Outcome
 
-**Structured decision records with a mandatory template, lifecycle metadata, and clear conflict rules**
+**Structured decision records with a mandatory template, applicability metadata, and clear conflict rules**
 
-XDR documents are the authoritative policy for their scope, type, and subject. They must be concise, template-compliant, and lifecycle-aware so that humans and AI agents can reliably determine whether and how to apply any decision.
+XDR documents are the authoritative policy for their scope, type, and subject. They must be concise, template-compliant, and clear about applicability so that humans and AI agents can reliably determine whether and how to apply any decision.
 
 ### Implementation Details
 
@@ -16,25 +16,23 @@ XDR documents are the authoritative policy for their scope, type, and subject. T
 - XDRs are the central artifact of the framework and the authoritative policy for their scope, type, and subject. Supporting artifacts may explain, justify, or operationalize the decision (like articles, researches and skills), but they do not replace it.
 - XDRs MAY include a `## Metadata` section, but only when at least one supported metadata field is present. When used, `## Metadata` MUST appear immediately before `## Context and Problem Statement`.
 - Supported XDR metadata fields are:
-  - `Status:` Optional. Defines the lifecycle state of the decision. Allowed values are `Draft`, `Active`, and `Deprecated`. If omitted, the decision is treated as `Active`. Only `Active` decisions may be treated as current policy.
-  - `Valid:` Optional. Defines the time window in which an active decision may be treated as current. Use ISO dates only: `from YYYY-MM-DD`, `until YYYY-MM-DD`, or `from YYYY-MM-DD until YYYY-MM-DD`. If `from` is omitted, the decision takes effect immediately. If `until` is omitted, the decision remains valid indefinitely.
+  - `Valid:` Optional. Defines a convergence date after which the decision is expected to be fully adopted. Use ISO date format: `from YYYY-MM-DD`. New implementations SHOULD adopt the decision immediately, but compliance is not enforced during reviews until the convergence date.
   - `Applied to:` Optional. A short description of the contexts in which the decision is applicable. Keep it under 40 words. If omitted, the decision should be interpreted as applying to all logically applicable elements according to the decision text itself. Examples: `Only frontend code`, `JavaScript projects`, `Performance-sensitive codebases`
+- All documents present in the collection are considered active. There is no status field. When a decision is no longer relevant, valid or active, it must be removed from the collection. Historical versions are available via versioned packages or git history.
 - Before using, enforcing, or citing an XDR as a current rule, humans and AI agents MUST decide whether the decision is applicable for the current case.
-  - Check `Status:` first to determine whether the XDR is eligible to be used now. If `Status:` is omitted, treat it as `Active`. `Draft` and `Deprecated` decisions are background or history, not current policy.
-  - Check `Valid:` next to determine whether the current moment falls inside the decision's active date window. Not-yet-active and expired windows are not current policy.
-  - Check `Applied to:` next to determine whether the active, currently valid decision fits the current codebase, system, workflow, or audience.
+  - Check `Valid:` first. If a convergence date is present and has not yet been reached, the decision SHOULD be adopted for new implementations but is not enforced during reviews.
+  - Check `Applied to:` next to determine whether the decision fits the current codebase, system, workflow, or audience.
   - Check the decision context and implementation details last to determine any additional boundaries, exceptions, or qualifiers that metadata alone cannot express.
-  - If any check fails, the XDR MAY still be read as background, history, or context, but it MUST NOT be treated as a current requirement for that case.
-- Research documents MAY be added under the same subject to capture the exploration, findings, and proposals that backed a decision. Research is useful during elaboration, discussion, approval, retirement, and updates of xdrs, but the XDR document remains the source of truth.
+- Research documents MAY be added under the same subject to capture the exploration, findings, and proposals that backed a decision. Research is useful during elaboration, discussion, and updates of XDRs, but the XDR document remains the source of truth.
 - **XDR Id:** [scope]-[type]-[xdr number] (numbers are scoped per type+scope combination and must not be reused within that combination; always use lowercase)
   - Types in IDs: `adr`, `bdr`, `edr`
   - Define the next number of an XDR by checking what is the highest number present in the type+scope. Don't fill numbering gaps, as they might be old deleted XDRs and we should never reuse numbers of different documents/decisions. Numbering gaps are expected.
 - Decisions MUST be concise and reference other XDRs to avoid duplication.
-- The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use `## Metadata` as the first-pass filter for whether the decision should be used at all, then keep nuanced boundaries in the decision text.
+- The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use `## Metadata` as the first-pass filter for applicability, then keep nuanced boundaries in the decision text.
 - Use concise rules, examples, `Allowed` / `Disallowed` lists or checklists with required items to help the reader apply the decision correctly. Keep them short and decision-specific.
 - Conflict handling applies to XDR documents:
   - For cross-scope overrides, document the decision conflict in the XDR `## Conflicts` section of the XDR that overrides another scope.
-  - **Within-scope conflicts:** XDRs within the same type+scope must not conflict. If two XDRs appear to conflict, one should be updated, deprecated, or the conflict resolved through a new XDR.
+  - **Within-scope conflicts:** XDRs within the same type+scope must not conflict. If two XDRs appear to conflict, one should be updated, removed, or the conflict resolved through a new XDR.
 - When research exists for a decision, the XDR SHOULD mention the related research documents after the `## Considered Options` list.
 - Never use emojis in contents.
 - Always use file names with lowercase.
@@ -53,9 +51,8 @@ All XDRs MUST follow this template
 
 ## Metadata
 
-[Optional section. Omit the entire section when none of `Status:`, `Valid:`, or `Applied to:` is defined. Readers decide whether to use the XDR by checking `Status:` first, treating omission as `Active`, then `Valid:`, then `Applied to:`, and finally the decision text itself.]
-Status: [Optional. Use `Draft`, `Active`, or `Deprecated`. Defaults to `Active` when omitted]
-Valid: [Optional. Use `from YYYY-MM-DD`, `until YYYY-MM-DD`, or `from YYYY-MM-DD until YYYY-MM-DD`]
+[Optional section. Omit the entire section when none of `Valid:` or `Applied to:` is defined. Readers decide whether to use the XDR by checking `Valid:` first, then `Applied to:`, and finally the decision text itself.]
+Valid: [Optional. Use `from YYYY-MM-DD` to set a convergence date for adoption]
 Applied to: [Optional short applicability scope, under 40 words]
 
 ## Context and Problem Statement
@@ -97,9 +94,7 @@ Question: In the end, state explicitly the question that needs to be answered. E
 
 **Examples:**
 - Metadata examples:
-  - `Status: Draft`
-  - `Status: Active`
-  - `Valid: from 2026-03-01 until 2026-12-31`
+  - `Valid: from 2026-03-01`
   - `Applied to: JavaScript projects`
 
 **XDR ID Examples:**

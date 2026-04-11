@@ -25,9 +25,9 @@ Performs a structured review of code changes or files against the XDRs in the re
 1. Gather all Decision Records from `.xdrs/index.md` starting from the working directory.
    - XDR scopes are controlled by nested folders; some are broad, others domain-specific.
    - Extract metadata first to decide whether each XDR should be used for the current review context.
-   - Check `Status:` first. Treat an omitted `Status:` as `Active`, and treat `Draft` and `Deprecated` XDRs as background only, not active policy.
-   - Check `Valid:` second. Keep only `Active` XDRs whose date window covers the current review moment.
-   - Check `Applied to:` third. Keep only active, in-window XDRs whose stated scope fits the files, systems, or workflows under review.
+   - All documents present in the collection are considered active.
+   - Check `Valid:` first. If a convergence date is present and has not yet been reached, the decision SHOULD be adopted for new implementations but is not enforced during reviews.
+   - Check `Applied to:` second. Keep only XDRs whose stated scope fits the files, systems, or workflows under review.
    - Check the decision text itself last for additional boundaries or exceptions that metadata does not encode.
 2. Filter relevance based on file types, domains, and architectural patterns in scope.
 

@@ -24,6 +24,7 @@ Collectively, these are referred to as XDRs.
 #### General framework standards
 
 - The main document type in the collection of XDRs is the XDR document, which contains a decision. Other documents are normally related to this decision and shouldn't go against its contents.
+- All documents in the framework should be removed when they are no longer necessary. The latest version of the collection always represents the active set of documents. Historical versions are available via versioned packages or git history. There is no status field on documents; if a document is present, it is considered active and valid. This keeps the document base clean and avoids confusion about which documents are current. REJECT any indication in the Decisions that contradicts this rule to avoid confusion and complexity.
 - Make it clear if an instruction is mandatory or advisory.
   - Mandatory language: "must", "always", "never", "required", "mandatory"
   - Advisory language: "should", "recommended", "advised", "preferably", "possibly", "optionally"
@@ -34,11 +35,13 @@ Collectively, these are referred to as XDRs.
   - `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
   - `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
   - `.xdrs/[scope]/[type]/[subject]/articles/[number]-[short-title].md`
+  - `.xdrs/[scope]/[type]/[subject]/plans/[number]-[short-title].md`
 - Research, skills, and articles are part of the framework, but each has its own concept-specific standards in dedicated XDRs. This XDR defines the shared framework baseline; `_core-adr-002` defines the XDR document writing standard.
   - `_core-adr-002` defines XDR standards (document writing)
   - `_core-adr-003` defines skill standards
   - `_core-adr-004` defines article standards
   - `_core-adr-006` defines research standards
+  - `_core-adr-007` defines plan standards
 - For simple structure, flow, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
 - Images and other supporting files SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they SHOULD live in a sibling `assets/` folder next to the document.
   - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/assets/`
@@ -120,6 +123,9 @@ subject/
 |-- articles/
 |   |-- 001-article.md
 |   `-- assets/
+|-- plans/
+|   |-- 001-plan.md
+|   `-- assets/
 |-- researches/
 |   |-- 001-study.md
 |   `-- assets/
@@ -137,3 +143,4 @@ subject/
 - [_core-adr-003 - Skill standards](003-skill-standards.md)
 - [_core-adr-004 - Article standards](004-article-standards.md)
 - [_core-adr-006 - Research standards](006-research-standards.md)
+- [_core-adr-007 - Plan standards](007-plan-standards.md)

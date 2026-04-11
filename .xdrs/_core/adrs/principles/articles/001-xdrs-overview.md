@@ -19,7 +19,7 @@ same decision system.
   technical decisions, **BDR** for business and operational decisions, and **EDR** for engineering
   implementation decisions. See [_core-adr-001](../001-xdrs-core.md).
 - **Research** captures exploration before or around a decision: constraints, findings, options,
-  pros, and cons. Research supports elaboration, discussion, approval, retirement, and updates,
+  pros, and cons. Research supports elaboration, discussion, and updates,
   but it is not the final rule. A single Research document may inform multiple downstream ADRs,
   BDRs, or EDRs. If Research and an XDR disagree, the XDR wins. See
   [_core-adr-006](../006-research-standards.md).
@@ -30,6 +30,10 @@ same decision system.
 - **Articles** are synthetic views, like this one. They explain a topic across multiple XDRs,
   Research documents, and Skills, helping readers understand the system without making new
   decisions. See [_core-adr-004](../004-article-standards.md).
+- **Plans** describe a problem, a proposed solution, and the approach and activities needed to
+  solve it. They have a clear start and end and a well-defined scope. Plans are ephemeral: they
+  must be deleted after full implementation, with lasting outputs captured as Decisions, Skills,
+  Articles, or other artifacts. See [_core-adr-007](../007-plan-standards.md).
 - **Indexes and folder structure** are the discovery layer. They do not make decisions by
   themselves, but they determine how people and agents find the right artifacts, how scopes
   override one another, and how a large set of decisions remains navigable.
@@ -42,6 +46,7 @@ The easiest way to distinguish the central elements is by asking what job each o
 - **Research**: "What did we learn while evaluating options?"
 - **Skill**: "How do we carry out work under this decision?"
 - **Article**: "How do these artifacts fit together for a reader?"
+- **Plan**: "What are we going to do, why, and how?"
 - **Index/Scope structure**: "Where do I look, and which decision set takes precedence?"
 
 This separation matters because mixing these jobs into one file makes the system harder to search,
@@ -49,13 +54,14 @@ harder to update, and harder for agents to apply correctly.
 
 ### How to decide whether an XDR should be used
 
-Before treating an XDR as a rule for the current case, check its metadata first.
+Before treating an XDR as a rule for the current case, check its metadata first. All documents present in the collection are considered active — if a document exists, it is current.
 
-- **Status first**: only `Active` decisions can be current policy, and omitted `Status` is treated as `Active`. `Draft` and `Deprecated` are background or historical context.
-- **Valid second**: if present, the current moment must fall inside the decision's date window.
-- **Applied to third**: if present, the current codebase, workflow, system, or audience must fit that scope.
+- **Valid first**: if present, the convergence date indicates when full adoption is expected. New implementations SHOULD adopt the decision immediately; compliance is not enforced during reviews until the date.
+- **Applied to second**: if present, the current codebase, workflow, system, or audience must fit that scope.
 - **Decision text last**: the XDR's own context and implementation details still determine the final boundaries and exceptions.
-- **Then enforce**: only decisions that pass those checks should be used as active requirements. The rest may still be useful background or historical context.
+- **Then enforce**: only decisions that pass those checks should be used as active requirements. The rest may still be useful context.
+
+Documents that are no longer relevant should be removed from the collection. Historical versions are available via versioned packages or git history.
 
 ### How they relate over time
 
@@ -99,6 +105,8 @@ Every decision record and its supporting artifacts live at a fixed path:
             SKILL.md
         articles/
           [number]-[short-title].md
+        plans/
+          [number]-[short-title].md
 ```
 
 - **Scopes** represent ownership domains such as `_core`, `business-x`, or `team-43`.
@@ -135,7 +143,8 @@ Follow [_core-adr-001](../001-xdrs-core.md) and [_core-adr-002](../002-xdr-stand
 
 - Use **mandatory language** (`must`, `never`, `required`) for non-negotiable rules and
   **advisory language** (`should`, `recommended`) for guidance.
-- Before citing an XDR as a requirement, check `Status` first, treating omission as `Active`, then `Valid`, then `Applied to`, and finally the decision text to confirm the decision is active and in scope for the current case.
+- Before citing an XDR as a requirement, check `Valid` first, then `Applied to`, and finally the decision text to confirm the decision is in scope for the current case.
+- All documents present in the collection are considered active. Remove documents that are no longer relevant.
 - Keep XDRs under 1300 words as a rule of thumb (exceptions up to 2600 words for templates or more elaborate decisions). Move procedural detail to a co-located Skill.
 - Keep exploratory option analysis in a co-located Research document instead of bloating the XDR.
 - Always update the scope+type index and the root index after adding or changing an XDR.
@@ -153,6 +162,8 @@ Follow [_core-adr-001](../001-xdrs-core.md) and [_core-adr-002](../002-xdr-stand
   folder, following [_core-adr-003](../003-skill-standards.md).
 - **New article** — add an `articles/[number]-[short-title].md` inside the relevant subject
   folder, following [_core-adr-004](../004-article-standards.md).
+- **New plan** — add a `plans/[number]-[short-title].md` inside the relevant subject
+  folder, following [_core-adr-007](../007-plan-standards.md).
 
 ### Using XDRs in your own project
 
@@ -175,6 +186,7 @@ Follow [_core-adr-001](../001-xdrs-core.md) and [_core-adr-002](../002-xdr-stand
 - [_core-adr-003](../003-skill-standards.md) - Skill standards and co-location rules
 - [_core-adr-004](../004-article-standards.md) - Article standards
 - [_core-adr-006](../006-research-standards.md) - Research standards
+- [_core-adr-007](../007-plan-standards.md) - Plan standards
 - [001-lint skill](../skills/001-lint/SKILL.md) - Linting code against XDRs
 - [002-write-xdr skill](../skills/002-write-xdr/SKILL.md) - Writing a new XDR
 - [003-write-skill skill](../skills/003-write-skill/SKILL.md) - Writing a new skill

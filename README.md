@@ -12,12 +12,13 @@ This project defines a standard for organizing XDRs that satisfies the following
 
 ## XDR elements
 
-Every XDR package contains four types of documents:
+Every XDR package contains five types of documents:
 
 - **Decision Records (XDRs)** — Architectural (ADR), Business (BDR), or Engineering (EDR) records that capture a single decision, its rationale, and the rules that follow from it. They are the source of truth.
 - **Research** — Exploratory documents that capture the problem being investigated, constraints or requirements, findings, and option tradeoffs that back a decision during its lifecycle. One research document may inform multiple downstream decisions, but it is not a replacement for the Decision Record.
 - **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time.
 - **Articles** — Synthetic explanatory texts that combine information from multiple XDRs, Research documents, and Skills around a specific topic or audience. They never replace XDRs as source of truth.
+- **Plans** — Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Plans have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Decisions, Skills, Articles, or other artifacts.
 
 ## Getting started
 
@@ -65,7 +66,7 @@ The folder layout, file naming, and document format are designed so that AI agen
 - Each XDR is a small, focused Markdown file (target under 1300 words), covering one decision.
 - The canonical index per scope and type lists all XDRs with short descriptions, enabling agents to identify relevant records without reading every file.
 - The root index at `.xdrs/index.md` provides a single entry point for discovery.
-- XDR metadata gives agents a first-pass filter: check `Status` first, treating an omitted `Status` as `Active`; then check `Valid`, then `Applied to`, and finally the decision text itself to confirm the decision should be used in the current context.
+- XDR metadata gives agents a first-pass filter: check `Valid` for the convergence date, then check `Applied to`, and finally the decision text itself to confirm the decision should be used in the current context. All documents present in the collection are considered active.
 - Decisions cross-reference each other by XDR ID rather than duplicating content, keeping individual files concise.
 - Subject folders reduce the search space when a query maps to a known domain.
 
@@ -96,6 +97,9 @@ This is especially important for BDRs: because business rules govern decisions t
         articles/                   # optional synthetic views over XDRs, Research, and Skills
           [number]-[short-title].md
           assets/
+        plans/                      # optional ephemeral execution plans
+          [number]-[short-title].md
+          assets/
 ```
 
 Document types:
@@ -106,6 +110,7 @@ Document types:
 - **Research** - Exploratory support material used while evaluating or updating a decision. Research captures constraints, findings, options, and proposal tradeoffs, but it is not the source of truth.
 - **Skills** - Step-by-step procedural guides that can be followed by humans, AI agents, or both. Must comply with Decision Records, but add the execution detail they lack. Skills are not mandatory by themselves unless referenced by an XDR or another policy artifact. A skill may start as a fully manual human procedure and evolve incrementally toward partial or full AI automation without being restructured. Co-located with the XDRs they implement inside `skills/` sub-directories.
 - **Articles** - Synthetic views that explain concepts or combine information from multiple Decision Records, Research documents, and Skills into a coherent text for a specific topic or audience. Articles are not the source of truth; Decision Records take precedence when there is a conflict. Useful as navigational indexes that link related artifacts around a specific aspect.
+- **Plans** - Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Plans have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Decisions, Skills, Articles, or other artifacts. Co-located with XDRs inside `plans/` sub-directories.
 
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active decision records.
 
@@ -157,9 +162,11 @@ The `lint` command reads `./.xdrs/**` from the given workspace path and checks c
 - skill numbering uniqueness per `scope/type/subject/skills`
 - article numbering uniqueness per `scope/type/subject/articles`
 - research numbering uniqueness per `scope/type/subject/researches`
+- plan numbering uniqueness per `scope/type/subject/plans`
+- plan `Expected end date:` field presence and ISO date format
 - canonical index presence and link consistency
 - root index coverage for all discovered canonical indexes
-- XDR metadata section placement and `Status` / `Valid` / `Applied to` field format
+- XDR metadata section placement and `Valid` / `Applied to` field format
 - local image and `assets/` links resolving inside the sibling `assets/` folder for each document
 
 Examples:

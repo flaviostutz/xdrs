@@ -52,7 +52,7 @@ Choose a title that clearly states the question this XDR answers, not the answer
 ### Phase 4: Research Related XDRs
 
 1. Read all existing XDRs relevant to the topic across all scopes listed in `.xdrs/index.md`.
-2. Evaluate XDR metadata before treating any decision as a current constraint. `Status:` decides whether a decision is eligible to be used, and omitted `Status:` means `Active`; `Valid:` decides whether that active decision is currently in force, `Applied to:` decides whether it fits the current topic, and the decision text defines any remaining boundaries. Treat inactive, out-of-window, or out-of-scope XDRs as background only when assessing overlaps and conflicts.
+2. Evaluate XDR metadata before treating any decision as a current constraint. All documents present in the collection are considered active. `Valid:` determines the convergence date for adoption, `Applied to:` determines whether it fits the current topic, and the decision text defines any remaining boundaries. Treat out-of-window or out-of-scope XDRs as background only when assessing overlaps and conflicts.
 3. Identify decisions that already address the topic (full or partial overlap).
 4. Note decisions that might conflict with the intended outcome.
 5. Read related `researches/` documents when they exist, especially if they contain constraints, findings, or option tradeoffs that should influence the decision.
@@ -76,8 +76,7 @@ Use the mandatory template from `002-xdr-standards`:
 
 ## Metadata
 [Optional. Include only when at least one metadata field is present]
-Status: [Optional. Use Draft, Active, or Deprecated. Defaults to Active when omitted]
-Valid: [Optional. Use from YYYY-MM-DD, until YYYY-MM-DD, or from YYYY-MM-DD until YYYY-MM-DD]
+Valid: [Optional. Use from YYYY-MM-DD to set a convergence date for adoption]
 Applied to: [Optional short applicability scope, under 40 words]
 
 ## Context and Problem Statement
@@ -99,10 +98,10 @@ Applied to: [Optional short applicability scope, under 40 words]
 ```
 
 Mandatory rules to apply while drafting:
-- Include `## Metadata` only when `Status:`, `Valid:`, and/or `Applied to:` adds value; omit the whole section when none of those fields is defined.
+- Include `## Metadata` only when `Valid:` and/or `Applied to:` adds value; omit the whole section when none of those fields is defined.
 - When present, place `## Metadata` immediately before `## Context and Problem Statement`.
-- Keep `Applied to:` under 40 words, use `Status:` only with `Draft`, `Active`, or `Deprecated`, remember that omitted `Status:` means `Active`, and use `Valid:` only with ISO date ranges.
-- When metadata is present, write it so a reader can decide whether the XDR should be used for the current case without guessing. `Status:` controls lifecycle state, omitted `Status:` means `Active`, `Valid:` controls the active time window, `Applied to:` narrows the contexts where that active decision applies, and the decision text defines any remaining boundaries.
+- Keep `Applied to:` under 40 words and use `Valid:` only with `from YYYY-MM-DD` format.
+- When metadata is present, write it so a reader can decide whether the XDR should be used for the current case without guessing. `Valid:` sets a convergence date for adoption, `Applied to:` narrows the contexts where the decision applies, and the decision text defines any remaining boundaries.
 - Use mandatory language ("must", "always", "never") only for hard requirements; use advisory language ("should", "recommended") for guidance.
 - Do not duplicate content already in referenced XDRs — link instead.
 - Keep the decision itself authoritative in the XDR. Supporting artifacts may elaborate, but they should not restate the full decision when a short reference is enough.
@@ -118,7 +117,7 @@ Mandatory rules to apply while drafting:
 Check every item before finalizing:
 
 1. **Length**: Is it under 1300 words? Trim verbose explanations. Move detailed skills to a separate file and link.
-2. **Metadata**: If metadata exists, is it directly before Context, limited to `Status:` / `Valid:` / `Applied to:`, omitted entirely when all three are absent, and specific enough for a reader to decide whether the XDR is active, currently valid, and applicable?
+2. **Metadata**: If metadata exists, is it directly before Context, limited to `Valid:` / `Applied to:`, omitted entirely when both are absent, and specific enough for a reader to decide whether the XDR is currently valid and applicable?
 3. **Originality**: Does every sentence add value that cannot be found in a generic web search? Remove obvious advice. Keep only the project-specific decision.
 4. **Clarity**: Is the chosen option unambiguous? Is the "why" clear in one reading?
 5. **Redundancy**: Is the XDR the primary source for the decision itself, with related documents linked instead of duplicated wherever possible?

@@ -45,7 +45,7 @@ Consult `001-xdrs-core` while making each choice in this phase. The summaries be
 ### Phase 3: Research Existing Artifacts
 
 1. Read relevant XDRs across all scopes listed in `.xdrs/index.md`.
-2. Evaluate XDR metadata before treating any decision as current context. `Status:` decides whether a decision is eligible to be used, and omitted `Status:` means `Active`; `Valid:` decides whether that active decision is in force at the current moment, `Applied to:` decides whether it fits the intended task context, and the decision text defines any remaining boundaries. Keep inactive, out-of-window, or out-of-scope XDRs as background only.
+2. Evaluate XDR metadata before treating any decision as current context. All documents present in the collection are considered active. `Valid:` determines the convergence date for adoption, `Applied to:` determines whether the decision fits the intended task context, and the decision text defines any remaining boundaries. Keep out-of-window or out-of-scope XDRs as background only.
 3. Read existing research documents in the same or overlapping subjects to avoid duplicating the same study.
 4. Read related skills or articles if they contain context, implementation limits, or terminology that must be reflected.
 5. Collect links that should appear in the final `## References` section.
