@@ -1,3 +1,8 @@
+---
+name: mydevkit-adr-001-publish-mydevkit-as-an-extension-package
+description: Defines how mydevkit publishes as an XDR extension package composing xdrs-core. Use as an example of reusable XDR package composition.
+---
+
 # mydevkit-adr-001: Publish mydevkit as an extension package
 
 ## Context and Problem Statement

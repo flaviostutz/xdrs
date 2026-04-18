@@ -27,6 +27,7 @@ XDR documents are the authoritative policy for their scope, type, and subject. T
 | `description` | Yes | 1-1024 characters. Describes what this decision is about and when to use it. Should include keywords that help agents identify when to apply it. |
 | `applied-to` | No | Short description of contexts this decision is applicable to. Keep it under 40 words. If omitted, the decision applies to all logically applicable elements. Examples: `Only frontend code`, `JavaScript projects`. |
 | `valid-from` | No | ISO date (`YYYY-MM-DD`) indicating from when this decision must be enforced. Before this date it should be used everywhere possible, but compliance is not enforced during reviews until after this date. |
+| `license` | No | SPDX license expression (e.g. `MIT`, `Apache-2.0`, `CC-BY-4.0`). Indicates the license under which the document content is shared. If omitted, the license is governed by the repository or package defaults. |
 | `metadata` | No | Arbitrary key-value map for additional properties not defined by this spec. |
 
   - Minimal example:
@@ -81,6 +82,7 @@ name: [scope]-[type]-[number]-[short-title]
 description: [What this decision is about and when to use it]
 applied-to: [Optional. Contexts this decision applies to, under 40 words]
 valid-from: [Optional. ISO date YYYY-MM-DD from when enforcement begins]
+license: [Optional. SPDX license expression]
 metadata:
   [optional-key]: [optional-value]
 ---
