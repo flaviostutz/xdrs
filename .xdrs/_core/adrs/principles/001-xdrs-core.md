@@ -1,3 +1,8 @@
+---
+name: _core-adr-001-xdrs-core
+description: Defines the core XDR framework including types (ADR, BDR, EDR), folder structure, scopes, subjects, and index requirements. Use when structuring or navigating decision records.
+---
+
 # _core-adr-001: XDRs core
 
 ## Context and Problem Statement
