@@ -60,6 +60,7 @@ XDR documents are the authoritative policy for their scope, type, and subject. T
 - Decisions MUST be concise and reference other XDRs to avoid duplication.
 - The `### Implementation Details` section SHOULD state relevant boundaries or exceptions and what a reader should do or avoid in common cases. Use the frontmatter fields `applied-to` and `valid-from` as the first-pass filter for applicability, then keep nuanced boundaries in the decision text.
 - Use concise rules, examples, `Allowed` / `Disallowed` lists or checklists with required items to help the reader apply the decision correctly. Keep them short and decision-specific.
+- When the decision defines strong policies or rules that should be stated explicitly as stable rule blocks, or when other documents, skills, or agents need to cite those rules individually by identifier, the XDR MUST follow the extension [_core-adr-008 - XDR standards - structured](008-xdr-standards-structured.md) instead of using plain bullet lists for those rules.
 - Conflict handling applies to XDR documents:
   - For cross-scope overrides, document the decision conflict in the XDR `## Conflicts` section of the XDR that overrides another scope.
   - **Within-scope conflicts:** XDRs within the same type+scope must not conflict. If two XDRs appear to conflict, one should be updated, removed, or the conflict resolved through a new XDR.
@@ -152,3 +153,4 @@ Question: In the end, state explicitly the question that needs to be answered. E
 - [_core-adr-003 - Skill standards](003-skill-standards.md)
 - [_core-adr-004 - Article standards](004-article-standards.md)
 - [_core-adr-006 - Research standards](006-research-standards.md)
+- [_core-adr-008 - XDR standards - structured](008-xdr-standards-structured.md) - Extension for XDRs that expose individually referenceable rules

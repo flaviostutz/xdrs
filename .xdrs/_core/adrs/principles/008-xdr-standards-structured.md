@@ -1,25 +1,25 @@
 ---
 name: _core-adr-008-xdr-standards-structured
-description: Extends xdr-standards with a numbered rule format for XDR documents that need individually referenceable policies or rules. Use when an XDR must expose specific items that other documents or skills cite by identifier without duplicating the full text.
+description: Extends xdr-standards with a numbered rule format for XDR documents that define strong policies or rules, or need individually referenceable items. Use when an XDR must expose explicit rule blocks that other documents or skills may cite by identifier.
 ---
 
 # _core-adr-008: XDR standards - structured
 
 ## Context and Problem Statement
 
-Some XDR documents define multiple distinct policies or rules. When other documents, skills, or agents need to refer to one specific rule without copying its content, there is no standardized way to identify and cite it precisely. Prose references like "see the third bullet in Implementation Details" are fragile and ambiguous.
+Some XDR documents define multiple strong policies or rules that must be stated explicitly so they can be applied consistently. In other cases, documents, skills, or agents need to refer to one specific rule without copying its content. Without a standard format, prose references like "see the third bullet in Implementation Details" are fragile and ambiguous.
 
-Question: How should an XDR document expose individually referenceable rules or policies when precise external citation is required?
+Question: How should an XDR document expose strong or individually referenceable rules or policies so they stay explicit, stable, and easy to cite?
 
 ## Decision Outcome
 
 **Numbered rule blocks inside Implementation Details with a canonical citation syntax**
 
-When an XDR document needs to expose individually referenceable rules, each rule must be placed inside `### Implementation Details` as a numbered heading block. Referencing documents and skills must cite rules using the canonical dot-notation identifier.
+When an XDR document defines strong rules or policies that should be stated explicitly, or when documents and skills need to cite individual rules precisely, each rule must be placed inside `### Implementation Details` as a numbered heading block. Referencing documents and skills must cite rules using the canonical dot-notation identifier.
 
 ### Implementation Details
 
-Use this format only when there is an explicit need for external documents, skills, or agents to reference specific items inside an XDR without duplicating the full policy text. Standard XDRs that do not require item-level citation should follow `_core-adr-002-xdr-standards` without adding numbered rule headings.
+Use this format when the decision defines strong rules or policies that must be stated explicitly as stable rule blocks, or when there is a clear need for external documents, skills, or agents to reference specific items inside an XDR without duplicating the full policy text. Standard XDRs that do not define strong rule sets and do not need item-level citation should follow `_core-adr-002-xdr-standards` without adding numbered rule headings.
 
 #### Rule block format
 
@@ -47,14 +47,14 @@ When another document or skill cites a specific rule, it must use the following 
 
 Examples:
 
-- `_core-adr-008-xdr-standards-structured.[01-use-numbered-rules-only-when-needed]`
+- `_core-adr-008-xdr-standards-structured.[01-use-numbered-rules-for-strong-or-referenceable-policies]`
 - `_local-bdr-003-data-retention-policy.[02-purge-schedule-for-pii]`
 
 The `xdr-name` must match the `name` field in the frontmatter of the source document exactly. The rule identifier after the dot must match the heading text exactly, including the two-digit prefix and kebab-case title.
 
-#### 01-use-numbered-rules-only-when-needed
+#### 01-use-numbered-rules-for-strong-or-referenceable-policies
 
-Numbered rule blocks must only be added to an XDR when there is an explicit and concrete need for other documents, skills, or agents to cite individual rules by identifier. Adding numbered rules speculatively or for organizational purposes only is not recommended. Standard XDR documents that are not expected to be cited at the rule level should follow `_core-adr-002-xdr-standards` without this structured format.
+Numbered rule blocks must be added to an XDR when the decision defines strong rules or policies that must be stated explicitly as stable items, or when there is a clear need for other documents, skills, or agents to cite individual rules by identifier. Adding numbered rules only for cosmetic organization is not recommended. Standard XDR documents that do not define strong rule sets and are not expected to be cited at the rule level should follow `_core-adr-002-xdr-standards` without this structured format.
 
 #### 02-rule-numbering-must-be-stable
 
