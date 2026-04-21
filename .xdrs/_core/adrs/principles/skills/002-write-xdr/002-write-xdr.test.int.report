@@ -3,12 +3,11 @@
     "result": "success",
     "contextFiles": [
       ".xdrs/_core/adrs/index.md",
-      ".xdrs/_core/adrs/principles/001-xdrs-core.md",
       ".xdrs/_core/adrs/principles/002-xdr-standards.md",
       ".xdrs/_core/adrs/principles/skills/002-write-xdr/SKILL.md",
       ".xdrs/index.md",
       "AGENTS.md"
     ],
-    "contextHash": "8d030307248237f1775ab38126d354db"
+    "contextHash": "808c78ca2f4aeb670c7503766a37dc1a"
   }
 }
