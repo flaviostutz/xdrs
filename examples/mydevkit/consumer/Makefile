@@ -12,7 +12,7 @@ test: clean install
 	test -e output/AGENTS.md
 	test -e output/.xdrs/_core/adrs/principles/001-xdrs-core.md
 	test -e output/.xdrs/mydevkit/adrs/principles/001-publish-mydevkit-as-an-extension-package.md
-	test -e output/.xdrs/mydevkit/adrs/principles/articles/assets/sample-package-asset.png
+	test -e output/.xdrs/mydevkit/adrs/principles/articles/.assets/sample-package-asset.png
 	test -e output/.github/skills/001-release-package/SKILL.md
 	grep -q "mydevkit/adrs/index.md" output/.xdrs/index.md
 	pnpm exec mydevkit check --output ./output

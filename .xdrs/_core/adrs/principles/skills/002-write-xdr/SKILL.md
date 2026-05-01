@@ -141,8 +141,8 @@ Mandatory rules to apply while drafting:
 - Make clear when the decision applies and any important exception boundaries.
 - Keep exploratory option analysis in a related Research document when it would distract from the final decision text.
 - Prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams), or ASCII art for simple structure, flow, layout, or relationship indications.
-- If the XDR genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/assets/` and link them using a same-folder relative path (e.g., `assets/image.png`).
-- Links that reference a parent folder MUST use absolute paths from the repository root with a leading `/` (e.g., `/.xdrs/_core/adrs/principles/001-xdrs-core.md`). Sibling files and child folder references SHOULD use relative paths (e.g., `002-other-doc.md`, `assets/image.png`, `subdir/file.md`). Never use relative paths that traverse up the directory tree (e.g., `../../assets/test.png`, `../other.md`).
+- If the XDR genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/.assets/` and link them using a same-folder relative path (e.g., `.assets/image.png`).
+- Links that reference a parent folder MUST use absolute paths from the repository root with a leading `/` (e.g., `/.xdrs/_core/adrs/principles/001-xdrs-core.md`). Sibling files and child folder references SHOULD use relative paths (e.g., `002-other-doc.md`, `.assets/image.png`, `subdir/file.md`). Never use relative paths that traverse up the directory tree (e.g., `../../.assets/test.png`, `../other.md`).
 - No emojis. Lowercase filenames.
 - Target under 1300 words total; under 2600 words for complex decisions.
 

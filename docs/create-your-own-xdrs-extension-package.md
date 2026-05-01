@@ -55,24 +55,24 @@ ship together:
       index.md
       principles/
         001-my-decision.md
-        assets/
+        .assets/
         researches/
           001-my-decision-study.md
-          assets/
+          .assets/
         skills/
           001-my-skill/
             SKILL.md
-            assets/
+            .assets/
         articles/
           001-my-overview.md
-          assets/
+          .assets/
 ```
 
 The co-location rule for Research documents comes from [_core-adr-006](/.xdrs/_core/adrs/principles/006-research-standards.md),
 the co-location rule for skills comes from [_core-adr-003](/.xdrs/_core/adrs/principles/003-skill-standards.md),
 and article placement rules come from [_core-adr-004](/.xdrs/_core/adrs/principles/004-article-standards.md).
 When you publish the scope folder, those documents travel together and stay version-aligned.
-Prefer plain Markdown, tables, or ASCII art for simple indications. When any of those documents genuinely need images or local supporting files, keep them in the sibling `assets/` folder next to the document so the package stays self-contained.
+Prefer plain Markdown, tables, or ASCII art for simple indications. When any of those documents genuinely need images or local supporting files, keep them in the sibling `.assets/` folder next to the document so the package stays self-contained.
 
 ### Expose skills to Copilot-compatible tooling
 

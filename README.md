@@ -86,20 +86,20 @@ This is especially important for BDRs: because business rules govern decisions t
       index.md                      # canonical index for this scope+type
       [subject]/
         [number]-[short-title].md   # individual decision record
-        assets/                     # optional local resources for subject-level XDR files
+        .assets/                     # optional local resources for subject-level XDR files
         researches/                 # optional decision-backing research documents
           [number]-[short-title].md
-          assets/
+          .assets/
         skills/                     # optional skill packages for humans and AI agents
           [number]-[skill-name]/
             SKILL.md
-            assets/
+            .assets/
         articles/                   # optional synthetic views over XDRs, Research, and Skills
           [number]-[short-title].md
-          assets/
+          .assets/
         plans/                      # optional ephemeral execution plans
           [number]-[short-title].md
-          assets/
+          .assets/
 ```
 
 Document types:
@@ -129,7 +129,7 @@ Each scope manages its own set of XDR artifacts independently. Scope owners disc
 
 Once a set of decisions is ready to share, scope owners pack the relevant `.xdrs/[scope]/` folder into a versioned npm package using a tool such as [filedist](https://github.com/flaviostutz/filedist) and publish it to an npm registry, either public or a company-internal one. Versioning gives consumers explicit control over which revision of a scope's decisions they adopt, avoiding situations where a single breaking policy change is forced on all consumers at once.
 
-The same applies to Research documents, skills, articles, and any sibling `assets/` folders: because they live alongside XDRs inside the scope folder, they are included in the same package and published together.
+The same applies to Research documents, skills, articles, and any sibling `.assets/` folders: because they live alongside XDRs inside the scope folder, they are included in the same package and published together.
 
 ### Usage
 
@@ -168,7 +168,7 @@ The `lint` command reads `./.xdrs/**` from the given workspace path and checks c
 - root index coverage for all discovered canonical indexes
 - XDR metadata section placement and `valid-from` / `applied-to` field format
 - local markdown links between XDR documents, skills, articles, researches, and plans (excluding fenced code blocks)
-- local image and `assets/` links resolving inside the sibling `assets/` folder for each document
+- local image and `.assets/` links resolving inside the sibling `.assets/` folder for each document
 
 Examples:
 

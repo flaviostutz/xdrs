@@ -49,11 +49,11 @@ Collectively, these are referred to as XDRs.
   - `_core-adr-006` defines research standards
   - `_core-adr-007` defines plan standards
 - For simple structures, flows, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams) or ASCII art instead of external assets.
-- Images and other supporting files SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they SHOULD live in a sibling `assets/` folder next to the document.
-  - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/assets/`
-  - Articles use `.xdrs/[scope]/[type]/[subject]/articles/assets/`
-  - Research uses `.xdrs/[scope]/[type]/[subject]/researches/assets/`
-  - Skills use `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/assets/`
+- Images and other supporting files SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they MUST live in a sibling `.assets/` folder next to the document.
+  - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/.assets/`
+  - Articles use `.xdrs/[scope]/[type]/[subject]/articles/.assets/`
+  - Research uses `.xdrs/[scope]/[type]/[subject]/researches/.assets/`
+  - Skills use `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/.assets/`
 - **Scopes:** 
   - Short name that defines a group or a package of xdrs
   - examples: `business-x`, `business-y`, `team-43`, `_core`
@@ -107,7 +107,7 @@ Collectively, these are referred to as XDRs.
     - `governance`: Engineering governance, risk controls, and compliance mechanics.
       - Examples: dependency governance, approval policies, mandatory quality checks.
 - Never use emojis
-- **Links:** Links that reference a parent folder MUST use absolute paths from the repository root with a leading `/` (e.g., `/.xdrs/_core/adrs/principles/001-xdrs-core.md`). Sibling files and child folder references SHOULD use relative paths (e.g., `002-other-doc.md`, `assets/image.png`, `subdir/file.md`). Never use relative paths that traverse up the directory tree (e.g., `../../assets/test.png`, `../other.md`); they break when files are moved and are harder to read.
+- **Links:** Links that reference a parent folder MUST use absolute paths from the repository root with a leading `/` (e.g., `/.xdrs/_core/adrs/principles/001-xdrs-core.md`). Sibling files and child folder references SHOULD use relative paths (e.g., `002-other-doc.md`, `.assets/image.png`, `subdir/file.md`). Never use relative paths that traverse up the directory tree (e.g., `../../.assets/test.png`, `../other.md`); they break when files are moved and are harder to read.
 - **Indexes**
   - Keep a canonical index with all XDRs of a certain type+scope in `.xdrs/[scope]/[type]/index.md`
   - Canonical index requirements:
@@ -126,20 +126,20 @@ Collectively, these are referred to as XDRs.
 ```text
 subject/
 |-- 001-xdr.md
-|-- assets/
+|-- .assets/
 |-- articles/
 |   |-- 001-article.md
-|   `-- assets/
+|   `-- .assets/
 |-- plans/
 |   |-- 001-plan.md
-|   `-- assets/
+|   `-- .assets/
 |-- researches/
 |   |-- 001-study.md
-|   `-- assets/
+|   `-- .assets/
 `-- skills/
     `-- 001-task/
         |-- SKILL.md
-        `-- assets/
+        `-- .assets/
 ```
 
 ## References

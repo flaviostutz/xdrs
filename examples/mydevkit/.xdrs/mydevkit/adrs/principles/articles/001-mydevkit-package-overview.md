@@ -26,11 +26,11 @@ commands.
 
 ### Sample packaged PNG asset
 
-This article includes a tiny PNG file in `articles/assets/` to demonstrate that document-local
+This article includes a tiny PNG file in `articles/.assets/` to demonstrate that document-local
 binary assets are packaged and extracted together with the `mydevkit` scope when an example really
 needs them.
 
-![Sample packaged PNG asset](assets/sample-package-asset.png)
+![Sample packaged PNG asset](.assets/sample-package-asset.png)
 
 ## References
 

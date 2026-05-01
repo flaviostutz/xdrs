@@ -8,7 +8,7 @@ The package composes two sources into one installable CLI:
 - the published `xdrs-core` package for `_core`, `AGENTS.md`, and the base extraction flow
 - the local `.xdrs/mydevkit/**` scope shipped by this package
 - the [consumer](consumer) workspace, which contains the local integration test flow for the packed tarball
-- a sample PNG in `.xdrs/mydevkit/adrs/principles/articles/assets/` showing how document-local binary assets ship with the example package
+- a sample PNG in `.xdrs/mydevkit/adrs/principles/articles/.assets/` showing how document-local binary assets ship with the example package
 
 ## Files to look at
 

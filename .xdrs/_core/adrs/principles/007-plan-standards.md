@@ -31,7 +31,7 @@ Plans are Markdown documents placed inside a subject folder alongside decision r
 - Plans MUST include an `Expected end date:` field in ISO format (YYYY-MM-DD) inside the `## Proposed Solution` section.
 - Always use lowercase file names.
 - Never use emojis in plan content.
-- Images and other local resource files referenced by a plan SHOULD live in `plans/assets/` next to the plan files.
+- Images and other local resource files referenced by a plan MUST live in `plans/.assets/` next to the plan files.
 
 **Folder layout**
 
@@ -42,7 +42,7 @@ Plans are Markdown documents placed inside a subject folder alongside decision r
       [subject]/
         plans/
           [number]-[short-title].md
-          assets/
+          .assets/
 ```
 
 Examples:
