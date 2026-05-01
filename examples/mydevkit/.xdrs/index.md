@@ -10,7 +10,7 @@ XDRs in scopes listed last override the ones listed first
 
 Base XDR standards extracted from the `xdrs-core` dependency.
 
-[View general ADRs Index](_core/adrs/index.md)
+[View scope _core](_core/index.md)
 
 ---
 
@@ -18,11 +18,11 @@ Base XDR standards extracted from the `xdrs-core` dependency.
 
 Reusable team scope added by this extension package.
 
-[View mydevkit ADRs Index](mydevkit/adrs/index.md)
+[View scope mydevkit](mydevkit/index.md)
 
 ---
 
-### _local
+### _local (reserved)
 
 Project-local decisions stay in each consumer workspace and are not bundled in this extracted shared index.
 

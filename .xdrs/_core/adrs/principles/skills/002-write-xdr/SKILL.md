@@ -167,6 +167,7 @@ If any check fails, revise and re-run this phase before proceeding.
 3. Add or verify the scope entry in `.xdrs/index.md`.
 4. If significant research was produced or already exists, link it from the XDR `## Considered Options` section.
 5. If concise rules, examples, or do/don't bullets help readers apply the decision correctly, add them inside `### Implementation Details` without turning the XDR into a long procedure.
+6. Evaluate whether the scope index at `.xdrs/[scope]/index.md` should be updated to reflect the new content. If the scope index does not exist, create it following article standards and the scope index rules in `_core-adr-001`.
 
 ### Phase 9: Verify Package structure with Lint
 

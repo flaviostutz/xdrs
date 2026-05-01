@@ -122,6 +122,7 @@ If any check fails, revise before continuing.
    mkdir -p .github/skills/[number]-[skill-name]
    ln -s ../../.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name] .github/skills/[number]-[skill-name]
    ```
+3. Evaluate whether the scope index at `.xdrs/[scope]/index.md` should be updated to reflect the new skill. If the scope index does not exist, create it following article standards and the scope index rules in `_core-adr-001`.
 
 ### Constraints
 

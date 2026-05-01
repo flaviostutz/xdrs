@@ -244,6 +244,7 @@ If any check fails, revise before continuing.
 1. Create the research file at `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`.
 2. Add an entry to `.xdrs/[scope]/[type]/index.md`.
 3. Add back-references from the related XDR, article, or skill when the relationship is important for discovery.
+4. Evaluate whether the scope index at `.xdrs/[scope]/index.md` should be updated to reflect the new research. If the scope index does not exist, create it following article standards and the scope index rules in `_core-adr-001`.
 
 ## Examples
 

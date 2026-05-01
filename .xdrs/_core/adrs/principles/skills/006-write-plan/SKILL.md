@@ -123,6 +123,7 @@ Rules to apply while drafting:
 1. Save the file at `.xdrs/[scope]/[type]/[subject]/plans/[number]-[short-title].md`.
 2. Add a link to the plan in the canonical index for that scope+type (`.xdrs/[scope]/[type]/index.md`).
 3. Add back-references in the XDRs, Research documents, and Skills that the plan relates to, under their `## References` section.
+4. Evaluate whether the scope index at `.xdrs/[scope]/index.md` should be updated to reflect the new plan. If the scope index does not exist, create it following article standards and the scope index rules in `_core-adr-001`.
 
 ### Phase 7: Verify with Lint
 
