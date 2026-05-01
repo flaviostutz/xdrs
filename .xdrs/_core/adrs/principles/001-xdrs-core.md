@@ -48,7 +48,7 @@ Collectively, these are referred to as XDRs.
   - `_core-adr-004` defines article standards
   - `_core-adr-006` defines research standards
   - `_core-adr-007` defines plan standards
-- For simple structure, flow, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
+- For simple structures, flows, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams) or ASCII art instead of external assets.
 - Images and other supporting files SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they SHOULD live in a sibling `assets/` folder next to the document.
   - XDRs in the subject root use `.xdrs/[scope]/[type]/[subject]/assets/`
   - Articles use `.xdrs/[scope]/[type]/[subject]/articles/assets/`

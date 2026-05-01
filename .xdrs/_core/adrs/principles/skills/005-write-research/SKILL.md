@@ -134,7 +134,7 @@ Rules:
 - Keep traceability to related XDRs, skills, articles, discussions, and external sources primarily in `## References`.
 - Use good-enough evidence. Experienced professional judgment is allowed, but the conclusions still need support that other colleagues can inspect and learn from.
 - Ensure the methods and test conditions are reproducible enough for an experienced professional to rerun or evolve the critical parts later.
-- Prefer plain Markdown, bullet points, tables, or ASCII art for simple explanations and comparisons, especially in the introduction and results.
+- Prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams), bullet points, or ASCII art for simple explanations and comparisons, especially in the introduction and results.
 - If the research genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/researches/assets/` and link them using a same-folder relative path (e.g., `assets/image.png`).
 - Links that reference a parent folder MUST use absolute paths from the repository root with a leading `/` (e.g., `/.xdrs/_core/adrs/principles/001-xdrs-core.md`). Sibling files and child folder references SHOULD use relative paths (e.g., `002-other-doc.md`, `assets/image.png`, `subdir/file.md`). Never use relative paths that traverse up the directory tree (e.g., `../../assets/test.png`, `../other.md`).
 - Keep section word limits within the standard and keep the document under 5000 words total unless the introduction explicitly states that a very detailed analysis is required.
