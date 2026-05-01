@@ -36,7 +36,7 @@ Collectively, these are referred to as XDRs.
 - ALWAYS use the following folder structure for XDR documents:
   `.xdrs/[scope]/[type]/[subject]/[number]-[short-title].md`
 - ALWAYS ignore symlinks paths. NEVER create or update documents inside symlinked folders.
-- **Readonly files are external XDRs.** A file with read-only permissions (e.g., `444` set by a distribution tool such as filedist) was distributed from an external source repository. It must NEVER be modified locally. To change it, submit the change to the source repository and re-extract the updated package.
+- **Files listed in `.filedist` are external XDRs.** A file whose path appears in the workspace root `.filedist` file was distributed from an external source repository. It must NEVER be modified locally. To change it, submit the change to the source repository and re-extract the updated package. The `.filedist` format is one entry per line: `<relative-path>|<package>|<version>`. A scope is considered external when any of its files appear in `.filedist`, and tools (such as `xdrs-core lint`) will skip external scopes by default.
 - Optional supporting artifacts under the same subject:
   - `.xdrs/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
   - `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
@@ -116,7 +116,7 @@ Collectively, these are referred to as XDRs.
     - Add a short description of what this scope is about (responsibilities, general worries, teams involved, link to discussion process, etc)
     - Add a list of other scope indexes that this scope might be related to (only add scopes that might be overridden). E.g: "business-x-mobileapp" scope could refer to "business-x" and "sensitive-data" scopes in its index list. XDRs in scopes listed last override XDRs in scopes listed first when addressing the same topic.
     - Each XDR element entry in the index MUST include a short description of its content, preferably with an imperative statement or the question it answers, when possible (<15 words). Example: "Use this while planning a new feature", "What communication tone we use with our customers?", "PNPM vs Yarn comparison study"
-  - Outside the scopes, keep a root index in `.xdrs/index.md` that links to each scope index (`.xdrs/[scope]/index.md`). Add the text "XDRs in scopes listed last override the ones listed first". The root index must not link directly to type indexes; readers navigate from the scope index to the type indexes. Use the link text pattern `View scope [scope_name]` for each scope link (e.g. `[View scope myteam](myteam/index.md)`).
+  - Outside the scopes, keep a root index in `.xdrs/index.md` that links to each scope index (`.xdrs/[scope]/index.md`). Add the text "XDRs in scopes listed last override the ones listed first". The root index must not link directly to type indexes; readers navigate from the scope index to the type indexes. Use the link text pattern `View scope [scope_name]` for each scope link (e.g. `[View scope myteam] linking to (myteam/index.md)`).
   - Always verify if indexes are up to date after making changes
 - **Scope index**
   - Each scope folder must maintain an `index.md` file at `.xdrs/[scope]/index.md`.

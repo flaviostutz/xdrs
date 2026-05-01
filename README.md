@@ -153,7 +153,7 @@ Multiple scope packages can be combined in the same workspace by listing them as
 The published package exposes the `xdrs-core` CLI.
 
 - Bootstrap or extract managed XDR files with the existing `filedist`-backed commands such as `npx -y xdrs-core extract` and `npx -y xdrs-core check`.
-- Lint an XDR tree with `npx -y xdrs-core lint .`. By default, read-only files distributed from external scopes are skipped; use `--all` to include them.
+- Lint an XDR tree with `npx -y xdrs-core lint .`. By default, scopes whose files are listed in the workspace root `.filedist` file are treated as external and skipped; use `--all` to include them.
 
 The `lint` command reads `./.xdrs/**` from the given workspace path and checks common consistency rules, including:
 
