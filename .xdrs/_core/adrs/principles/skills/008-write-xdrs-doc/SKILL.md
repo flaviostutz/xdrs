@@ -43,6 +43,16 @@ Read the full content of the skill file for the inferred type, then follow all i
 | Plan | `.xdrs/_core/adrs/principles/skills/006-write-plan/SKILL.md` |
 | Presentation | `.xdrs/_core/adrs/principles/skills/007-write-presentation/SKILL.md` |
 
+### Phase 3: Validate Mermaid Diagrams
+
+1. After the delegated skill completes, scan all files written in this session for fenced ` ```mermaid ` code blocks.
+2. For each diagram found, extract the content to a temporary `.mmd` file and run:
+   ```bash
+   npx -y @mermaid-js/mermaid-cli -i <tempfile>.mmd --quiet 2>&1
+   ```
+3. For each diagram that fails validation, report the error to the user and ask them to correct the diagram before saving.
+4. Delete all temporary files created in this step.
+
 ### Constraints
 
 - MUST read the full target SKILL.md before proceeding — do not rely on summaries or prior knowledge of the target skill.
