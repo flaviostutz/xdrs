@@ -26,7 +26,7 @@ Articles are Markdown documents placed inside a subject folder alongside policie
 - The primary objective of an article is to make information available and accessible to humans. Good copywriting style, storytelling, clear organization, and clustering of related information are essential. Avoid repetitive content; each sentence SHOULD add new value.
 - Articles SHOULD stay under 2000 words (approximately a 10-minute read) to maximize reader engagement. When planning an article, keep it as small as possible. Break large subjects into separate chapters, each in its own article, so readers can consume and understand sections independently.
 - When a topic is broken into multiple articles, organize them as a **series**: each article MUST declare its position at the very top (e.g., `_This is article 2/4 of the "Engineering Practices" series._`) and MUST link to the previous and next articles in the series so readers can navigate the sequence without returning to an index.
-- Articles MUST NOT exceed 8000 words (hard limit). Move or point to detailed contents referenced in Policy decisions, researches, plans, or skills.
+- Articles MUST NOT exceed 8000 words (hard limit). Move or point to detailed contents referenced in Policy decisions, researches, initiatives, or skills.
 
 **Content and structure**
 
@@ -38,8 +38,7 @@ Articles are Markdown documents placed inside a subject folder alongside policie
 - When an article tells readers which decisions to follow, it SHOULD check `valid-from:` first to determine the convergence date, `apply-to:` second to determine context fit, and the decision text itself last. All documents present in the collection are considered active; articles MUST NOT present out-of-window or out-of-scope Policies as current rules for the discussed context.
 - Articles MUST remain consistent with the Policies, Research documents, and Skills they reference. When a referenced artifact changes, the article MUST be reviewed and updated.
 - Place an article in the subject folder that best matches its topic using the required list of subjects per type defined in `_core-adr-policy-001`. If an article spans more than one subject, place it in `principles`.
-- For simple structure, flow, layout, or relationship indications, articles SHOULD prefer plain Markdown, tables, or ASCII art instead of external assets.
-- Any non-Markdown files referenced by an article SHOULD be used only when they are materially necessary and MUST live in `articles/.assets/` next to the article files. See `_core-adr-policy-001` for the canonical `.assets/` path conventions.
+- For diagram format preferences and non-Markdown asset rules, see [`_core-adr-policy-020`](020-media-and-asset-standards.md). Articles SHOULD use diagrams to illustrate concepts, overviews, and relationships; draw.io SHOULD be used for conceptual and relationship diagrams (e.g., component maps, context views, architecture overviews) when Mermaid cannot adequately express them.
 - File names MUST be lowercase.
 - MUST NOT use emojis in article content.
 

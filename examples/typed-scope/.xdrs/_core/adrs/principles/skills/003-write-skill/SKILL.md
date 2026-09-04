@@ -15,14 +15,10 @@ Guides the creation of a well-structured skill package by following `_core-adr-p
 
 ## Instructions
 
-### Phase 0: Prerequisites Gate — MUST complete before writing
+### Phase 0: Scope Placement and Prerequisites Gate — MUST complete before writing
 
-Identify the target scope from the user's request; use `_local` if none is specified. Read the scope's `index.md` frontmatter and perform ALL of the following checks. If ANY check fails, output a FAIL result immediately and do not proceed:
-
-- **Follows scopes:** If the scope declares `follows:` entries (e.g., `follows: myarea-core, shared-standards`), verify that each listed scope directory exists in the workspace AND contains an accessible `index.md` (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing or unreadable, output: `FAIL — Cannot proceed: scope \`[scope-name]\` is listed in \`follows\` but its policies are not present in the workspace. Install it before authoring documents in this scope, as the governance constraints cannot be verified.`
-- **Local meta-policies:** Scan the target scope's `[type]/principles/` directories for all files whose filename title starts with `core` (i.e., `NNN-core.md` or `NNN-core-{qualifier}.md`), excluding scope-type definition files. If any are found but cannot be read, output: `FAIL — Cannot proceed: local meta-policy \`[filename]\` exists in scope \`[scope-name]\` but could not be read. Without it, the document cannot be authored in full compliance with the scope's governance.` Zero matches is valid.
-- **Scope-type:** Read the scope's `scope-type` from its `index.md`. If `scope-type` is declared, search the `[type]/principles/` directories of all `core`-type scopes in the workspace for a file whose name ends with `{scope-type}-scope-type.md`. If the scope declares a `scope-type` but no matching file is found, output: `FAIL — Cannot proceed: scope \`[scope-name]\` declares \`scope-type: [scope-type]\` but no \`[scope-type]-scope-type.md\` policy exists in any \`core\`-type scope in the workspace. The scope is READ-ONLY; install the scope-type governance before authoring documents in this scope.`
-- **Rationale:** Authoring a document without all mandatory governance layers loaded risks producing content that silently violates scope policies. Every governance layer MUST be present before writing begins.
+1. Run the scope placement analysis from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/scope-placement.md` to determine and confirm the target scope.
+2. Once the scope is confirmed, run the prerequisites gate from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/prerequisites-gate.md`. Substitute `[DOCUMENT TYPE]` with `skill`.
 
 ### Phase 1: Understand the Skill Goal
 
@@ -44,10 +40,9 @@ Quick test:
 - "How to evaluate or decide on architecture?" → ADR
 - "How to execute a business process or policy?" → BDR
 
-**Scope** — use `_local` unless the user explicitly names another scope.
-- If the user names a scope other than `_local`, check the workspace root `.filedist.lock` file. If any file under `.xdrs/[scope]/` appears in `.filedist.lock`, the scope is external and new documents MUST NOT be created there. Inform the user and ask them to choose a non-external scope.
+**Scope** — confirmed in Phase 0. Follow the external-scope validation in `.xdrs/_core/adrs/principles/skills/.assets/scope-selection.md`.
 
-**Subject** — MUST read `_core-adr-policy-016` ([016-policy-subjects.md](../../016-policy-subjects.md)) in full before choosing. That document defines all allowed subjects per type with full descriptions, examples, and disambiguation tiebreakers. Do not rely on summaries or prior knowledge of the subject list — always read the policy and select the most specific subject that matches the skill's activity domain.
+**Subject** — follow the subject selection guidance in `.xdrs/_core/adrs/principles/skills/.assets/scope-selection.md`.
 
 **Skill number** — scan `.xdrs/[scope]/[type]/[subject]/skills/` for the highest existing number and increment by 1. Never reuse numbers from deleted skills.
 
@@ -104,7 +99,7 @@ Rules:
 - Do not duplicate content from referenced Policies — link instead.
 - Do not present the skill itself as policy; mandatory behavior must come from referenced Policies or other policy artifacts.
 - When the skill depends on Policies, make the activation logic and instructions consistent with the Policy metadata so the skill does not operationalize inactive or out-of-scope decisions.
-- Prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams), or ASCII art for simple structure, flow, layout, or relationship indications.
+- For diagrams and non-Markdown assets, follow `_core-adr-policy-020`: prefer plain Markdown tables/lists first, then ASCII art for very simple cases, then Mermaid.js (sequence, state, activity, entity diagrams) for complex ones, then draw.io when Mermaid is insufficient — save as Editable Vector (File → Save As → Editable Vector) and store as `.svg` in the sibling `.assets/` folder.
 - If `SKILL.md` genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/skills/[number]-[skill-name]/.assets/` and link them using a same-folder relative path (e.g., `.assets/image.png`).
 - Use relative paths for all links; never use absolute paths starting with `/`.
 - No emojis. Lowercase filenames. Target under 6500 words.
@@ -118,7 +113,7 @@ Before writing files, verify:
 3. **Length**: Under 6500 words? Trim verbose explanations.
 4. **Duplication**: Does this overlap an existing skill? If yes, revise.
 5. **References**: Are all related XDRs and skills linked, including the cases where the skill operationalizes multiple XDRs?
-6. **Meta-policy compliance**: Check the target scope's `index.md` for a `follows` frontmatter field. `_core` Policies always apply to all scopes. If `follows` lists additional core scope names, verify that each listed scope directory exists in the workspace (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing, STOP immediately and tell the user: "Scope `[scope-name]` is listed in `follows` but not found in the workspace. Install it before proceeding." Once all `follows` scopes are confirmed present, verify the skill's activation criteria, phase structure, and content satisfy any requirements from those Policies. Last-listed scope in `follows` takes precedence.
+6. **Meta-policy compliance**: Run the shared module at `.xdrs/_core/adrs/principles/skills/.assets/meta-policy-compliance.md`. Substitute `[DOCUMENT]` with `skill`.
 
 If any check fails, revise before continuing.
 
@@ -134,11 +129,7 @@ If any check fails, revise before continuing.
 
 ### Phase 7: Verify with Lint
 
-1. Run the CLI lint utility from the repository root:
-   ```
-   npx -y xdrs-core@latest lint
-   ```
-2. Fix all reported errors before considering the task complete.
+Follow the lint verification steps in `.xdrs/_core/adrs/principles/skills/.assets/lint-verification.md`.
 
 ### Constraints
 

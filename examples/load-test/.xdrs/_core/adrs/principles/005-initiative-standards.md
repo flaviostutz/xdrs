@@ -1,11 +1,11 @@
 ---
-name: _core-adr-policy-005-plan-standards
-description: Plan standards.
+name: _core-adr-policy-005-initiative-standards
+description: Initiative standards.
 apply-to: All XDRS scopes
 valid-from: 2025-01-01
 ---
 
-# _core-adr-policy-005: Plan standards
+# _core-adr-policy-005: Initiative standards
 
 ## Context and Problem Statement
 

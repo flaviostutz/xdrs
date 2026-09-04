@@ -21,7 +21,7 @@ Provides clear ownership by scope, predictable navigation, and reusable decision
 
 ### Details
 
-A standard Decision Record normally combines several concerns in the same document: a reason (why, options considered), a policy (rules, what is the decision), a plan (consequences, when it will be implemented), a how-to (step-by-step how-to procedure), and a view on a topic. The XDRS framework separates these concerns into different document types: Policies as the source of truth for the core of the decision, Research for reasoning and evidence, Plans for implementation approach, Skills for execution procedures, and Articles for topic overviews. Supporting artifacts MAY explain, justify, or operationalize the policy, but they do not replace it. The compilation process of a raw Decision Record is to distribute it into those different documents and create links between them. You can also use the framework standalone, generating these elements individually directly during the writing process.
+A standard Decision Record normally combines several concerns in the same document: a reason (why, options considered), a policy (rules, what is the decision), an initiative (consequences, when it will be implemented), a how-to (step-by-step how-to procedure), and a view on a topic. The XDRS framework separates these concerns into different document types: Policies as the source of truth for the core of the decision, Research for reasoning and evidence, Initiatives for implementation approach, Skills for execution procedures, and Articles for topic overviews. Supporting artifacts MAY explain, justify, or operationalize the policy, but they do not replace it. The compilation process of a raw Decision Record is to distribute it into those different documents and create links between them. You can also use the framework standalone, generating these elements individually directly during the writing process.
 
 Policies can be of different kinds, depending on the nature of the decision:
 - BDR (Business Decision Record): Captures business process, product features, procedures and strategic decisions. Examples: business rules, product policies, customer service, business workflow, control frameworks for regulators for finance, product procedures and manuals, KYC requirements, business requirements in general
@@ -55,18 +55,18 @@ ADR and EDR share the same six technical subject names (see [`_core-adr-policy-0
   - `[xdrs-root]/[scope]/[type]/[subject]/researches/[number]-[short-title].md`
   - `[xdrs-root]/[scope]/[type]/[subject]/skills/[number]-[skill-name]/SKILL.md`
   - `[xdrs-root]/[scope]/[type]/[subject]/articles/[number]-[short-title].md`
-  - `[xdrs-root]/[scope]/[type]/[subject]/plans/[number]-[short-title].md`
+  - `[xdrs-root]/[scope]/[type]/[subject]/initiatives/[number]-[short-title].md`
 - Research, skills, and articles are part of the framework, but each has its own concept-specific standards in dedicated Policies. This Policy defines the shared framework baseline; `_core-adr-policy-002` defines the Policy document writing standard.
   - `_core-adr-policy-002` defines Policy standards (document writing)
   - `_core-adr-policy-003` defines skill standards
   - `_core-adr-policy-004` defines article standards
   - `_core-adr-policy-006` defines research standards
-  - `_core-adr-policy-007` defines plan standards
-- For simple structures, flows, layout, or relationship indications, documents SHOULD prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams) or ASCII art instead of external assets.
-- Any non-Markdown supporting files referenced by a document (schemas, JSON examples, images, diagrams, binaries, or any other data files) SHOULD be used only when they are materially necessary to preserve clarity, fidelity, or evidence. When used, they MUST live in a sibling `.assets/` folder next to the document.
+  - `_core-adr-policy-007` defines initiative standards
+- For diagram format preferences and non-Markdown asset rules, see [`_core-adr-policy-020`](020-media-and-asset-standards.md). **Per-document-type `.assets/` paths:**
   - Policies in the subject root use `[xdrs-root]/[scope]/[type]/[subject]/.assets/`
   - Articles use `[xdrs-root]/[scope]/[type]/[subject]/articles/.assets/`
   - Research uses `[xdrs-root]/[scope]/[type]/[subject]/researches/.assets/`
+  - Initiatives use `[xdrs-root]/[scope]/[type]/[subject]/initiatives/.assets/`
   - Skills use `[xdrs-root]/[scope]/[type]/[subject]/skills/[number]-[skill-name]/.assets/`
 - **Scopes:** 
   - Short name that defines a group or a package of XDRS
@@ -75,36 +75,39 @@ ADR and EDR share the same six technical subject names (see [`_core-adr-policy-0
   - **Types:** `adrs`, `bdrs`, `edrs`
   - there can exist sufixes to the standard scope names (e.g: `business-x-mobileapp`, `business-y-servicedesk`)
   - The `-core` suffix designates a scope as the meta governance layer for a domain. See `_core-adr-policy-011` for the `core` scope type definition.
-  - **Scope types:** Every scope MUST declare its type via a `scope-type` field in its `index.md` YAML frontmatter. A `scope-type` value is valid when a `{scope-type}-scope-type` policy exists in the `principles` subject of any `core`-type scope in the workspace. Custom scope-type names MUST NOT start with `_`. The five built-in scope types and their definitions are:
+  - **Scope types:** Every scope MUST declare its type via a `scope-type` field in its `index.md` YAML frontmatter. A `scope-type` value is valid when a `{scope-type}-scope-type` policy exists in the `principles` subject of any `core`-type scope in the workspace. Multiple types MAY be declared using a comma-separated list (e.g., `scope-type: compiled, internal-docs`); each element MUST be valid independently. See `_core-adr-policy-010` rules 06 and 07 for the full multi-type grammar. Custom scope-type names MUST NOT start with `_`. The five built-in scope types and their definitions are:
     - `core` — see [`_core-adr-policy-011`](011-core-scope-type.md)
     - `reference` — see [`_core-adr-policy-012`](012-reference-scope-type.md)
     - `platform` — see [`_core-adr-policy-013`](013-platform-scope-type.md)
     - `standard` — see [`_core-adr-policy-014`](014-standard-scope-type.md)
     - `_local` — see [`_core-adr-policy-015`](015-local-scope-type.md)
   - Scope name suffixes are unlimited and MAY be used in any scope type.
-  - When writing or generating a new XDRS root `index.md`, use the following default ordering (scopes listed later override earlier ones): `core → reference → platform → standard → _local`. Custom-type scopes SHOULD be placed in the `standard` position.
+  - When writing or generating a new XDRS root `index.md`, use the following default ordering (scopes listed later override earlier ones): `core → reference → platform → standard → _local`. Custom-type scopes SHOULD be placed in the `standard` position. This ordering is the **default fallback** for conflict resolution between scopes: `extends:` declarations (Section D of `_core-adr-policy-010`) take precedence over it for policy document inheritance, and `follows:` declarations govern authoring governance rules independently. See `_core-adr-policy-010.36-root-index-ordering-fallback` for the full normative definition.
   - **Scope index frontmatter fields:** Every scope's `index.md` MUST include the following YAML frontmatter. Fields match the Policy frontmatter standard (`_core-adr-policy-002`) in purpose, adjusted for scope-level semantics:
     - `name` (required): The scope identifier, MUST exactly match the scope directory name (e.g., `myteam`, `cloud-platform-aws`). Used by tools to verify scope identity.
     - `description` (required): Short overview of what this scope covers and who the intended audience is. Used by AI agents for discovery and relevance matching. Max 40 words.
-    - `scope-type` (required): Scope classification type. MUST match a `{scope-type}-scope-type` policy in any `core`-type scope's `principles/` directory. See `_core-adr-policy-010` for the full governance convention and `_core-adr-policy-011`, `012`–`015` for built-in type definitions.
+    - `scope-type` (required): Scope classification type. MAY be a comma-separated list of types (e.g., `scope-type: compiled, internal-docs`). Each element MUST match a `{scope-type}-scope-type` policy in any `core`-type scope's `principles/` directory. See `_core-adr-policy-010` rules 06 and 07 for the full multi-type grammar and `_core-adr-policy-011`, `012`–`015` for built-in type definitions.
     - `apply-to` (required): Declares in which contexts — teams, systems, codebases, or environments — the decisions in this scope are relevant. Max 30 words.
     - `valid-from` (required): ISO date (YYYY-MM-DD) from which this scope became active.
     - `metadata` (optional): Arbitrary key-value map for additional scope metadata.
-    - `follows` (optional): Core scope names whose Policies apply as mandatory conventions to this scope, beyond `_core`. Last-listed takes precedence on conflicts (e.g., `follows: myarea-core, shared-standards`).
-    - `related-scopes` (optional): Scope names of parent, sibling, or child scopes. Use when structural links help verify policy correctness across related scopes.
+    - `follows` (optional): Core scope names whose Policies apply as mandatory governance conventions to this scope, beyond `_core`. Last-listed takes precedence on conflicts (e.g., `follows: myarea-core, shared-standards`). All referenced scopes MUST exist in the workspace; if any is absent, READ/WRITE/REVIEW operations MUST fail.
+    - `extends` (optional): Scope names whose **policy documents** (decision records only — not skills, articles, research, or initiatives) are inherited by this scope as if they were authored here. Any scope type except `_local` and `_core` may be referenced. Last-listed extended scope takes precedence on conflicts; the extending scope's own policies always take highest precedence. Depth-first transitive resolution applies: if A extends [B, C] and B extends [D], the effective precedence order is D < B < C < A. `extends:` and `follows:` MUST reference disjoint scope sets. All referenced scopes MUST exist in the workspace; if any is absent, READ/WRITE/REVIEW operations MUST fail. When an extending scope's policy overrides an inherited policy on the same topic, a `## Conflicts` section MUST document the override. Scopes referenced only via `extends:` chains (not entry scopes in the root index) are exempt from the root index link requirement. `extends:` takes precedence over root index ordering for conflict resolution between the scopes involved; root index ordering is the fallback for all other scope pairs. See `_core-adr-policy-010` Section D (rules 27–35) and Section E (rule 36) for full normative rules.
+    - `license` (optional): SPDX identifier for the scope's content license.
+    - `metadata` (optional): Arbitrary key-value map for additional scope metadata.
 - **Subjects:** The subject folder MUST be chosen per [`_core-adr-policy-016`](016-policy-subjects.md), which defines allowed subjects, full descriptions, examples, and disambiguation tiebreakers.
 - **Policy numbering:** Numbers MUST be assigned within the subject-based block ranges defined in [`_core-adr-policy-017`](017-policy-numbering-ranges.md). Use the lowest available number within the block for the chosen subject. See [`_core-adr-policy-002-policy-standards.01-freeze-reference-exemption`](002-policy-standards.md) for exemptions.
 - MUST NOT use emojis
 - **Links:** Use relative paths for all links; MUST NOT use absolute paths starting with `/`.
 - **Indexes**
-  - Every document in the collection (Policies, skills, articles, research, and plans) MUST be reachable through the index chain: root index → scope index → type index → document. A document that exists on disk but is not linked from its canonical type index is considered an orphan and MUST be added to the index or removed.
-  - Keep a canonical type index with all documents of a certain type+scope in `[xdrs-root]/[scope]/[type]/index.md`. The type index MUST link to every Policy, skill, article, research, and plan under that type+scope.
+  - Every document in the collection (Policies, skills, articles, research, and initiatives) MUST be reachable through the index chain: root index → scope index → type index → document. A document that exists on disk but is not linked from its canonical type index is considered an orphan and MUST be added to the index or removed.
+  - Index files MUST NOT contain policy rules or normative requirements. Those MUST be placed in dedicated Policy documents. Indexes are navigation artifacts only: links and short descriptions.
+  - Keep a canonical type index with all documents of a certain type+scope in `[xdrs-root]/[scope]/[type]/index.md`. The type index MUST link to every Policy, skill, article, research, and initiative under that type+scope.
   - Canonical index requirements:
     - Organize XDRS documents by subject for easier navigation
     - Add a short description of what this scope is about (responsibilities, general worries, teams involved, link to discussion process, etc)
     - Add links to related scope indexes that this scope might override or be overridden by (scopes listed last override earlier ones on the same topic).
     - Each XDRS element entry MUST include a short description. SHOULD use an imperative statement or the question it answers (<15 words). Example: "Use this while planning a new feature", "What communication tone we use with our customers?"
-  - Outside the scopes, keep a root index in `[xdrs-root]/index.md` that links to each scope index (`[xdrs-root]/[scope]/index.md`). Add the text "XDRS scopes listed last override the ones listed first". The root index MUST NOT link directly to type indexes; readers navigate from the scope index to the type indexes. Use the link text pattern `View scope [scope_name]` for each scope link (e.g. `[View scope myteam] linking to (myteam/index.md)`).
+  - Outside the scopes, keep a root index in `[xdrs-root]/index.md` that links to each scope index (`[xdrs-root]/[scope]/index.md`). Add the text "XDRS scopes listed last override the ones listed first" followed by a note that `extends:` and `follows:` declarations in individual scope indexes take precedence over this ordering for their respective resolution concerns (see `_core-adr-policy-010.36-root-index-ordering-fallback`). The root index MUST NOT link directly to type indexes; readers navigate from the scope index to the type indexes. Use the link text pattern `View scope [scope_name]` for each scope link (e.g. `[View scope myteam] linking to (myteam/index.md)`).
   - MUST verify if indexes are up to date after making changes
 - **Scope index**
   - Each scope folder MUST maintain an `index.md` file at `[xdrs-root]/[scope]/index.md`.
@@ -112,7 +115,7 @@ ADR and EDR share the same six technical subject names (see [`_core-adr-policy-0
   - The audience for the scope index are engineers, architects, or business analysts who want to check if the scope's contents are useful before diving into specific documents. Write a guided summary that helps them decide whether to explore further.
   - Focus on the most relevant content of the scope: what decisions are covered, what problems they address, and how the scope relates to other scopes.
   - At the end of the scope index, MUST add links to the canonical type indexes (`adrs/index.md`, `bdrs/index.md`, `edrs/index.md`) that exist within the scope.
-  - Whenever the contents of a scope change (new Policies, skills, articles, research, or plans are added, updated, or removed), evaluate whether the scope index SHOULD be updated to reflect the newer contents.
+  - Whenever the contents of a scope change (new Policies, skills, articles, research, or initiatives are added, updated, or removed), evaluate whether the scope index SHOULD be updated to reflect the newer contents.
 
 **Folder structure examples** (using the default `.xdrs/` root):
 - `.xdrs/business-x/edrs/platform/003-required-development-workflow.md`
@@ -126,8 +129,8 @@ subject/
 |-- articles/
 |   |-- 001-article.md
 |   `-- .assets/
-|-- plans/
-|   |-- 001-plan.md
+|-- initiatives/
+|   |-- 001-initiative.md
 |   `-- .assets/
 |-- researches/
 |   |-- 001-study.md
@@ -149,4 +152,5 @@ subject/
 - [_core-adr-policy-003 - Skill standards](003-skill-standards.md)
 - [_core-adr-policy-004 - Article standards](004-article-standards.md)
 - [_core-adr-policy-006 - Research standards](006-research-standards.md)
-- [_core-adr-policy-007 - Plan standards](007-plan-standards.md)
+- [_core-adr-policy-007 - Initiative standards](007-initiative-standards.md)
+- [_core-adr-policy-020 - Media and asset standards](020-media-and-asset-standards.md) - Diagram format preferences and non-Markdown asset rules

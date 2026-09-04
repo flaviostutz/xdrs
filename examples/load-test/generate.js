@@ -6,8 +6,8 @@
  *  1500  decisions  (50%) – ADR/BDR/EDR  (600 ADR · 450 BDR · 450 EDR)
  *   450  research   (15%)
  *   600  skills     (20%) – each file is a SKILL.md
- *   300  articles   (10%)
- *   150  plans       (5%)
+ *   300  articles    (10%)
+ *   150  initiatives  (5%)
  *
  * Scope: city-traffic  (trains, buses, cars, bicycles, pedestrians)
  * Domains: infrastructure, systems, monitoring, maintenance, standards, development,
@@ -612,14 +612,14 @@ function genArticle(scope, typeShort, subject, num, slug) {
   ].join('\n');
 }
 
-function genPlan(scope, typeShort, subject, num, slug) {
+function genInitiative(scope, typeShort, subject, num, slug) {
   const title = titleCase(slug);
   const subjectTitle = titleCase(subject);
   // Use a future date ~18 months out from 2026-05-05
   const endDate = '2027-11-30';
 
   return [
-    `# city-traffic-${typeShort}-plan-${pad(num)}: ${title}`,
+    `# city-traffic-${typeShort}-initiative-${pad(num)}: ${title}`,
     ``,
     `## Executive Summary`,
     ``,
@@ -656,7 +656,7 @@ function genPlan(scope, typeShort, subject, num, slug) {
     `| 2 | Training materials developed and delivered | Training Team | 2026-09-01 |`,
     `| 3 | Tooling and templates deployed to all teams | Engineering Team | 2026-11-01 |`,
     `| 4 | First compliance audit completed | Governance Team | 2027-02-01 |`,
-    `| 5 | Full rollout completed and plan closed | Programme Manager | ${endDate} |`,
+    `| 5 | Full rollout completed and initiative closed | Programme Manager | ${endDate} |`,
     ``,
     `## Deliverables`,
     ``,
@@ -668,7 +668,7 @@ function genPlan(scope, typeShort, subject, num, slug) {
     `## References`,
     ``,
     `- Related policies in [${typeShort.toUpperCase()}s index](../../index.md)`,
-    `- [Plan standards](../../../../_core/adrs/principles/005-plan-standards.md)`,
+    `- [Initiative standards](../../../../_core/adrs/principles/005-initiative-standards.md)`,
   ].join('\n');
 }
 
@@ -676,26 +676,26 @@ function genPlan(scope, typeShort, subject, num, slug) {
 // File plan
 // ---------------------------------------------------------------------------
 //
-// Each entry: { type, subject, decisions, research, skills, articles, plans }
+// Each entry: { type, subject, decisions, research, skills, articles, initiatives }
 //
 const PLAN = [
-  // ADRs – 600 decisions · 180 research · 240 skills · 120 articles · 60 plans
-  { type: 'adrs', typeShort: 'adr', subject: 'platform',    decisions: 102, research: 30, skills: 42, articles: 21, plans:  9 },
-  { type: 'adrs', typeShort: 'adr', subject: 'application', decisions: 102, research: 30, skills: 42, articles: 21, plans: 12 },
-  { type: 'adrs', typeShort: 'adr', subject: 'governance',   decisions:  99, research: 30, skills: 39, articles: 21, plans: 12 },
-  { type: 'adrs', typeShort: 'adr', subject: 'operations',  decisions:  99, research: 30, skills: 39, articles: 18, plans:  9 },
-  { type: 'adrs', typeShort: 'adr', subject: 'principles',  decisions:  99, research: 30, skills: 39, articles: 21, plans:  9 },
-  { type: 'adrs', typeShort: 'adr', subject: 'data',        decisions:  99, research: 30, skills: 39, articles: 18, plans:  9 },
-  // BDRs – 450 decisions · 150 research · 195 skills · 105 articles · 45 plans
-  { type: 'bdrs', typeShort: 'bdr', subject: 'operations',  decisions: 120, research: 39, skills: 51, articles: 27, plans: 12 },
-  { type: 'bdrs', typeShort: 'bdr', subject: 'governance',  decisions: 108, research: 36, skills: 48, articles: 27, plans: 12 },
-  { type: 'bdrs', typeShort: 'bdr', subject: 'product',     decisions: 117, research: 39, skills: 51, articles: 27, plans: 12 },
-  { type: 'bdrs', typeShort: 'bdr', subject: 'finance',     decisions: 105, research: 36, skills: 45, articles: 24, plans:  9 },
-  // EDRs – 450 decisions · 120 research · 165 skills · 75 articles · 45 plans
-  { type: 'edrs', typeShort: 'edr', subject: 'platform',    decisions: 117, research: 30, skills: 42, articles: 21, plans: 12 },
-  { type: 'edrs', typeShort: 'edr', subject: 'application',  decisions: 114, research: 30, skills: 42, articles: 18, plans: 12 },
-  { type: 'edrs', typeShort: 'edr', subject: 'data',         decisions: 111, research: 30, skills: 42, articles: 18, plans: 12 },
-  { type: 'edrs', typeShort: 'edr', subject: 'governance',   decisions: 108, research: 30, skills: 39, articles: 18, plans:  9 },
+  // ADRs – 600 decisions · 180 research · 240 skills · 120 articles · 60 initiatives
+  { type: 'adrs', typeShort: 'adr', subject: 'platform',    decisions: 102, research: 30, skills: 42, articles: 21, initiatives:  9 },
+  { type: 'adrs', typeShort: 'adr', subject: 'application', decisions: 102, research: 30, skills: 42, articles: 21, initiatives: 12 },
+  { type: 'adrs', typeShort: 'adr', subject: 'governance',   decisions:  99, research: 30, skills: 39, articles: 21, initiatives: 12 },
+  { type: 'adrs', typeShort: 'adr', subject: 'operations',  decisions:  99, research: 30, skills: 39, articles: 18, initiatives:  9 },
+  { type: 'adrs', typeShort: 'adr', subject: 'principles',  decisions:  99, research: 30, skills: 39, articles: 21, initiatives:  9 },
+  { type: 'adrs', typeShort: 'adr', subject: 'data',        decisions:  99, research: 30, skills: 39, articles: 18, initiatives:  9 },
+  // BDRs – 450 decisions · 150 research · 195 skills · 105 articles · 45 initiatives
+  { type: 'bdrs', typeShort: 'bdr', subject: 'operations',  decisions: 120, research: 39, skills: 51, articles: 27, initiatives: 12 },
+  { type: 'bdrs', typeShort: 'bdr', subject: 'governance',  decisions: 108, research: 36, skills: 48, articles: 27, initiatives: 12 },
+  { type: 'bdrs', typeShort: 'bdr', subject: 'product',     decisions: 117, research: 39, skills: 51, articles: 27, initiatives: 12 },
+  { type: 'bdrs', typeShort: 'bdr', subject: 'finance',     decisions: 105, research: 36, skills: 45, articles: 24, initiatives:  9 },
+  // EDRs – 450 decisions · 120 research · 165 skills · 75 articles · 45 initiatives
+  { type: 'edrs', typeShort: 'edr', subject: 'platform',    decisions: 117, research: 30, skills: 42, articles: 21, initiatives: 12 },
+  { type: 'edrs', typeShort: 'edr', subject: 'application',  decisions: 114, research: 30, skills: 42, articles: 18, initiatives: 12 },
+  { type: 'edrs', typeShort: 'edr', subject: 'data',         decisions: 111, research: 30, skills: 42, articles: 18, initiatives: 12 },
+  { type: 'edrs', typeShort: 'edr', subject: 'governance',   decisions: 108, research: 30, skills: 39, articles: 18, initiatives:  9 },
 ];
 
 // Verify plan totals
@@ -705,9 +705,9 @@ const totals = PLAN.reduce(
     research:  acc.research  + r.research,
     skills:    acc.skills    + r.skills,
     articles:  acc.articles  + r.articles,
-    plans:     acc.plans     + r.plans,
+    initiatives: acc.initiatives + r.initiatives,
   }),
-  { decisions: 0, research: 0, skills: 0, articles: 0, plans: 0 }
+  { decisions: 0, research: 0, skills: 0, articles: 0, initiatives: 0 }
 );
 
 const total = Object.values(totals).reduce((s, v) => s + v, 0);
@@ -745,12 +745,12 @@ function nextDecisionNumber(type, subject) {
 const typeArtifactLinks = {};
 
 for (const row of PLAN) {
-  const { type, typeShort, subject, decisions, research, skills, articles, plans } = row;
+  const { type, typeShort, subject, decisions, research, skills, articles, initiatives } = row;
   const topicKey = `${typeShort}_${subject}`;
   const subjectDir = path.join(OUT, type, subject);
 
   if (!typeArtifactLinks[type]) {
-    typeArtifactLinks[type] = { decisions: [], research: [], skills: [], articles: [], plans: [] };
+    typeArtifactLinks[type] = { decisions: [], research: [], skills: [], articles: [], initiatives: [] };
   }
   const links = typeArtifactLinks[type];
 
@@ -795,14 +795,14 @@ for (const row of PLAN) {
     links.articles.push(`- [city-traffic-article-${pad(i)}-${slug}](./${subject}/articles/${fileName})`);
   }
 
-  // ── Plans ─────────────────────────────────────────────────────────────────
-  const plansDir = path.join(subjectDir, 'plans');
-  for (let i = 1; i <= plans; i++) {
+  // ── Initiatives ───────────────────────────────────────────────────────────
+  const initiativesDir = path.join(subjectDir, 'initiatives');
+  for (let i = 1; i <= initiatives; i++) {
     const slug = topic(topicKey, i - 1);
     const fileName = `${pad(i)}-${slug}.md`;
-    write(path.join(plansDir, fileName), genPlan('city-traffic', typeShort, subject, i, slug));
+    write(path.join(initiativesDir, fileName), genInitiative('city-traffic', typeShort, subject, i, slug));
     generated++;
-    links.plans.push(`- [city-traffic-plan-${pad(i)}-${slug}](./${subject}/plans/${fileName})`);
+    links.initiatives.push(`- [city-traffic-initiative-${pad(i)}-${slug}](./${subject}/initiatives/${fileName})`);
   }
 }
 
@@ -813,7 +813,7 @@ for (const row of PLAN) {
 // ── Type indexes ───────────────────────────────────────────────────────────
 for (const typeShort of ['adr', 'bdr', 'edr']) {
   const type = typeShort + 's';
-  const links = typeArtifactLinks[type] || { decisions: [], research: [], skills: [], articles: [], plans: [] };
+  const links = typeArtifactLinks[type] || { decisions: [], research: [], skills: [], articles: [], initiatives: [] };
   const content = [
     `# city-traffic ${typeShort.toUpperCase()}s Index`,
     ``,
@@ -833,9 +833,9 @@ for (const typeShort of ['adr', 'bdr', 'edr']) {
     ``,
     ...links.articles,
     ``,
-    `## Plans`,
+    `## Initiatives`,
     ``,
-    ...links.plans,
+    ...links.initiatives,
   ].join('\n');
   write(path.join(OUT, type, 'index.md'), content);
 }
@@ -929,7 +929,7 @@ write(path.join(CORE_OUT, 'adrs', 'index.md'), [
   `- [002-standard-scope-type](principles/002-standard-scope-type.md) - standard scope type`,
   `- [003-xdrs-standards](principles/003-xdrs-standards.md) - XDRS standards`,
   `- [004-article-standards](principles/004-article-standards.md) - Article standards`,
-  `- [005-plan-standards](principles/005-plan-standards.md) - Plan standards`,
+  `- [005-initiative-standards](principles/005-initiative-standards.md) - Initiative standards`,
 ].join('\n'));
 
 function coreStub(num, name, title) {
@@ -961,11 +961,11 @@ write(path.join(CORE_OUT, 'adrs', 'principles', '001-core-scope-type.md'), coreS
 write(path.join(CORE_OUT, 'adrs', 'principles', '002-standard-scope-type.md'), coreStubScopeType('002', 'standard-scope-type', 'standard scope type'));
 write(path.join(CORE_OUT, 'adrs', 'principles', '003-xdrs-standards.md'), coreStub('003', 'xdrs-standards', 'XDRS standards'));
 write(path.join(CORE_OUT, 'adrs', 'principles', '004-article-standards.md'), coreStub('004', 'article-standards', 'Article standards'));
-write(path.join(CORE_OUT, 'adrs', 'principles', '005-plan-standards.md'), coreStub('005', 'plan-standards', 'Plan standards'));
+write(path.join(CORE_OUT, 'adrs', 'principles', '005-initiative-standards.md'), coreStub('005', 'initiative-standards', 'Initiative standards'));
 
 
 // ---------------------------------------------------------------------------
-console.log(`\nGenerated ${generated} content files (target: 3000). Distribution: decisions=${totals.decisions}, research=${totals.research}, skills=${totals.skills}, articles=${totals.articles}, plans=${totals.plans}`);
+console.log(`\nGenerated ${generated} content files (target: 3000). Distribution: decisions=${totals.decisions}, research=${totals.research}, skills=${totals.skills}, articles=${totals.articles}, initiatives=${totals.initiatives}`);
 
 const counts = fs.readdirSync;
 // Quick disk count

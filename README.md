@@ -1,6 +1,6 @@
 # xdrs-core
 
-XDRS is a framework to structure, compile and distribute Architectural (ADR), Business (BDR), and Engineering (EDR) decision records contents so that AI agents and humans can reliably find and use them with hierarchical scopes and controlled rollout in the format of distributable versioned packages. Decision Records are decomposed into Research (why), Policies (what), Skills (how), Plan (when) and Articles (views) with a well structured index structure and the definition of hierarchical scopes.
+XDRS is a framework to structure, compile and distribute Architectural (ADR), Business (BDR), and Engineering (EDR) decision records contents so that AI agents and humans can reliably find and use them with hierarchical scopes and controlled rollout in the format of distributable versioned packages. Decision Records are decomposed into Research (why), Policies (what), Skills (how), Initiative (when) and Articles (views) with a well structured index structure and the definition of hierarchical scopes.
 
 After preparation those elements can be downloaded anywhere and used to compose xdrs corpus, which can be used as a context source for AI agents, web site publishing, RAG applications etc.
 
@@ -21,7 +21,7 @@ This project defines a standard for organizing XDRS that satisfies the following
 A traditional Decision Record normally combines several concerns in the same document:
 - A **reason** (why the decision was made, options considered, evidence gathered)
 - A **policy** (rules, core decision, what must be followed)
-- A **plan** (consequences, implementation approach, how to roll out the decision)
+- An **initiative** (consequences, implementation approach, how to roll out the decision)
 - A **how-to** (step-by-step procedure for executing under the decision)
 - A **view** (overview of the topic connecting related decisions together)
 
@@ -31,7 +31,7 @@ The XDRS framework separates these concerns into different document types, each 
 - **Research** — Exploratory documents that capture the problem being investigated, constraints or requirements, findings, and option tradeoffs that back a decision during its lifecycle. One research document may inform multiple downstream decisions, but it is not a replacement for the Policy.
 - **Skills** — Step-by-step procedural guides that can be followed by humans, AI agents, or both. Skills are task-based artifacts with a concrete outcome and should include enough detail to verify the task was completed correctly. A skill may start as a fully manual procedure and evolve toward partial or full AI automation over time.
 - **Articles** — Synthetic explanatory texts that combine information from multiple Policies, Research documents, and Skills around a specific topic or audience. They never replace Policies as source of truth.
-- **Plans** — Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Plans have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Policies, Skills, Articles, or other artifacts.
+- **Initiatives** — Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Initiatives have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Policies, Skills, Articles, or other artifacts.
 
 The compilation process of a raw Decision Record is to distribute it into those different documents and create links between them. You can also use the framework standalone, generating these elements individually directly during the writing process without starting from a raw Decision Record.
 
@@ -167,7 +167,7 @@ This is especially important for BDRs: because business rules govern decisions t
         articles/                   # optional synthetic views over Policies, Research, and Skills
           [number]-[short-title].md
           .assets/
-        plans/                      # optional ephemeral execution plans
+        initiatives/                # optional ephemeral execution initiatives
           [number]-[short-title].md
           .assets/
 ```
@@ -180,7 +180,7 @@ Document types:
 - **Research** - Exploratory support material used while evaluating or updating a decision. Research captures constraints, findings, options, and proposal tradeoffs, but it is not the source of truth.
 - **Skills** - Step-by-step procedural guides that can be followed by humans, AI agents, or both. Must comply with Policies, but add the execution detail they lack. Skills are not mandatory by themselves unless referenced by a Policy or another policy artifact. A skill may start as a fully manual human procedure and evolve incrementally toward partial or full AI automation without being restructured. Co-located with the Policies they implement inside `skills/` sub-directories.
 - **Articles** - Synthetic views that explain concepts or combine information from multiple Policies, Research documents, and Skills into a coherent text for a specific topic or audience. Articles are not the source of truth; Policies take precedence when there is a conflict. Useful as navigational indexes that link related artifacts around a specific aspect.
-- **Plans** - Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Plans have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Policies, Skills, Articles, or other artifacts. Co-located with Policies inside `plans/` sub-directories.
+- **Initiatives** - Ephemeral execution documents that describe a problem, proposed solution, and the approach and activities needed to solve it. Initiatives have a clear start and end and must be deleted after full implementation. Lasting outputs are captured as Policies, Skills, Articles, or other artifacts. Co-located with Policies inside `initiatives/` sub-directories.
 
 See [.xdrs/index.md](.xdrs/index.md) for the full list of active policies.
 
@@ -232,12 +232,12 @@ The `lint` command reads `./.xdrs/**` from the given workspace path and checks c
 - skill numbering uniqueness per `scope/type/subject/skills`
 - article numbering uniqueness per `scope/type/subject/articles`
 - research numbering uniqueness per `scope/type/subject/researches`
-- plan numbering uniqueness per `scope/type/subject/plans`
-- plan `Expected end date:` field presence and ISO date format
+- initiative numbering uniqueness per `scope/type/subject/initiatives`
+- initiative `Expected end date:` field presence and ISO date format
 - canonical index presence and link consistency
 - root index coverage for all discovered canonical indexes
 - Policy metadata section placement and `valid-from` / `apply-to` field format
-- local markdown links between Policy documents, skills, articles, researches, and plans (excluding fenced code blocks)
+- local markdown links between Policy documents, skills, articles, researches, and initiatives (excluding fenced code blocks)
 - local image and `.assets/` links resolving inside the sibling `.assets/` folder for each document
 
 Examples:

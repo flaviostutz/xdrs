@@ -76,12 +76,12 @@ Policy documents are the authoritative source of truth for their scope, type, an
 - Each policy rule and rule block MUST be unambiguous: it MUST be possible to clearly follow, check, and discuss it without requiring additional interpretation.
 - When the decision defines strong policies or rules that SHOULD be stated explicitly as stable rule blocks, or when other documents, skills, or agents need to cite those rules individually by identifier, the Policy MUST follow the extension [_core-adr-policy-008 - Policy structured standards](008-policy-structured-standards.md) instead of using plain bullet lists for those rules.
 - Conflict handling applies to Policy documents:
-  - For cross-scope overrides, document the decision conflict in the Policy `## Conflicts` section of the Policy that overrides another scope.
+  - For cross-scope and cross-scope-type overrides, document the decision conflict in the Policy `## Conflicts` section of the Policy that overrides another scope or scope-type policy. Local meta-policies (`NNN-core.md` and companion files) and scope-type definition policies MAY include a `## Conflicts` section for this purpose. See `_core-adr-policy-010` rule 26-conflict-declarations for the required structure.
   - **Within-scope conflicts:** Policies within the same type+scope MUST NOT conflict. If two Policies appear to conflict, one SHOULD be updated, removed, or the conflict resolved through a new Policy.
 - When research exists for a decision, the Policy SHOULD mention the related research documents after the `## Considered Options` list.
 - MUST NOT use emojis in contents.
 - File names MUST be lowercase.
-- Any non-Markdown files referenced by a Policy (schemas, JSON examples, images, diagrams, binaries, or any other data files) SHOULD be used only when they are materially necessary and MUST live in `[xdrs-root]/[scope]/[type]/[subject]/.assets/`.
+- For diagram and asset rules in Policy documents, see [`_core-adr-policy-020`](020-media-and-asset-standards.md). Rule `02-policy-diagram-restrictions` below summarises the overall stance; the detailed rules are in policy 020.
 - Avoid using lengthy instructions on the Policy. If there are long and detailed instructions related to the Policy, or instructions that are outside the decision, create another file with a guide. If the guide is small, keep it in the Policy itself.
 - Policies SHOULD be under 1300 words long as a rule of thumb.
   - This is important to make them focused on a clear decision
@@ -98,6 +98,10 @@ When a policy's frontmatter includes `freeze-reference: true`, the policy MUST N
 - Frontmatter `name` field mismatch (name does not match the expected identifier derived from the file path)
 
 Content-level checks that do not affect the policy's reference (required sections, word count, emojis, broken outgoing links, structured rule block format, normative language) remain enforced. The `valid-from` date is not taken into consideration when evaluating whether `freeze-reference` applies.
+
+#### 02-policy-diagram-restrictions
+
+Images and diagrams in Policy documents are subject to strict restrictions: images MUST NOT be used; diagrams SHOULD be avoided and are only allowed in direct and punctual cases where directly connected to the decision. Diagram content has no normative force and must not be used for enforcement. For full rules see [`_core-adr-policy-020`](020-media-and-asset-standards.md) rules `10` through `14`.
 
 **Policy template**
 

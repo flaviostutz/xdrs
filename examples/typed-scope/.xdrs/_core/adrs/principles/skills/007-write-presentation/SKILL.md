@@ -1,7 +1,7 @@
 ---
 name: 007-write-presentation
 description: >
-  Creates a Marp slide presentation for an existing XDRS document (policy, research, article, or plan).
+  Creates a Marp slide presentation for an existing XDRS document (policy, research, article, or initiative).
   Activate this skill when the user asks to create slides, a presentation, or a slide deck for an XDRS document.
 metadata:
   author: flaviostutz
@@ -16,17 +16,13 @@ Guides the creation of a Marp Markdown slide presentation that supports an exist
 
 ### Phase 0: Prerequisites Gate — MUST complete before writing
 
-Identify the target scope from the parent document's path or the user's request; use `_local` if none is specified. Read the scope's `index.md` frontmatter and perform ALL of the following checks. If ANY check fails, output a FAIL result immediately and do not proceed:
-
-- **Follows scopes:** If the scope declares `follows:` entries (e.g., `follows: myarea-core, shared-standards`), verify that each listed scope directory exists in the workspace AND contains an accessible `index.md` (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing or unreadable, output: `FAIL — Cannot proceed: scope \`[scope-name]\` is listed in \`follows\` but its policies are not present in the workspace. Install it before authoring documents in this scope, as the governance constraints cannot be verified.`
-- **Local meta-policies:** Scan the target scope's `[type]/principles/` directories for all files whose filename title starts with `core` (i.e., `NNN-core.md` or `NNN-core-{qualifier}.md`), excluding scope-type definition files. If any are found but cannot be read, output: `FAIL — Cannot proceed: local meta-policy \`[filename]\` exists in scope \`[scope-name]\` but could not be read. Without it, the document cannot be authored in full compliance with the scope's governance.` Zero matches is valid.
-- **Rationale:** Authoring a document without all mandatory governance layers loaded risks producing content that silently violates scope policies. Every governance layer MUST be present before writing begins.
+Identify the target scope from the parent document's path or the user's request; use `_local` if none is specified. Then run the prerequisites gate from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/prerequisites-gate.md`. Substitute `[DOCUMENT TYPE]` with `presentation`.
 
 ### Phase 1: Identify the Parent Document
 
 1. Read `.xdrs/_core/adrs/principles/009-presentation-standards.md` in full to internalize all presentation rules.
 2. Read `.xdrs/_core/adrs/principles/001-xdrs-standards.md` for `.assets/` placement rules and general framework structure.
-3. Identify the parent document (policy, research, article, or plan) that the slides will support. The parent document must already exist. If no parent document exists, inform the user that slides cannot be standalone and suggest creating the parent document first.
+3. Identify the parent document (policy, research, article, or initiative) that the slides will support. The parent document must already exist. If no parent document exists, inform the user that slides cannot be standalone and suggest creating the parent document first.
 4. If the user wants slides covering content from multiple documents, check whether an article already exists that synthesizes those documents. If not, suggest creating an article first (using the 004-write-article skill) and then creating slides for that article.
 
 ### Phase 2: Define the Presentation Scope
@@ -48,11 +44,9 @@ Identify the target scope from the parent document's path or the user's request;
    - **Problem**: what needs to be decided, addressed, or understood
    - **Solution/Decision**: what was decided and why
    - **Actions/Next Steps**: what happens now, who is responsible
-3. For each slide, identify the best format:
-   - Mermaid diagrams for flows, relationships, architecture
+3. For each slide, identify the best format. For diagrams and non-Markdown assets, follow `_core-adr-policy-020`: prefer plain Markdown tables/lists first, then ASCII art for very simple cases, then Mermaid.js (sequence, state, activity, entity diagrams) for complex ones, then draw.io when Mermaid is insufficient — save as Editable Vector (File → Save As → Editable Vector) and store as `.svg` in the sibling `.assets/` folder. For slide content more broadly:
    - Short bullet points for key decisions and trade-offs
    - Tables for comparisons, options, criteria
-   - ASCII art for simple layouts or structures
    - Key short statements for emphasis
    - Longer text only when exact wording must be evaluated (policies, controls)
 4. Keep the total under 30 slides. If more content is needed, plan separate slide sets.
@@ -126,17 +120,13 @@ Rules:
    - Articles: `[xdrs-root]/[scope]/[type]/[subject]/articles/.assets/[slide-file].md`
    - Research: `[xdrs-root]/[scope]/[type]/[subject]/researches/.assets/[slide-file].md`
    - Skills: `[xdrs-root]/[scope]/[type]/[subject]/skills/[number]-[skill-name]/.assets/[slide-file].md`
-   - Plans: `[xdrs-root]/[scope]/[type]/[subject]/plans/.assets/[slide-file].md`
+   - Initiatives: `[xdrs-root]/[scope]/[type]/[subject]/initiatives/.assets/[slide-file].md`
 2. Update the parent document with the link to the slide file.
 3. Verify that the slide file name is <= 64 characters and lowercase.
 
 ### Phase 8: Verify with Lint
 
-1. Run the CLI lint utility from the repository root:
-   ```
-   npx -y xdrs-core@latest lint
-   ```
-2. Fix all reported errors before considering the task complete.
+Follow the lint verification steps in `.xdrs/_core/adrs/principles/skills/.assets/lint-verification.md`.
 
 ### Constraints
 
@@ -175,3 +165,4 @@ Rules:
 - [_core-adr-policy-001 - XDRS standards](../../001-xdrs-standards.md)
 - [_core-adr-policy-004 - Article standards](../../004-article-standards.md)
 - [_core-adr-policy-003 - Skill standards](../../003-skill-standards.md)
+- [_core-adr-policy-020 - Media and asset standards](../../020-media-and-asset-standards.md)

@@ -19,7 +19,7 @@ The `city-traffic` scope covers a multi-modal transport authority managing:
 | Research | 450 | 15 % |
 | Skills (SKILL.md) | 600 | 20 % |
 | Articles | 300 | 10 % |
-| Plans | 150 | 5 % |
+| Initiatives | 150 | 5 % |
 | **Total** | **3 000** | **100 %** |
 
 Decision breakdown: 600 ADRs · 450 BDRs · 450 EDRs

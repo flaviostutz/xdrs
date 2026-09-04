@@ -10,13 +10,13 @@ valid-from: 2025-01-01
 
 ## Overview
 
-The `_core` scope defines the XDRS framework itself: how policies, skills, research, articles, and plans are structured, written, versioned, and discovered. This scope is aimed at engineers, architects, and business analysts who build or consume xdrs-based documentation.
+The `_core` scope defines the XDRS framework itself: how policies, skills, research, articles, and initiatives are structured, written, versioned, and discovered. This scope is aimed at engineers, architects, and business analysts who build or consume xdrs-based documentation.
 
 ## Content
 
 ### What this scope covers
 
-The `_core` scope is the foundation that all other scopes inherit from. It establishes the rules and conventions that every Policy document, skill, article, research, and plan must follow regardless of which team, product, or domain produces them.
+The `_core` scope is the foundation that all other scopes inherit from. It establishes the rules and conventions that every Policy document, skill, article, research, and initiative must follow regardless of which team, product, or domain produces them.
 
 If you are evaluating whether to adopt XDRS, setting up a new XDRS project, or extending the framework with your own scopes, start here.
 
@@ -35,7 +35,7 @@ Each artifact type has its own writing standard:
 - **Skills** follow [_core-adr-policy-003](adrs/principles/003-skill-standards.md), using the agentskills format so they work for both humans and AI agents on an automation gradient from fully manual to fully automated.
 - **Articles** follow [_core-adr-policy-004](adrs/principles/004-article-standards.md), providing synthetic views that combine and link multiple Policies, research, and skills without replacing them as the source of truth.
 - **Research** follows [_core-adr-policy-006](adrs/principles/006-research-standards.md), using an IMRAD-based structure for studies that back decisions with reproducible evidence.
-- **Plans** follow [_core-adr-policy-007](adrs/principles/007-plan-standards.md), capturing ephemeral execution plans with problem context, proposed solutions, milestones, and deliverables that are deleted after implementation.
+- **Initiatives** follow [_core-adr-policy-007](adrs/principles/007-initiative-standards.md), capturing ephemeral execution initiatives with problem context, proposed solutions, milestones, and deliverables that are deleted after implementation.
 
 ### Versioning and distribution
 
@@ -45,6 +45,10 @@ Each artifact type has its own writing standard:
 
 Slide presentations that support XDRS documents follow [_core-adr-policy-009](adrs/principles/009-presentation-standards.md). Slides use the Marp Markdown format, live in `.assets/` next to the document they support, and must maintain bidirectional links with the parent document.
 
+### Media and asset standards
+
+[_core-adr-policy-020](adrs/principles/020-media-and-asset-standards.md) defines the canonical preference order for representing visual information across all XDRS document types: Markdown → ASCII → Mermaid → draw.io → SVG → PNG. It also defines where non-Markdown files must be stored (`.assets/` sibling folder) and prohibits policy content from living inside asset files. All document-type policies and write-* skills reference this policy instead of repeating these rules independently.
+
 ### Standard scope meta governance
 
 [_core-adr-policy-010](adrs/principles/010-scope-governance.md) defines the full scope governance model: how to define a custom scope type using `{scope-type}-scope-type` policies, how to define scope-local content standards using local meta-policies (`NNN-core.md` or `NNN-core-{qualifier}.md` in `principles/`), and how all governance mechanisms (`follows:`, scope-type standards, local meta-policies) apply with their precedence chain.
@@ -53,7 +57,7 @@ Slide presentations that support XDRS documents follow [_core-adr-policy-009](ad
 
 ### Scope types
 
-Every XDRS scope declares a `scope-type` in its `index.md` YAML frontmatter. A `scope-type` value is valid when a `{scope-type}-scope-type` policy exists in the `principles` subject of any `core`-type scope in the workspace. The five built-in scope types are defined by [_core-adr-policy-011](adrs/principles/011-core-scope-type.md) (`core`), [_core-adr-policy-012](adrs/principles/012-reference-scope-type.md) (`reference`), [_core-adr-policy-013](adrs/principles/013-platform-scope-type.md) (`platform`), [_core-adr-policy-014](adrs/principles/014-standard-scope-type.md) (`standard`), and [_core-adr-policy-015](adrs/principles/015-local-scope-type.md) (`_local`). Custom scope types can be defined following [_core-adr-policy-010](adrs/principles/010-scope-governance.md). The recommended root index ordering is `core → reference → platform → standard → _local`.
+Every XDRS scope declares a `scope-type` in its `index.md` YAML frontmatter. A `scope-type` value is valid when a `{scope-type}-scope-type` policy exists in the `principles` subject of any `core`-type scope in the workspace. Multiple types MAY be declared using a comma-separated list (e.g., `scope-type: compiled, internal-docs`); each element is validated independently — see [_core-adr-policy-010](adrs/principles/010-scope-governance.md) rules 06 and 07. The five built-in scope types are defined by [_core-adr-policy-011](adrs/principles/011-core-scope-type.md) (`core`), [_core-adr-policy-012](adrs/principles/012-reference-scope-type.md) (`reference`), [_core-adr-policy-013](adrs/principles/013-platform-scope-type.md) (`platform`), [_core-adr-policy-014](adrs/principles/014-standard-scope-type.md) (`standard`), and [_core-adr-policy-015](adrs/principles/015-local-scope-type.md) (`_local`). Custom scope types can be defined following [_core-adr-policy-010](adrs/principles/010-scope-governance.md). The recommended root index ordering is `core → reference → platform → standard → _local`.
 
 ### Available skills
 
@@ -64,7 +68,7 @@ The `_core` scope ships with seven skills that automate the most common framewor
 - **003-write-skill** guides creation of a new skill package
 - **004-write-article** guides creation of a new article
 - **005-write-research** guides creation of a new research document
-- **006-write-plan** guides creation of a new execution plan
+- **006-write-initiative** guides creation of a new execution initiative
 - **007-write-presentation** guides creation of Marp slide presentations
 
 ### Getting started

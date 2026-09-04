@@ -14,14 +14,10 @@ Guides the creation of a well-structured Policy by following the standards in `_
 
 ## Instructions
 
-### Phase 0: Prerequisites Gate — MUST complete before writing
+### Phase 0: Scope Placement and Prerequisites Gate — MUST complete before writing
 
-Identify the target scope from the user's request; use `_local` if none is specified. Read the scope's `index.md` frontmatter and perform ALL of the following checks. If ANY check fails, output a FAIL result immediately and do not proceed:
-
-- **Follows scopes:** If the scope declares `follows:` entries (e.g., `follows: myarea-core, shared-standards`), verify that each listed scope directory exists in the workspace AND contains an accessible `index.md` (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing or unreadable, output: `FAIL — Cannot proceed: scope \`[scope-name]\` is listed in \`follows\` but its policies are not present in the workspace. Install it before authoring documents in this scope, as the governance constraints cannot be verified.`
-- **Local meta-policies:** Scan the target scope's `[type]/principles/` directories for all files whose filename title starts with `core` (i.e., `NNN-core.md` or `NNN-core-{qualifier}.md`), excluding scope-type definition files. If any are found but cannot be read, output: `FAIL — Cannot proceed: local meta-policy \`[filename]\` exists in scope \`[scope-name]\` but could not be read. Without it, the policy cannot be authored in full compliance with the scope's governance.` Zero matches is valid.
-- **Scope-type:** Read the scope's `scope-type` from its `index.md`. If `scope-type` is declared, search the `[type]/principles/` directories of all `core`-type scopes in the workspace for a file whose name ends with `{scope-type}-scope-type.md`. If the scope declares a `scope-type` but no matching file is found, output: `FAIL — Cannot proceed: scope \`[scope-name]\` declares \`scope-type: [scope-type]\` but no \`[scope-type]-scope-type.md\` policy exists in any \`core\`-type scope in the workspace. The scope is READ-ONLY; install the scope-type governance before authoring documents in this scope.`
-- **Rationale:** Authoring a document without all mandatory governance layers loaded risks producing content that silently violates scope policies. Every governance layer MUST be present before writing begins.
+1. Run the scope placement analysis from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/scope-placement.md` to determine and confirm the target scope.
+2. Once the scope is confirmed, run the prerequisites gate from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/prerequisites-gate.md`. Substitute `[DOCUMENT TYPE]` with `policy`.
 
 ### Phase 1: Understand the Decision
 
@@ -43,10 +39,7 @@ Consult `001-xdrs-standards` while making each choice in this phase. The summari
 - **ADR**: system context, integration pattern, overarching architectural choice
 - **EDR**: specific tool/library, coding practice, testing strategy, project structure
 
-**Scope** — use `_local` unless the user explicitly names another scope.
-- If the user names a scope other than `_local`, check the workspace root `.filedist.lock` file. If any file under `.xdrs/[scope]/` appears in `.filedist.lock`, the scope is external and new documents MUST NOT be created there. Inform the user and ask them to choose a non-external scope.
-
-**Subject** — MUST read `_core-adr-policy-016` ([016-policy-subjects.md](../../016-policy-subjects.md)) in full before choosing. That document defines all allowed subjects per type with full descriptions, examples, and disambiguation tiebreakers. Do not rely on summaries or prior knowledge of the subject list — always read the policy and select the subject that best matches the decision topic according to its definitions.
+**Scope** — confirmed in Phase 0. Follow the external-scope validation and subject selection guidance in `.xdrs/_core/adrs/principles/skills/.assets/scope-selection.md`.
 
 When type, scope, or subject cannot be confidently inferred, ask the user a clarifying question before proceeding. Ask one question at a time and wait for the answer; follow up if the response introduces new ambiguity.
 
@@ -65,7 +58,7 @@ Choose a title that clearly states the question this Policy answers, not the ans
 
 ### Phase 4: Research Related Policies
 
-1. Read all existing Policies relevant to the topic across all scopes listed in the Policy root `index.md`.
+1. Read all existing Policies relevant to the topic across all scopes listed in the Policy root `index.md`. **Additionally**, if the target scope declares an `extends:` field in its `index.md`, resolve its full `extends:` chain depth-first (see `_core-adr-policy-010` rule 33) and treat all policy documents from those extended scopes as if they were authored in the target scope — they MUST be included in the research and conflict check just like policies written directly in the scope.
 2. Evaluate Policy metadata before treating any decision as a current constraint. All documents present in the collection are considered active. `valid-from:` determines the convergence date for adoption, `apply-to:` determines whether it fits the current topic, and the decision text defines any remaining boundaries. Treat out-of-window or out-of-scope Policies as background only when assessing overlaps and conflicts.
 3. Identify decisions that already address the topic (full or partial overlap).
 4. Note decisions that might conflict with the intended outcome.
@@ -149,7 +142,7 @@ Mandatory rules to apply while drafting:
 - Keep the decision itself authoritative in the Policy. Supporting artifacts may elaborate, but they should not restate the full decision when a short reference is enough.
 - Make clear when the decision applies and any important exception boundaries.
 - Keep exploratory option analysis in a related Research document when it would distract from the final decision text.
-- Prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams), or ASCII art for simple structure, flow, layout, or relationship indications.
+- For diagrams and non-Markdown assets, follow `_core-adr-policy-020`: prefer plain Markdown tables/lists first, then ASCII art for very simple cases, then Mermaid.js (sequence, state, activity, entity diagrams) for complex ones, then draw.io when Mermaid is insufficient — save as Editable Vector (File → Save As → Editable Vector) and store as `.svg` in the sibling `.assets/` folder.
 - If the Policy genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/.assets/` and link them using a same-folder relative path (e.g., `.assets/image.png`).
 - Use relative paths for all links; never use absolute paths starting with `/`.
 - No emojis. Lowercase filenames.
@@ -167,9 +160,7 @@ Check every item before finalizing:
 5. **Redundancy**: Is the Policy the primary source for the decision itself, with related documents linked instead of duplicated wherever possible?
 6. **Conflicts section**: Is it present and filled if Phase 3 found any conflicts?
 7. **Index entries**: Will the new Policy be added to `[scope]/[type]/index.md` and the Policy root `index.md`?
-8. **Meta-policy compliance**: Check the target scope's `index.md` for a `follows` frontmatter field. `_core` Policies always apply to all scopes. If `follows` lists additional core scope names (e.g., `follows: [myarea-core]`), verify that each listed scope directory exists in the workspace (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing, STOP immediately and tell the user: "Scope `[scope-name]` is listed in `follows` but not found in the workspace. Install it before proceeding." Once all `follows` scopes are confirmed present, verify the document satisfies all requirements from those Policies. Scopes are applied in order; last-listed scope in `follows` takes precedence when the same topic is covered by multiple scopes.
-   - **Scope-type standards:** Read the target scope's `scope-type`. Search the `[type]/principles/` directories of all `core`-type scopes for a file ending in `{scope-type}-scope-type.md`. If found, also load all companion files (`{scope-type}-scope-type-{qualifier}.md`) from the **same directory** and apply their rules as additional requirements. Resolve any `NN-parent-scope-type` rule transitively from the primary file. See `_core-adr-policy-010` rules 18 and 20.
-   - **Scope-local standards:** Search the target scope's own `[type]/principles/` for a file ending in `{scope-name}-core.md`. If found, apply its rules as requirements; they override scope-type standards on conflict. See `_core-adr-policy-010` rules 19 and 20.
+8. **Meta-policy compliance**: Run the shared module at `.xdrs/_core/adrs/principles/skills/.assets/meta-policy-compliance.md`. Substitute `[DOCUMENT]` with `policy`.
 
 If any check fails, revise and re-run this phase before proceeding.
 
@@ -184,12 +175,7 @@ If any check fails, revise and re-run this phase before proceeding.
 
 ### Phase 9: Verify Package structure with Lint
 
-1. Run the CLI lint utility from the repository root:
-   ```
-   npx -y xdrs-core@latest lint
-   ```
-2. Fix all reported errors before considering the task complete.
-3. Review warnings; fix straightforward ones and note intentional deviations explicitly.
+Follow the lint verification steps in `.xdrs/_core/adrs/principles/skills/.assets/lint-verification.md`.
 
 ### Constraints
 

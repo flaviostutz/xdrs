@@ -26,12 +26,9 @@ Optional questions (ask only when genuinely unclear):
 - **Type**: Should the article primarily synthesize ADRs, BDRs, or EDRs? Ask only when the topic spans multiple types.
 - **Existing XDRS elements**: Are there specific Policies or Skills you want the article to reference or synthesize?
 
-**Prerequisites gate** — once the scope is confirmed from the answers above, perform ALL of the following checks before proceeding. If ANY check fails, output a FAIL result immediately and do not continue:
+**Scope placement** — once the scope is known from the answers above, run the scope placement analysis from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/scope-placement.md` to confirm it is the right placement for this content.
 
-- **Follows scopes:** If the scope declares `follows:` entries (e.g., `follows: myarea-core, shared-standards`), verify that each listed scope directory exists in the workspace AND contains an accessible `index.md` (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing or unreadable, output: `FAIL — Cannot proceed: scope \`[scope-name]\` is listed in \`follows\` but its policies are not present in the workspace. Install it before authoring documents in this scope, as the governance constraints cannot be verified.`
-- **Local meta-policies:** Scan the target scope's `[type]/principles/` directories for all files whose filename title starts with `core` (i.e., `NNN-core.md` or `NNN-core-{qualifier}.md`), excluding scope-type definition files. If any are found but cannot be read, output: `FAIL — Cannot proceed: local meta-policy \`[filename]\` exists in scope \`[scope-name]\` but could not be read. Without it, the document cannot be authored in full compliance with the scope's governance.` Zero matches is valid.
-- **Scope-type:** Read the scope's `scope-type` from its `index.md`. If `scope-type` is declared, search the `[type]/principles/` directories of all `core`-type scopes in the workspace for a file whose name ends with `{scope-type}-scope-type.md`. If the scope declares a `scope-type` but no matching file is found, output: `FAIL — Cannot proceed: scope \`[scope-name]\` declares \`scope-type: [scope-type]\` but no \`[scope-type]-scope-type.md\` policy exists in any \`core\`-type scope in the workspace. The scope is READ-ONLY; install the scope-type governance before authoring documents in this scope.`
-- **Rationale:** Authoring a document without all mandatory governance layers loaded risks producing content that silently violates scope policies. Every governance layer MUST be present before writing begins.
+**Prerequisites gate** — once scope is confirmed, run the prerequisites gate from the shared module at `.xdrs/_core/adrs/principles/skills/.assets/prerequisites-gate.md`. Substitute `[DOCUMENT TYPE]` with `article`.
 
 Do NOT proceed to Phase 1 until you have at minimum a clear **topic** and **audience**.
 
@@ -47,8 +44,7 @@ Do NOT proceed to Phase 1 until you have at minimum a clear **topic** and **audi
 
 Consult `001-xdrs-standards` while making each choice in this phase. The summaries below are orientation only; when any detail is unclear, the standard decides.
 
-**Scope** — use `_local` unless the user explicitly names another scope.
-- If the user names a scope other than `_local`, check the workspace root `.filedist.lock` file. If any file under `.xdrs/[scope]/` appears in `.filedist.lock`, the scope is external and new documents MUST NOT be created there. Inform the user and ask them to choose a non-external scope.
+**Scope** — confirmed in Phase 0. Follow the external-scope validation in `.xdrs/_core/adrs/principles/skills/.assets/scope-selection.md`.
 
 **Type** — match the type of the XDRS elements the article primarily synthesizes (`adrs`, `bdrs`, or `edrs`).
 If the topic spans multiple types, use `adrs`. Use the same rules as `002-write-policy` Phase 2:
@@ -102,7 +98,7 @@ Rules to apply while drafting:
 - Every factual claim must link back to the authoritative Policy or Skill.
 - If the article advises readers what to do, clearly separate active/applicable Policies from background, historical, or out-of-scope ones.
 - Never reproduce decision text verbatim; summarize and link.
-- Prefer plain Markdown, tables, Mermaid.js (sequence, state, activity, entity diagrams), or ASCII art for simple structure, flow, layout, or relationship indications.
+- For diagrams and non-Markdown assets, follow `_core-adr-policy-020`: prefer plain Markdown tables/lists first, then ASCII art for very simple cases, then Mermaid.js (sequence, state, activity, entity diagrams) for complex ones, then draw.io when Mermaid is insufficient — save as Editable Vector (File → Save As → Editable Vector) and store as `.svg` in the sibling `.assets/` folder.
 - If the article genuinely needs local images or supporting files, store them in `.xdrs/[scope]/[type]/[subject]/articles/.assets/` and link them using a same-folder relative path (e.g., `.assets/image.png`).
 - Use relative paths for all links; never use absolute paths starting with `/`.
 - Target under 1950 words for best reader engagement (SHOULD). If content grows beyond that, break it into separate chapter articles rather than expanding a single file. The hard limit is 8000 words.
@@ -116,15 +112,11 @@ Rules to apply while drafting:
 3. Add back-references in the Policies, Research documents, and Skills that the article synthesizes, under their `## References`
    section.
 4. Evaluate whether the scope index at `.xdrs/[scope]/index.md` should be updated to reflect the new article. If the scope index does not exist, create it following article standards and the scope index rules in `_core-adr-policy-001`.
-5. **Meta-policy compliance**: Check the target scope's `index.md` for a `follows` frontmatter field. `_core` Policies always apply to all scopes. If `follows` lists additional core scope names, verify that each listed scope directory exists in the workspace (e.g., `.xdrs/[scope-name]/index.md`). If any listed scope is missing, STOP immediately and tell the user: "Scope `[scope-name]` is listed in `follows` but not found in the workspace. Install it before proceeding." Once all `follows` scopes are confirmed present, verify the article satisfies any content or structural requirements from those Policies. Last-listed scope in `follows` takes precedence.
+5. **Meta-policy compliance**: Run the shared module at `.xdrs/_core/adrs/principles/skills/.assets/meta-policy-compliance.md`. Substitute `[DOCUMENT]` with `article`.
 
 ### Phase 7: Verify with Lint
 
-1. Run the CLI lint utility from the repository root:
-   ```
-   npx -y xdrs-core@latest lint
-   ```
-2. Fix all reported errors before considering the task complete.
+Follow the lint verification steps in `.xdrs/_core/adrs/principles/skills/.assets/lint-verification.md`.
 
 ## Examples
 
