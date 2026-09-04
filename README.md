@@ -1,5 +1,7 @@
 # xdrs-core
 
+**XDRS — eXtensible Decision Record System**
+
 XDRS is a framework to structure, compile and distribute Architectural (ADR), Business (BDR), and Engineering (EDR) decision records contents so that AI agents and humans can reliably find and use them with hierarchical scopes and controlled rollout in the format of distributable versioned packages. Decision Records are decomposed into Research (why), Policies (what), Skills (how), Initiative (when) and Articles (views) with a well structured index structure and the definition of hierarchical scopes.
 
 After preparation those elements can be downloaded anywhere and used to compose xdrs corpus, which can be used as a context source for AI agents, web site publishing, RAG applications etc.

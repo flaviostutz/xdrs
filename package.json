@@ -1,7 +1,7 @@
 {
   "name": "xdrs-core",
   "version": "0.0.1",
-  "description": "A framework to structure, compile and distribute Architectural (ADR), Business (BDR), and Engineering (EDR) decision records contents so that AI agents and humans can reliably find and use them with hierarchical scopes and controlled rollout in the format of distributable versioned packages.",
+  "description": "XDRS (eXtensible Decision Record System): a framework to structure, compile and distribute Architectural (ADR), Business (BDR), and Engineering (EDR) decision records contents so that AI agents and humans can reliably find and use them with hierarchical scopes and controlled rollout in the format of distributable versioned packages.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flaviostutz/xdrs-core.git"

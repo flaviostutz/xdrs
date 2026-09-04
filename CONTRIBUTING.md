@@ -2,7 +2,7 @@
 
 ## Before you start
 
-This project uses XDRS as its source of truth for policies about structure, engineering, and documentation. Before proposing a change, review:
+This project uses XDRS (eXtensible Decision Record System) as its source of truth for policies about structure, engineering, and documentation. Before proposing a change, review:
 
 - `.xdrs/index.md`
 - the relevant scope and type index under `.xdrs/`

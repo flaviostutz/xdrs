@@ -1,6 +1,6 @@
 # XDRS Index
 
-This index points to all type- and scope-specific XDRS indexes. It covers Architectural (ADR), Business (BDR), and Engineering (EDR) contents. Each scope has its own canonical index that lists all Policies, Skills, Articles and Initiatives for that scope, organized by subject.
+This index points to all type- and scope-specific XDRS (eXtensible Decision Record System) indexes. It covers Architectural (ADR), Business (BDR), and Engineering (EDR) contents. Each scope has its own canonical index that lists all Policies, Skills, Articles and Initiatives for that scope, organized by subject.
 
 ## Scope Indexes
 
